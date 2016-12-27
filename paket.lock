@@ -1,6 +1,9 @@
 FRAMEWORK: >= NET461
 NUGET
   remote: https://api.nuget.org/v3/index.json
+    Selenium.Support (3.0.1)
+      Selenium.WebDriver (>= 3.0.1)
+    Selenium.WebDriver (3.0.1)
     Shouldly (2.8.2)
     xunit (2.1)
       xunit.assert (2.1)

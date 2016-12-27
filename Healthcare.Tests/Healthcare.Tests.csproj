@@ -46,11 +46,19 @@
     </When>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="BaseWebtest.cs" />
+    <Compile Include="UiTests\HomepageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Healthcare.Framework\Healthcare.Framework.csproj">
+      <Project>{ecb2e5aa-27b7-4b52-a08c-49c8be87f6f4}</Project>
+      <Name>Healthcare.Framework</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
