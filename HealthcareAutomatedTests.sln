@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{86DD9C11-9F42-4FFC-88FF-43734D04BA9E}"
+	ProjectSection(SolutionItems) = preProject
+		paket.dependencies = paket.dependencies
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Healthcare.Framework", "Healthcare.Framework\Healthcare.Framework.csproj", "{ECB2E5AA-27B7-4B52-A08C-49C8BE87F6F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Healthcare.Tests", "Healthcare.Tests\Healthcare.Tests.csproj", "{F64CD766-D47F-4DC9-82E9-04B7F7004E21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,10 @@ Global
 		{ECB2E5AA-27B7-4B52-A08C-49C8BE87F6F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECB2E5AA-27B7-4B52-A08C-49C8BE87F6F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECB2E5AA-27B7-4B52-A08C-49C8BE87F6F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F64CD766-D47F-4DC9-82E9-04B7F7004E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64CD766-D47F-4DC9-82E9-04B7F7004E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64CD766-D47F-4DC9-82E9-04B7F7004E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64CD766-D47F-4DC9-82E9-04B7F7004E21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
