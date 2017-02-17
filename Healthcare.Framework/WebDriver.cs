@@ -1,6 +1,9 @@
 ﻿using System;
+using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using System.Drawing.Imaging;
+using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
 
 namespace Healthcare.Framework
@@ -14,7 +17,7 @@ namespace Healthcare.Framework
         {
             RemoteDriver = Setup();
             RemoteDriver.Manage().Window.Maximize();
-            
+
             Wait = new WebDriverWait(RemoteDriver, new TimeSpan(0, 0, 30));
         }
 
@@ -25,6 +28,33 @@ namespace Healthcare.Framework
             var hub = new Uri("http://localhost:4444/wd/hub");
 
             return new RemoteWebDriver(hub, capabilities);
+        }
+
+        public void TakeScreenshot(string testName, string providedPath = null)
+        {
+            var userName = Environment.UserName;
+            var date = DateTime.Now.ToString("yy-MM-dd");
+            var dateAndTime = date + "_" + DateTime.Now.TimeOfDay;
+
+            // This will either save the screenshot to the desktop or the provided path
+            var path = providedPath ?? $"C:/Users/{userName}/Desktop/UI_Test_Screenshots_{date}/";
+
+            MakeDirectory(path);
+            SaveScreenShot(testName, path, dateAndTime);
+        }
+
+        private static void MakeDirectory(string path)
+        {
+            if (Directory.Exists(path))
+                return;
+
+            Directory.CreateDirectory(path);
+        }
+
+        private void SaveScreenShot(string testName, string path, string dateAndTime)
+        {
+            var imageLocation = path + testName + dateAndTime + ".png";
+            RemoteDriver.TakeScreenshot().SaveAsFile(imageLocation, ImageFormat.Png);
         }
 
         public void Cleanup()
