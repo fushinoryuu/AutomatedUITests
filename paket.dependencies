@@ -2,13 +2,8 @@ source https://api.nuget.org/v3/index.json
 framework >= net461
 
 nuget Shouldly 2.8.2
-nuget xunit 2.1.0
-nuget xunit.abstractions 2.0.0
-nuget xunit.assert 2.1.0
-nuget xunit.core 2.1.0
-nuget xunit.extensibility.core 2.1.0
-nuget xunit.extensibility.execution 2.1.0
-nuget xunit.runner.console 2.1.0
-nuget xunit.runner.visualstudio 2.1.0
 nuget Selenium.Support 3.0.1
 nuget Selenium.WebDriver 3.0.1
+nuget NUnit 3.6.1
+nuget NUnit.Console 3.6.1
+nuget NUnit.ConsoleRunner 3.6.1

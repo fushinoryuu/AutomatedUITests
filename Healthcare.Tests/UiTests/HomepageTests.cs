@@ -1,11 +1,12 @@
-﻿using Xunit;
-using Shouldly;
+﻿using Shouldly;
+using NUnit.Framework;
 
 namespace Healthcare.Tests.UiTests
 {
+    [TestFixture, Parallelizable]
     public class HomepageTests : BaseWebtest
     {
-        [Fact]
+        [Test]
         public void HomePageLoads()
         {
             HomePage.GoTo();

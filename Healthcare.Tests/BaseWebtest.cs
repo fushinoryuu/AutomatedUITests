@@ -1,23 +1,26 @@
-﻿using System;
-using Healthcare.Framework;
+﻿using Healthcare.Framework;
 using Healthcare.Framework.Pages;
+using NUnit.Framework;
 
 namespace Healthcare.Tests
 {
-    public abstract class BaseWebtest : IDisposable
+    [TestFixture, Parallelizable]
+    public abstract class BaseWebtest
     {
-        protected WebDriver WebDriver;
+        protected WebDriver Driver;
         protected HomePage HomePage;
-        
-        protected BaseWebtest()
+
+        [SetUp]
+        public void Setup()
         {
-            WebDriver = new WebDriver();
-            HomePage = new HomePage(WebDriver);
+            Driver = new WebDriver();
+            HomePage = new HomePage(Driver);
         }
 
-        public void Dispose()
+        [TearDown]
+        public void Teardown()
         {
-            WebDriver.Cleanup();
+            Driver.Cleanup();
         }
     }
 }
