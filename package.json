@@ -1,0 +1,19 @@
+{
+  "name": "automated-ui-tests",
+  "version": "1.0.0",
+  "description": "This is the skeleton code to starting Selenium automation for a site. The skeleton uses oneexchange.com, but it can be easily updated to something else.",
+  "private": true,
+  "scripts":
+  {
+    "help": "npm-scripts-info",
+    "build": "powershell ./build.ps1 -Target default"
+  },
+  "scripts-info":
+  {
+    "build": "builds the project locally and executes tests"
+  },
+  "devDependencies":
+  {
+    "npm-scripts-info": "^0.3.6"
+  }
+}
