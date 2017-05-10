@@ -85,3 +85,9 @@ private DirectoryPath getFinalDestination(DirectoryPath currentWorkingDirectory,
 
     return destinationRoot;
 }
+
+private bool isWebProject(DirectoryPath projectDirectory, string releaseTarget)
+{
+    var projectDirectoryWithReleaseTarget = projectDirectory.Combine("bin").Combine(releaseTarget);
+    return !DirectoryExists(projectDirectoryWithReleaseTarget);
+}
