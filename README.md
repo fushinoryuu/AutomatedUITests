@@ -30,7 +30,7 @@ On each worker/node machine:
    - Or you can also run the `NODE_SeleniumGrid.bat` file included in this repo.
    - If the [Hub](#starting-the-selenium-hub) is running on a different machine, open the `NODE_SeleniumGrid.bat` file and update the address for the Hub.
 
-**Note:** The host machine can also be a node. You just need to run both bat files to start the hub and node on the same machine witho.
+**Note:** The host machine can also be a node. You just need to run both bat files to start the hub and node on the same machine.
 
 ## Running the Automated UI Tests
 
@@ -73,4 +73,3 @@ The following configuration settings can be set in the `MedicareAutomation.Tests
 4. `enabletestrail` is to indicate if you want to report the results to TestRail.
 	 - Default value is `True`, but it can be set to `False`
 	 - Setting this parameter to `False` will cut the time it takes for the tests to run.
-   
