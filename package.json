@@ -6,11 +6,15 @@
   "scripts":
   {
     "help": "npm-scripts-info",
-    "build": "powershell ./build.ps1 -Target default"
+    "build": "powershell ./build.ps1 -Target default",
+    "hub": "start call powershell ./HUB_SeleniumGrid.bat",
+    "node": "start call powershell ./NODE_SeleniumGrid.bat"
   },
   "scripts-info":
   {
-    "build": "builds the project locally and executes tests"
+    "build": "builds the project locally and executes tests",
+    "hub": "Starts a Selenium Server Hub.",
+    "node": "Starts a Selenium Server Node."
   },
   "devDependencies":
   {

@@ -62,7 +62,7 @@
           <Paket>True</Paket>
         </Reference>
         <Reference Include="WebDriver.Support">
-          <HintPath>..\packages\Selenium.Support\lib\net40\WebDriver.Support.dll</HintPath>
+          <HintPath>..\..\packages\Selenium.Support\lib\net40\WebDriver.Support.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -73,7 +73,7 @@
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7')">
       <ItemGroup>
         <Reference Include="WebDriver">
-          <HintPath>..\packages\Selenium.WebDriver\lib\net40\WebDriver.dll</HintPath>
+          <HintPath>..\..\packages\Selenium.WebDriver\lib\net40\WebDriver.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>

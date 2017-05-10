@@ -8,6 +8,19 @@ Task("CompileDebug")
         dropPrepare("Debug");
     });
 
+Task("CompileRelease")
+    .Description("Compiles the solution in Release mode.")
+    .Does(() =>
+    {
+        Compile("Release");
+        dropPrepare("Release");
+    });
+
+Task("CompileAll")
+    .Description("Compiles both release and debug builds.")
+    .IsDependentOn("CompileDebug")
+    .IsDependentOn("CompileRelease");
+
 private void Compile(string mode)
 {
     DotNetBuild(Constants.SolutionFile, settings =>
@@ -23,7 +36,7 @@ private void dropPrepare(string releaseTarget)
 
     foreach (var project in dropOptions.Projects)
     {
-		Information("Gathering release files for project {0}", project.Name);
+        Information("Gathering release files for project {0}", project.Name);
         var destinationRoot = currentWorkingDirectory
             .Combine("Build")
             .Combine(project.Name)
@@ -37,7 +50,7 @@ private void dropPrepare(string releaseTarget)
         var sourceDirectory = getSourceDirectory(currentWorkingDirectory, project.Name, releaseTarget);
         var finalDestination = getFinalDestination(currentWorkingDirectory, destinationRoot, project.Name, releaseTarget);
 
-		Information("Copying {0} to {1}.", sourceDirectory, finalDestination);
+        Information("Copying {0} to {1}.", sourceDirectory, finalDestination);
         CopyDirectory(sourceDirectory, finalDestination);
 
         var projectEnvironmentDirectory = projectDirectory.Combine("Env");
@@ -62,6 +75,12 @@ private void dropPrepare(string releaseTarget)
     }
 }
 
+private bool isWebProject(DirectoryPath projectDirectory, string releaseTarget)
+{
+    var projectDirectoryWithReleaseTarget = projectDirectory.Combine("bin").Combine(releaseTarget);
+    return !DirectoryExists(projectDirectoryWithReleaseTarget);
+}
+
 private DirectoryPath getSourceDirectory(DirectoryPath currentWorkingDirectory, string projectName, string releaseTarget)
 {
     var projectDirectory = currentWorkingDirectory.Combine("src").Combine(projectName);
@@ -84,10 +103,4 @@ private DirectoryPath getFinalDestination(DirectoryPath currentWorkingDirectory,
     }
 
     return destinationRoot;
-}
-
-private bool isWebProject(DirectoryPath projectDirectory, string releaseTarget)
-{
-    var projectDirectoryWithReleaseTarget = projectDirectory.Combine("bin").Combine(releaseTarget);
-    return !DirectoryExists(projectDirectoryWithReleaseTarget);
 }
