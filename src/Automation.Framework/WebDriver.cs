@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Drawing.Imaging;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
@@ -54,7 +53,7 @@ namespace Automation.Framework
         private void SaveScreenShot(string testName, string path, string dateAndTime)
         {
             var imageLocation = path + testName + dateAndTime + ".png";
-            RemoteDriver.TakeScreenshot().SaveAsFile(imageLocation, ImageFormat.Png);
+            RemoteDriver.TakeScreenshot().SaveAsFile(imageLocation, ScreenshotImageFormat.Png);
         }
 
         public void Cleanup()

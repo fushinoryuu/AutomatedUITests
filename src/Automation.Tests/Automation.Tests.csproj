@@ -54,7 +54,7 @@
     <None Include="paket.references" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Healthcare.Framework\Automation.Framework.csproj">
+    <ProjectReference Include="..\Automation.Framework\Automation.Framework.csproj">
       <Project>{ecb2e5aa-27b7-4b52-a08c-49c8be87f6f4}</Project>
       <Name>Automation.Framework</Name>
     </ProjectReference>
