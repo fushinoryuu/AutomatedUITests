@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.Extensions;
+using Automation.Framework.Utils;
 
 namespace Automation.Framework
 {
@@ -22,9 +23,9 @@ namespace Automation.Framework
 
         private static IWebDriver Setup()
         {
-            var capabilities = DesiredCapabilities.Chrome();
-            capabilities.Platform = Platform.CurrentPlatform;
-            var hub = new Uri("http://localhost:4444/wd/hub");
+            var capabilities = TestSettingsReader.TargetBrowser;
+            capabilities.Platform = TestSettingsReader.OperatingSystem;
+            var hub = TestSettingsReader.SeleniumHubUri;
 
             return new RemoteWebDriver(hub, capabilities);
         }
