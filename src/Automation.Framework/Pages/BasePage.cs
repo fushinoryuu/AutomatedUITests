@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Reflection;
 using System.Threading;
+using System.Reflection;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace Healthcare.Framework.Pages
+namespace Automation.Framework.Pages
 {
     public abstract class BasePage
     {

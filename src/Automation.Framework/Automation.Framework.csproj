@@ -7,8 +7,8 @@
     <ProjectGuid>{ECB2E5AA-27B7-4B52-A08C-49C8BE87F6F4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Healthcare.Framework</RootNamespace>
-    <AssemblyName>Healthcare.Framework</AssemblyName>
+    <RootNamespace>Automation.Framework</RootNamespace>
+    <AssemblyName>Automation.Framework</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

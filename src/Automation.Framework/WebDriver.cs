@@ -1,12 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Drawing.Imaging;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
-using System.Drawing.Imaging;
-using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Support.Extensions;
 
-namespace Healthcare.Framework
+namespace Automation.Framework
 {
     public class WebDriver
     {

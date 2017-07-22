@@ -1,7 +1,7 @@
 ﻿using Shouldly;
 using NUnit.Framework;
 
-namespace Healthcare.Tests.UiTests
+namespace Automation.Tests.UiTests
 {
     [TestFixture, Parallelizable]
     public class HomepageTests : BaseWebtest

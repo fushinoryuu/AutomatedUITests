@@ -1,8 +1,8 @@
-﻿using Healthcare.Framework;
-using Healthcare.Framework.Pages;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using Automation.Framework;
+using Automation.Framework.Pages;
 
-namespace Healthcare.Tests
+namespace Automation.Tests
 {
     [TestFixture, Parallelizable]
     public abstract class BaseWebtest

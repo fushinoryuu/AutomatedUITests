@@ -2,7 +2,7 @@
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
 
-namespace Healthcare.Framework.Pages
+namespace Automation.Framework.Pages
 {
     public class HomePage : BasePage
     {

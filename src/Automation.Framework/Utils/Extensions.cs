@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
+using System.Diagnostics;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 
-namespace Healthcare.Framework.Utils
+namespace Automation.Framework.Utils
 {
     public static class Extensions
     {

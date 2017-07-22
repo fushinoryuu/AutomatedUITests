@@ -1,23 +1,21 @@
-FRAMEWORK: >= NET461
+RESTRICTION: >= net461
 NUGET
   remote: https://api.nuget.org/v3/index.json
-    NUnit (3.6.1)
-      NETStandard.Library (>= 1.6) - framework: >= net463
-      System.Runtime.Loader (>= 4.0) - framework: >= net463
-    NUnit.Console (3.6.1)
-      NUnit.ConsoleRunner (>= 3.6.1)
+    NUnit (3.7.1)
+    NUnit.Console (3.7)
+      NUnit.ConsoleRunner (>= 3.7)
       NUnit.Extension.NUnitProjectLoader (>= 3.5)
       NUnit.Extension.NUnitV2Driver (>= 3.6)
       NUnit.Extension.NUnitV2ResultWriter (>= 3.5)
       NUnit.Extension.TeamCityEventListener (>= 1.0.2)
       NUnit.Extension.VSProjectLoader (>= 3.5)
-    NUnit.ConsoleRunner (3.6.1)
+    NUnit.ConsoleRunner (3.7)
     NUnit.Extension.NUnitProjectLoader (3.5)
     NUnit.Extension.NUnitV2Driver (3.6)
     NUnit.Extension.NUnitV2ResultWriter (3.5)
     NUnit.Extension.TeamCityEventListener (1.0.2)
     NUnit.Extension.VSProjectLoader (3.5)
-    Selenium.Support (3.0.1)
-      Selenium.WebDriver (>= 3.0.1)
-    Selenium.WebDriver (3.0.1)
-    Shouldly (2.8.2)
+    Selenium.Support (3.3)
+      Selenium.WebDriver (>= 3.3)
+    Selenium.WebDriver (3.3)
+    Shouldly (2.8.3)
