@@ -11,7 +11,7 @@ namespace Automation.Framework.Pages
 
         public HomePage(WebDriver webDriver)
         {
-            Driver = webDriver.RemoteDriver;
+            Driver = webDriver.Driver;
             Wait = webDriver.Wait;
            PageFactory.InitElements(Driver, this); 
         }

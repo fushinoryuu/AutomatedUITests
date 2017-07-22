@@ -9,15 +9,15 @@ namespace Automation.Framework
 {
     public class WebDriver
     {
-        public IWebDriver RemoteDriver { get; }
+        public IWebDriver Driver { get; }
         public WebDriverWait Wait { get; }
 
         public WebDriver()
         {
-            RemoteDriver = Setup();
-            RemoteDriver.Manage().Window.Maximize();
+            Driver = Setup();
+            Driver.Manage().Window.Maximize();
 
-            Wait = new WebDriverWait(RemoteDriver, new TimeSpan(0, 0, 30));
+            Wait = new WebDriverWait(Driver, new TimeSpan(0, 0, 30));
         }
 
         private static IWebDriver Setup()
@@ -29,17 +29,18 @@ namespace Automation.Framework
             return new RemoteWebDriver(hub, capabilities);
         }
 
-        public void TakeScreenshot(string testName, string providedPath = null)
+        public void TakeAndSaveScreenshot(string testName, string providedPath = null)
         {
             var userName = Environment.UserName;
-            var date = DateTime.Now.ToString("yy-MM-dd");
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
             var dateAndTime = date + "_" + DateTime.Now.TimeOfDay;
 
             // This will either save the screenshot to the desktop or the provided path
-            var path = providedPath ?? $"C:/Users/{userName}/Desktop/UI_Test_Screenshots_{date}/";
+            var path = providedPath ?? $"C:/Users/{userName}/Desktop/UI_Test_Screenshots/{date}/";
 
             MakeDirectory(path);
-            SaveScreenShot(testName, path, dateAndTime);
+            var image = TakeScreenshot();
+            SaveScreenShot(image, testName, path, dateAndTime);
         }
 
         private static void MakeDirectory(string path)
@@ -50,15 +51,20 @@ namespace Automation.Framework
             Directory.CreateDirectory(path);
         }
 
-        private void SaveScreenShot(string testName, string path, string dateAndTime)
+        public Screenshot TakeScreenshot()
+        {
+            return Driver.TakeScreenshot();
+        }
+
+        private static void SaveScreenShot(Screenshot image, string testName, string path, string dateAndTime)
         {
             var imageLocation = path + testName + dateAndTime + ".png";
-            RemoteDriver.TakeScreenshot().SaveAsFile(imageLocation, ScreenshotImageFormat.Png);
+            image.SaveAsFile(imageLocation, ScreenshotImageFormat.Png);
         }
 
         public void Cleanup()
         {
-            RemoteDriver.Quit();
+            Driver.Quit();
         }
     }
 }
