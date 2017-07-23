@@ -61,6 +61,10 @@
       <Project>{ecb2e5aa-27b7-4b52-a08c-49c8be87f6f4}</Project>
       <Name>Automation.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Automation.Selenium\Automation.Selenium.csproj">
+      <Project>{dff5e1ad-696a-44a3-bd37-d3344035da53}</Project>
+      <Name>Automation.Selenium</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

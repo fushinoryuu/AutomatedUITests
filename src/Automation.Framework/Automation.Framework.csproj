@@ -45,11 +45,14 @@
     <Compile Include="Pages\BasePage.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\BrowserType.cs" />
-    <Compile Include="Utils\TestSettingsReader.cs" />
     <Compile Include="Utils\WebDriverExtensions.cs" />
     <Compile Include="Utils\WebElementExtensions.cs" />
-    <Compile Include="WebDriver.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Automation.Selenium\Automation.Selenium.csproj">
+      <Project>{DFF5E1AD-696A-44A3-BD37-D3344035DA53}</Project>
+      <Name>Automation.Selenium</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

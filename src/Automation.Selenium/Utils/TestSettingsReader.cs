@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using static System.Configuration.ConfigurationManager;
 
-namespace Automation.Framework.Utils
+namespace Automation.Selenium.Utils
 {
     internal class TestSettingsReader
     {
@@ -12,8 +12,9 @@ namespace Automation.Framework.Utils
             get
             {
                 BrowserType targetBrowser;
-                Enum.TryParse(ConfigurationManager.AppSettings["targetBrowser"], out targetBrowser);
+                Enum.TryParse(AppSettings["targetBrowser"], out targetBrowser);
 
+                // ReSharper disable once SwitchStatementMissingSomeCases
                 switch (targetBrowser)
                 {
                     case BrowserType.Firefox:
@@ -28,7 +29,7 @@ namespace Automation.Framework.Utils
         {
             get
             {
-                var operatingSystem = ConfigurationManager.AppSettings["operatingSystem"];
+                var operatingSystem = AppSettings["operatingSystem"];
 
                 switch (operatingSystem)
                 {
@@ -44,9 +45,9 @@ namespace Automation.Framework.Utils
         {
             get
             {
-                var uri = ConfigurationManager.AppSettings["seleniumHubUri"];
+                var uri = AppSettings["seleniumHubUri"];
 
-                return new Uri(uri ?? "http://localhost:4444/wd/hub");
+                return string.IsNullOrWhiteSpace(uri) ? new Uri("http://localhost:4444/wd/hub") : new Uri(uri);
             }
         }
 
@@ -54,7 +55,7 @@ namespace Automation.Framework.Utils
         {
             get
             {
-                var directory = ConfigurationManager.AppSettings["screenshotFolder"];
+                var directory = AppSettings["screenshotFolder"];
 
                 return directory ?? "C:\\UI_Test_Screenshots\\";
             }
