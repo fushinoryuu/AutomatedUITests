@@ -30,18 +30,22 @@ namespace Automation.Framework
             return new RemoteWebDriver(hub, capabilities);
         }
 
-        public void TakeAndSaveScreenshot(string testName, string providedPath = null)
+        public void TakeAndSaveScreenshot(string testName)
         {
-            var userName = Environment.UserName;
-            var date = DateTime.Now.ToString("yyyy-MM-dd");
-            var dateAndTime = date + "_" + DateTime.Now.TimeOfDay;
-
-            // This will either save the screenshot to the desktop or the provided path
-            var path = providedPath ?? $"C:/Users/{userName}/Desktop/UI_Test_Screenshots/{date}/";
+            var path = MakePath();
 
             MakeDirectory(path);
-            var image = TakeScreenshot();
-            SaveScreenShot(image, testName, path, dateAndTime);
+
+            var image = Driver.TakeScreenshot();
+
+            SaveScreenShot(image, testName, path);
+        }
+
+        private static string MakePath()
+        {
+            var date = DateTime.Now.ToString("yyyy-MM-dd");
+
+            return TestSettingsReader.ScreenshotFolder + $"{date}\\";
         }
 
         private static void MakeDirectory(string path)
@@ -52,14 +56,11 @@ namespace Automation.Framework
             Directory.CreateDirectory(path);
         }
 
-        public Screenshot TakeScreenshot()
+        private static void SaveScreenShot(Screenshot image, string testName, string path)
         {
-            return Driver.TakeScreenshot();
-        }
+            var time = DateTime.Now.ToString("hh-mm-ss");
+            var imageLocation = $"{path}{testName}_{time}.png";
 
-        private static void SaveScreenShot(Screenshot image, string testName, string path, string dateAndTime)
-        {
-            var imageLocation = path + testName + dateAndTime + ".png";
             image.SaveAsFile(imageLocation, ScreenshotImageFormat.Png);
         }
 

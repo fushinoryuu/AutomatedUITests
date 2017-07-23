@@ -44,9 +44,19 @@ namespace Automation.Framework.Utils
         {
             get
             {
-                var uri = ConfigurationManager.AppSettings["seleniumHubURL"];
+                var uri = ConfigurationManager.AppSettings["seleniumHubUri"];
 
                 return new Uri(uri ?? "http://localhost:4444/wd/hub");
+            }
+        }
+
+        public static string ScreenshotFolder
+        {
+            get
+            {
+                var directory = ConfigurationManager.AppSettings["screenshotFolder"];
+
+                return directory ?? "C:\\UI_Test_Screenshots\\";
             }
         }
     }
