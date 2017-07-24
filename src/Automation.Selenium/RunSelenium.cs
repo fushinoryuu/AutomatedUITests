@@ -10,18 +10,18 @@ namespace Automation.Selenium
 {
     public class RunSelenium : IRunSelenium
     {
-        public WebDriverWait Wait { get; }
-        public IWebDriver Driver { get; }
+        public WebDriverWait Wait { get; private set; }
+        public IWebDriver Driver { get; private set; }
 
-        public RunSelenium()
+        public void Setup()
         {
-            Driver = Setup();
+            Driver = SetupWebDriver();
             Driver.Manage().Window.Maximize();
 
             Wait = new WebDriverWait(Driver, new TimeSpan(0, 0, 30));
         }
 
-        public IWebDriver Setup()
+        private static IWebDriver SetupWebDriver()
         {
             var capabilities = TestSettingsReader.TargetBrowser;
             capabilities.Platform = TestSettingsReader.OperatingSystem;

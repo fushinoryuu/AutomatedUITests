@@ -35,6 +35,8 @@ namespace Automation.Selenium.Utils
                 {
                     case "Any":
                         return new Platform(PlatformType.Any);
+                    case "Mac":
+                        return new Platform(PlatformType.Mac);
                     default:
                         return new Platform(PlatformType.Windows);
                 }
