@@ -7,4 +7,4 @@ ECHO.
 TIMEOUT /t 60
 ECHO.
 CD /Selenium
-java -jar selenium-server-standalone-3.0.1.jar -role hub
+java -jar selenium-server-standalone-3.4.0.jar -role hub
