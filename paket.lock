@@ -19,3 +19,6 @@ NUGET
       Selenium.WebDriver (>= 3.3)
     Selenium.WebDriver (3.3)
     Shouldly (2.8.3)
+    structuremap (4.5.1)
+      System.Reflection.Emit.Lightweight (>= 4.3)
+    System.Reflection.Emit.Lightweight (4.3)

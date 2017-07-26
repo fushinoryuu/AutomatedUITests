@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.PageObjects;
+using Automation.Selenium.Utils;
 
 namespace Automation.Framework.Pages
 {
@@ -9,8 +9,7 @@ namespace Automation.Framework.Pages
         [FindsBy(How = How.Id, Using = "oe-logo")]
         protected IWebElement Logo;
 
-        protected IWebDriver Driver;
-        protected WebDriverWait Wait;
+        protected IRunSelenium Runner;
 
         public abstract bool IsAt();
     }

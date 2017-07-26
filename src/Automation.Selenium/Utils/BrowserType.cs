@@ -1,4 +1,4 @@
-﻿namespace Automation.Framework.Utils
+﻿namespace Automation.Selenium.Utils
 {
     public enum BrowserType
     {

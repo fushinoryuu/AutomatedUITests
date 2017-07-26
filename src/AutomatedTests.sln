@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Framework", "Aut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Tests", "Automation.Tests\Automation.Tests.csproj", "{F64CD766-D47F-4DC9-82E9-04B7F7004E21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Selenium", "Automation.Selenium\Automation.Selenium.csproj", "{DFF5E1AD-696A-44A3-BD37-D3344035DA53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{F64CD766-D47F-4DC9-82E9-04B7F7004E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F64CD766-D47F-4DC9-82E9-04B7F7004E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F64CD766-D47F-4DC9-82E9-04B7F7004E21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF5E1AD-696A-44A3-BD37-D3344035DA53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF5E1AD-696A-44A3-BD37-D3344035DA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF5E1AD-696A-44A3-BD37-D3344035DA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF5E1AD-696A-44A3-BD37-D3344035DA53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

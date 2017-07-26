@@ -4,27 +4,28 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.Extensions;
-using Automation.Framework.Utils;
+using Automation.Selenium.Utils;
 
-namespace Automation.Framework
+namespace Automation.Selenium
 {
-    public class WebDriver
+    public class RunSelenium : IRunSelenium
     {
-        public IWebDriver Driver { get; }
         public WebDriverWait Wait { get; }
+        public IWebDriver Driver { get; }
 
-        public WebDriver()
+        public RunSelenium()
         {
-            Driver = Setup();
+            Driver = SetupWebDriver();
             Driver.Manage().Window.Maximize();
 
             Wait = new WebDriverWait(Driver, new TimeSpan(0, 0, 30));
         }
 
-        private static IWebDriver Setup()
+        private static IWebDriver SetupWebDriver()
         {
             var capabilities = TestSettingsReader.TargetBrowser;
             capabilities.Platform = TestSettingsReader.OperatingSystem;
+
             var hub = TestSettingsReader.SeleniumHubUri;
 
             return new RemoteWebDriver(hub, capabilities);

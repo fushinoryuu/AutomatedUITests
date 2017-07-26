@@ -1,21 +1,21 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
-using Automation.Framework;
+using Automation.Selenium.Utils;
 using Automation.Framework.Pages;
 
 namespace Automation.Tests
 {
     [TestFixture, Parallelizable]
-    public abstract class BaseWebtest
+    public abstract class BaseWebtest : TestContainer
     {
-        protected WebDriver Driver;
+        protected IRunSelenium Runner;
         protected HomePage HomePage;
 
         [SetUp]
         public void Setup()
         {
-            Driver = new WebDriver();
-            HomePage = new HomePage(Driver);
+            Runner = GetContainerInstance<IRunSelenium>();
+            HomePage = new HomePage(Runner);
         }
 
         [TearDown]
@@ -29,11 +29,11 @@ namespace Automation.Tests
                 case TestStatus.Failed:
                 case TestStatus.Inconclusive:
                 case TestStatus.Warning:
-                    Driver.TakeAndSaveScreenshot(TestContext.CurrentContext.Test.Name);
+                    Runner.TakeAndSaveScreenshot(TestContext.CurrentContext.Test.Name);
                     break;
             }
 
-            Driver.Cleanup();
+            Runner.Cleanup();
         }
     }
 }
