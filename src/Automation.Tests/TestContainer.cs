@@ -1,14 +1,14 @@
 ﻿using Automation.Selenium;
-using Container = StructureMap.Container;
 using Registry = StructureMap.Registry;
+using Container = StructureMap.Container;
 
 namespace Automation.Tests
 {
-    public class TestContainer : Container
+    public abstract class TestContainer : Container
     {
         private readonly Container _container;
 
-        public TestContainer()
+        protected TestContainer()
         {
             var registry = new Registry();
 

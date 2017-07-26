@@ -1,13 +1,12 @@
 ﻿using NUnit.Framework;
 using NUnit.Framework.Interfaces;
-using Automation.Selenium;
 using Automation.Selenium.Utils;
 using Automation.Framework.Pages;
 
 namespace Automation.Tests
 {
     [TestFixture, Parallelizable]
-    public abstract class BaseWebtest
+    public abstract class BaseWebtest : TestContainer
     {
         protected IRunSelenium Runner;
         protected HomePage HomePage;
@@ -15,7 +14,7 @@ namespace Automation.Tests
         [SetUp]
         public void Setup()
         {
-            Runner = new RunSelenium();
+            Runner = GetContainerInstance<IRunSelenium>();
             HomePage = new HomePage(Runner);
         }
 

@@ -2,18 +2,18 @@
 using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Support.Extensions;
 using Automation.Selenium.Utils;
 
 namespace Automation.Selenium
 {
     public class RunSelenium : IRunSelenium
     {
-        public WebDriverWait Wait { get; private set; }
-        public IWebDriver Driver { get; private set; }
+        public WebDriverWait Wait { get; }
+        public IWebDriver Driver { get; }
 
-        public void Setup()
+        public RunSelenium()
         {
             Driver = SetupWebDriver();
             Driver.Manage().Window.Maximize();
@@ -25,6 +25,7 @@ namespace Automation.Selenium
         {
             var capabilities = TestSettingsReader.TargetBrowser;
             capabilities.Platform = TestSettingsReader.OperatingSystem;
+
             var hub = TestSettingsReader.SeleniumHubUri;
 
             return new RemoteWebDriver(hub, capabilities);

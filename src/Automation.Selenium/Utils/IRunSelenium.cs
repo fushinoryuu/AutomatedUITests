@@ -7,7 +7,6 @@ namespace Automation.Selenium.Utils
     {
         WebDriverWait Wait { get; }
         IWebDriver Driver { get; }
-        void Setup();
         void TakeAndSaveScreenshot(string testName);
         void Cleanup();
     }

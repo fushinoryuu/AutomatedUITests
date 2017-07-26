@@ -1,7 +1,6 @@
-﻿using Automation.Selenium.Utils;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using Automation.Selenium.Utils;
 
 namespace Automation.Framework.Pages
 {
