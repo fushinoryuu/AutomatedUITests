@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using System.Data;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
@@ -8,26 +9,25 @@ namespace Automation.Gui.Controllers
 {
     public class SettingsController : Controller
     {
-        private testsettingsEntities db = new testsettingsEntities();
+        private readonly testsettingsEntities _db = new testsettingsEntities();
 
         // GET: Settings
         public ActionResult Index()
         {
-            return View(db.settings.ToList());
+            return View(_db.settings.ToList());
         }
 
         // GET: Settings/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            setting setting = db.settings.Find(id);
+
+            var setting = _db.settings.Find(id);
+
             if (setting == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(setting);
         }
 
@@ -44,28 +44,40 @@ namespace Automation.Gui.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,targetBrowser,operatingSystem,seleniumHubUri,screenshotFolder")] setting setting)
         {
+            setting.id = GetNextId();
+
             if (ModelState.IsValid)
             {
-                db.settings.Add(setting);
-                db.SaveChanges();
+                _db.settings.Add(setting);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(setting);
         }
 
+        protected int GetNextId()
+        {
+            var items = (from item in _db.settings
+                         orderby item.id
+                         select item).ToList();
+
+            var nextNumber = items.Last().id;
+
+            return ++nextNumber;
+        }
+
         // GET: Settings/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            setting setting = db.settings.Find(id);
+
+            var setting = _db.settings.Find(id);
+
             if (setting == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(setting);
         }
 
@@ -78,10 +90,11 @@ namespace Automation.Gui.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(setting).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(setting).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
             return View(setting);
         }
 
@@ -89,14 +102,13 @@ namespace Automation.Gui.Controllers
         public ActionResult Delete(int? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            setting setting = db.settings.Find(id);
+
+            var setting = _db.settings.Find(id);
+
             if (setting == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(setting);
         }
 
@@ -105,18 +117,22 @@ namespace Automation.Gui.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            setting setting = db.settings.Find(id);
-            db.settings.Remove(setting);
-            db.SaveChanges();
+            var item = _db.settings.Find(id);
+
+            if (item == null)
+                throw new NoNullAllowedException("Id field can't be null.");
+
+            _db.settings.Remove(item);
+            _db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
-            {
-                db.Dispose();
-            }
+                _db.Dispose();
+
             base.Dispose(disposing);
         }
     }
