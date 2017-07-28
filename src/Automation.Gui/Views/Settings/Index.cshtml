@@ -42,8 +42,7 @@
                 @Html.DisplayFor(modelItem => item.screenshotFolder)
             </td>
             <td>
-                <a class="btn btn-info" href="@Url.Action("Edit", "settings", new {id = item.id})">
-        >
+                <a class="btn btn-info" href="@Url.Action("Edit", "Settings", new {item.id})">
                     <span class="glyphicon glyphicon-pencil"></span>
                     <span>Edit</span>
                 </a>

@@ -7,17 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace Automation.Gui.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
     public partial class setting
     {
         public int id { get; set; }
+
+        [StringLength(50)]
         public string targetBrowser { get; set; }
+
+        [StringLength(50)]
         public string operatingSystem { get; set; }
+
+        [StringLength(100)]
         public string seleniumHubUri { get; set; }
+
+        [StringLength(100)]
         public string screenshotFolder { get; set; }
     }
 }
