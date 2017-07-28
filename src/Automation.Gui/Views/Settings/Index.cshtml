@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Automation.Gui.Models.setting>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.targetBrowser)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.operatingSystem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.seleniumHubUri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.screenshotFolder)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.targetBrowser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.operatingSystem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.seleniumHubUri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.screenshotFolder)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
