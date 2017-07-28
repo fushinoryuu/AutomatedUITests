@@ -1,0 +1,14 @@
+bootstrap
+EntityFramework
+jQuery
+jQuery.Validation
+Microsoft.AspNet.Mvc
+Microsoft.AspNet.Razor
+Microsoft.AspNet.WebPages
+Microsoft.CodeDom.Providers.DotNetCompilerPlatform
+Microsoft.jQuery.Unobtrusive.Validation
+Microsoft.Net.Compilers
+Microsoft.Web.Infrastructure
+Modernizr
+MySql.Data
+MySql.Data.Entity
