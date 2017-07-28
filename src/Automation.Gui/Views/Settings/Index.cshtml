@@ -1,51 +1,54 @@
 ﻿@model IEnumerable<Automation.Gui.Models.setting>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home Page";
 }
 
-<h2>Index</h2>
+<div class="jumbotron">
+    <h2>Automation Settings</h2>
+    <p class="lead">You can use this simple web app to update the test settings for your Selenium tests.</p>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.targetBrowser)
+            Target Browser
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.operatingSystem)
+            Operating System
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.seleniumHubUri)
+            Selenium Hub Uri
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.screenshotFolder)
+            Screenshot Folder
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.targetBrowser)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.operatingSystem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.seleniumHubUri)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.screenshotFolder)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.targetBrowser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.operatingSystem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.seleniumHubUri)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.screenshotFolder)
+            </td>
+            <td>
+                <a class="btn btn-info" href="@Url.Action("Edit", "settings", new {id = item.id})">
+        >
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    <span>Edit</span>
+                </a>
+            </td>
+        </tr>
+    }
 
 </table>
