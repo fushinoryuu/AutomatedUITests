@@ -8,3 +8,4 @@
 - [ ] Update README.md
 - [ ] Add a config setting to allow for retries if a test fails.
 - [ ] Look into having the option to run tests on multiple browsers.
+- [ ] Clean up the root directory.
