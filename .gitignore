@@ -274,8 +274,3 @@ __pycache__/
 # Cake & Build related
 tools/**
 !tools/packages.config
-
-# CSS & js
-src/Automation.Gui/Content/
-src/Automation.Gui/Scripts/
-src/Automation.Gui/fonts/
