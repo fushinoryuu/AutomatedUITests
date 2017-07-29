@@ -12,7 +12,7 @@
 <hr />
 
 <div class="panel panel-primary">
-    <div class="panel-heading">Saved Test Settings</div>
+    <div class="panel-heading">Saved Configurations</div>
     <table class="table">
         <tr>
             <th>
@@ -35,7 +35,7 @@
 
         @foreach (var item in Model)
         {
-            <tr class=@(item.isActive == 1 ? "success" : "")>
+            <tr class=@(item.isActive == 1 ? "bg-success" : "")>
                 <td>
                     @Html.DisplayFor(modelItem => item.targetBrowser)
                 </td>
@@ -53,11 +53,11 @@
                 </td>
                 <td>
                     <div class="btn-group" role="group">
-                        <a class="btn btn-info" style="width: 100px" href="@Url.Action("Edit", "Settings", new {item.id})">
-                            <span class="glyphicon glyphicon-pencil"></span>
+                        <a class="btn btn-info" href="@Url.Action("Edit", "Settings", new {item.id})">
+                            <span class="glyphicon glyphicon-wrench"></span>
                             <span>Edit</span>
                         </a>
-                        <a class="btn btn-danger" style="width: 100px" href="@Url.Action("Delete", "Settings", new {item.id})">
+                        <a class="btn btn-danger" href="@Url.Action("Delete", "Settings", new {item.id})">
                             <span class="glyphicon glyphicon-trash"></span>
                             <span>Delete</span>
                         </a>

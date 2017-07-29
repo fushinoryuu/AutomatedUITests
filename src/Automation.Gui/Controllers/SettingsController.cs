@@ -42,12 +42,15 @@ namespace Automation.Gui.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,targetBrowser,operatingSystem,seleniumHubUri,screenshotFolder")] setting setting)
+        public ActionResult Create([Bind(Include = "id,targetBrowser,operatingSystem,seleniumHubUri,screenshotFolder,isActive")] setting setting)
         {
             setting.id = GetNextId();
 
             if (ModelState.IsValid)
             {
+                if (setting.isActive == 1)
+                    DeactivateAll();
+
                 _db.settings.Add(setting);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
@@ -86,16 +89,33 @@ namespace Automation.Gui.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,targetBrowser,operatingSystem,seleniumHubUri,screenshotFolder")] setting setting)
+        public ActionResult Edit([Bind(Include = "id,targetBrowser,operatingSystem,seleniumHubUri,screenshotFolder,isActive")] setting setting)
         {
             if (ModelState.IsValid)
             {
+                if (setting.isActive == 1)
+                    DeactivateAll();
+
                 _db.Entry(setting).State = EntityState.Modified;
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(setting);
+        }
+
+        private static void DeactivateAll()
+        {
+            using (var localDb = new testsettingsEntities())
+            {
+                var toUpdate = (from item in localDb.settings
+                                where item.isActive == 1
+                                select item).ToList();
+
+                toUpdate.ForEach(i => i.isActive = 0);
+                localDb.SaveChanges();
+                localDb.Dispose();
+            }
         }
 
         // GET: Settings/Delete/5
