@@ -26,5 +26,7 @@ namespace Automation.Gui.Models
 
         [StringLength(100)]
         public string screenshotFolder { get; set; }
+
+        public sbyte isActive { get; set; }
     }
 }

@@ -14,6 +14,7 @@ CREATE TABLE `testsettings`.`settings` (
   `operatingSystem` VARCHAR(50) NOT NULL,
   `seleniumHubUri` VARCHAR(100) NOT NULL,
   `screenshotFolder` VARCHAR(100) NOT NULL,
+  `isActive` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
 COMMENT = 'This local db will save test settings you wish to run on your automated tests.';
@@ -23,8 +24,8 @@ COMMENT = 'This local db will save test settings you wish to run on your automat
 ----------------------------
 USE testsettings;
 
-INSERT INTO settings(id, targetBrowser, operatingSystem, seleniumHubUri, screenshotFolder)
-VALUES(1, 'Chrome', 'Any', 'http://localhost:4444/wd/hub', 'C:\\UiTestScreenshots\\');
+INSERT INTO settings(id, targetBrowser, operatingSystem, seleniumHubUri, screenshotFolder, isActive)
+VALUES(1, 'Chrome', 'Any', 'http://localhost:4444/wd/hub', 'C:\\UiTestScreenshots\\', 1);
 
 ----------------------------
 -- Update the 'settings' table
