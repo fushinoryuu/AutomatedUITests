@@ -9,51 +9,64 @@
     <p class="lead">You can use this simple web app to update the test settings for your Selenium tests.</p>
 </div>
 
-<table class="table">
-    <tr>
-        <th>
-            Target Browser
-        </th>
-        <th>
-            Operating System
-        </th>
-        <th>
-            Selenium Hub Uri
-        </th>
-        <th>
-            Screenshot Folder
-        </th>
-        <th></th>
-    </tr>
+<hr />
 
-    @foreach (var item in Model)
-    {
+<div class="panel panel-primary">
+    <div class="panel-heading">Saved Test Settings</div>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.targetBrowser)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.operatingSystem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.seleniumHubUri)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.screenshotFolder)
-            </td>
-            <td>
-                <a class="btn btn-info" href="@Url.Action("Edit", "Settings", new {item.id})">
-                    <span class="glyphicon glyphicon-pencil"></span>
-                    <span>Edit</span>
-                </a>
-                <a class="btn btn-danger" href="@Url.Action("Delete", "Settings", new {item.id})">
-                    <span class="glyphicon glyphicon-trash"></span>
-                    <span>Delete</span>
-                </a>
-            </td>
+            <th>
+                Target Browser
+            </th>
+            <th>
+                Operating System
+            </th>
+            <th>
+                Selenium Hub Uri
+            </th>
+            <th>
+                Screenshot Folder
+            </th>
+            <th>
+                Is Active
+            </th>
+            <th></th>
         </tr>
-    }
-</table>
+
+        @foreach (var item in Model)
+        {
+            <tr class=@(item.isActive == 1 ? "success" : "")>
+                <td>
+                    @Html.DisplayFor(modelItem => item.targetBrowser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.operatingSystem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.seleniumHubUri)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.screenshotFolder)
+                </td>
+                <td>
+                    @(item.isActive == 1 ? "True" : "False")
+                </td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" style="width: 100px" href="@Url.Action("Edit", "Settings", new {item.id})">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>Edit</span>
+                        </a>
+                        <a class="btn btn-danger" style="width: 100px" href="@Url.Action("Delete", "Settings", new {item.id})">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            <span>Delete</span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
 
 <hr />
 
