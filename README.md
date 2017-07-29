@@ -88,4 +88,5 @@ The following configuration settings can be set in the [App.config](src/Automati
    - Then run `.paket\paket.exe restore`.
 5. Install the Node dependencies: `npm install`.
 6. Change to the `AutomatedUiTests` directory and open up the `AutomatedTests.sln` file.
-7. Simply build the solution with `Ctrl + B` and press `F5` to run the GUI.
+7. Simply build the solution with `Ctrl + Shift + B` and press `F5` to run the GUI.
+   - If the web application doesn't start up, make sure you set `Automation.Gui` as the startup project in Visual Studio.
