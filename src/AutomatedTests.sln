@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{86DD9C11-9F42-4FFC-88FF-43734D04BA9E}"
 	ProjectSection(SolutionItems) = preProject
-		paket.dependencies = paket.dependencies
+		..\paket.dependencies = ..\paket.dependencies
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Framework", "Automation.Framework\Automation.Framework.csproj", "{ECB2E5AA-27B7-4B52-A08C-49C8BE87F6F4}"
@@ -13,6 +13,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Tests", "Automation.Tests\Automation.Tests.csproj", "{F64CD766-D47F-4DC9-82E9-04B7F7004E21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Selenium", "Automation.Selenium\Automation.Selenium.csproj", "{DFF5E1AD-696A-44A3-BD37-D3344035DA53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Gui", "Automation.Gui\Automation.Gui.csproj", "{3555571E-BC0E-4C79-B7D1-28FD45A6F1D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,10 @@ Global
 		{DFF5E1AD-696A-44A3-BD37-D3344035DA53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFF5E1AD-696A-44A3-BD37-D3344035DA53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFF5E1AD-696A-44A3-BD37-D3344035DA53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3555571E-BC0E-4C79-B7D1-28FD45A6F1D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3555571E-BC0E-4C79-B7D1-28FD45A6F1D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3555571E-BC0E-4C79-B7D1-28FD45A6F1D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3555571E-BC0E-4C79-B7D1-28FD45A6F1D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,18 +3,20 @@ This is the skeleton code to starting Selenium automation for a site. The skelet
 
 This repo also includes Cake scripts to automate the building of the project and running the tests.
 
-## Solutions
-There are two projects in the solution:
+## Solution
+There are four projects in the solution:
 
-1. Healthcare.Framework - The framework used to build the automation tests.
-2. Healthcare.Tests - The NUnit tests created using the framework project.
+1. Automation.Framework - The framework used to build the automation tests.
+2. Automation.Gui - A simple web app used to updated the settings for the Selenium tests.s
+3. Automation.Selenium - Reads the App.settings file and wraps the Selenium WebDriver.
+4. Automation.Tests - The NUnit tests created using the framework project.
 
 ## Starting the Selenium Hub
 On the host machine:
 
 1. Update to the latest version of Java.
 2. Download the latest version of [Selenium Standalone Server](http://www.seleniumhq.org/download) and save it to `C:\Selenium`.
-3. Run the following command: `npm run hub`
+3. Run the following command: `npm run hub`.
    - Or you can also run the `HUB_SeleniumGrid.bat` file included in this repo.
 
 ## Starting the Selenium Nodes
@@ -26,7 +28,7 @@ On each worker/node machine:
    - Or by simply entering `chrome://help/` on the url box of an open Chrome tab.
 3. Download the latest version of [Selenium Standalone Server](http://www.seleniumhq.org/download) and save it to `C:\Selenium` on each machine.
 4. Download the latest version of [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads)  and save it to `C:\Selenium` on each machine.
-5. Run the following command: `npm run node`
+5. Run the following command: `npm run node`.
    - Or you can also run the `NODE_SeleniumGrid.bat` file included in this repo.
    - If the [Hub](#starting-the-selenium-hub) is running on a different machine, open the `NODE_SeleniumGrid.bat` file and update the address for the Hub.
 
@@ -37,13 +39,13 @@ On each worker/node machine:
 ### Running in Visual Studio
 1. Clone the directory `git clone https://github.com/fushinoryuu/AutomatedUiTests.git`.
 2. Install the Paket dependencies:
-   - First run `.paket\paket.bootstrapper.exe`
-   - Then run `.paket\paket.exe install`
-3. Install the Node dependencies: `npm install`
-4. Change to the `AutomatedUiTests` directory and open up the `HealthcareAutomatedTests.sln` file.
-5. Update the `Healthcare.Tests\App.config` file with the correct hub address.
+   - First run `.paket\paket.bootstrapper.exe`.
+   - Then run `.paket\paket.exe restore`.
+3. Install the Node dependencies: `npm install`.
+4. Change to the `AutomatedUiTests` directory and open up the `AutomatedTests.sln` file.
+5. Update the `Automation.Tests\App.config` file with the correct hub address.
    - If you are running the test locally, don't update the address.
-   - More information on configuration settings can be found [here.](#configuration-settings)
+   - More information on configuration settings can be found [here](#configuration-settings).
 6. Simply build the solution with `Ctrl + B`.
 7. Then run the test cases through the Test Explorer in Visual Studio.
 
@@ -51,25 +53,40 @@ On each worker/node machine:
 
 ### Running from Console
 1. Clone the directory `git clone https://github.com/fushinoryuu/AutomatedUiTests.git`.
-2. Change to the `AutomatedUiTests` directory
-3. Update the `Healthcare.Tests\App.config` file with the correct hub address.
+2. Change to the `AutomatedUiTests` directory.
+3. Update the `Automation.Tests\App.config` file with the correct hub address.
    - If you are running the test locally, don't update the address.
    - More information on configuration settings can be found [here](#configuration-settings).
 4. Make sure the [Hub](#starting-the-selenium-hub) and at least one [Node](#starting-the-selenium-nodes) are up and running.
-5. Run the following command: `npm run build`
+5. Run the following command: `npm run build`.
 
 ## Configuration Settings
-The following configuration settings can be set in the `MedicareAutomation.Tests/App.config` file:
 
-1. `seleniumHubURL` is the url where the selenium hub is running.
-   - For example `http://localhost:4444/grid/register` would be a valid setting.
-   - If you change the hub url, don't forget to also update the url in the `NODE_SeleniumGrid.bat`.
-2. `operatingSystem` is the operating system that the selenium nodes is running.
-   - For example the parameters `Windows` or `Linux` would be valid settings.
-   - The default value is `Windows`.
-3. `baseUri` is the url of the environment you want to run the tests on.
-	 - The default value is `https://qa.oneexchange.com/` or you can change it to `https://stage.oneexchange.com/`
-	 - If you fork this repo, this is where you would set the base url for all your UI tests.
-4. `enabletestrail` is to indicate if you want to report the results to TestRail.
-	 - Default value is `True`, but it can be set to `False`
-	 - Setting this parameter to `False` will cut the time it takes for the tests to run.
+### Update the XML File Directly
+The following configuration settings can be set in the [App.config](src/Automation.Tests/App.config) file:
+
+1. `targetBrowser` - The desired browser you wish to run your tests on.
+   - You can enter: `Chrome` or `Firefox`.
+   - For now the grid scripts are only set up to run tests on Chrome.
+2. `operatingSystem` - The operating system you wish to run your tests on.
+   - You can enter: `Windows`, `Mac`, or `Any`.
+3. `seleniumHubUri` - The uri where the Selenium hub is running.
+   - For example `http://localhost:4444/wd/hub` would be a valid setting.
+4. `screenshotFolder` - The directory where you want to save screenshots for failed tests.
+   - For example `C:\UI_Test_Screenshots\` would be a valid setting.
+
+### Update the XML File Using GUI
+1. Download the latest version of [MySQL Installer](https://dev.mysql.com/downloads/windows/installer/).
+2. Run the installer:
+   - Use the default developer install and use the default values for the install.
+   - For the root account, you can use `root` as the password.
+3. Open MySQL Workbench.
+   - Open the default local instance of MySQL.
+   - Open and run the [setup script](db_setup.sql) included in the project.
+4. Install the Paket dependencies:
+   - First run `.paket\paket.bootstrapper.exe`.
+   - Then run `.paket\paket.exe restore`.
+5. Install the Node dependencies: `npm install`.
+6. Change to the `AutomatedUiTests` directory and open up the `AutomatedTests.sln` file.
+7. Simply build the solution with `Ctrl + Shift + B` and press `F5` to run the GUI.
+   - If the web application doesn't start up, make sure you set `Automation.Gui` as the startup project in Visual Studio.
