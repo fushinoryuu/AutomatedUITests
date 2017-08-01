@@ -4,12 +4,13 @@ This is the skeleton code to starting Selenium automation for a site. The skelet
 This repo also includes Cake scripts to automate the building of the project and running the tests.
 
 ## Solution
-There are four projects in the solution:
+There are five projects in the solution:
 
 1. Automation.Framework - The framework used to build the automation tests.
 2. Automation.Gui - A simple web app used to updated the settings for the Selenium tests.s
 3. Automation.Selenium - Reads the App.settings file and wraps the Selenium WebDriver.
 4. Automation.Tests - The NUnit tests created using the framework project.
+5. Automation.XmlWriter - Gets the information from the DB and creates a new App.config file.
 
 ## Starting the Selenium Hub
 On the host machine:

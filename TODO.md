@@ -1,6 +1,7 @@
 ## To Do List:
 - [x] Add simple GUI to make it easier to update/edit the saved testing configurations
-- [ ] Serialize the active stored configuration to an App.config file
+- [x] Serialize the active stored configuration to an App.config file
+- [ ] Wire up the GUI project to use the XmlWriter project.
 - [ ] Make the GUI more user friendly
 - [x] Add dependency injection using [Structure Map](http://structuremap.github.io/)
 - [ ] Programatically start Selenium hub and/or node if one is not already running
