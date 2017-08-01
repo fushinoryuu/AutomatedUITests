@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using Automation.XmlSerializer.MappingData;
 
 namespace Automation.XmlSerializer
 {
@@ -12,15 +11,14 @@ namespace Automation.XmlSerializer
 
         private static void WriteXml()
         {
-            var config = new configuration();
+            var config = new Configuration();
             const string path = "../../../Automation.Tests/bin/Debug/App.config";
-            //File.Create(path);
             var text = FileText(config);
 
             File.WriteAllText(path, text);
         }
 
-        private static string FileText(configuration config)
+        private static string FileText(Configuration config)
         {
             var text = "<?xml version=\"1.0\" encoding=\"utf-8\" ?>" +
                 "\n<configuration>" +

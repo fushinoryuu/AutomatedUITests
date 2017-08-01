@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using Automation.Gui.Models;
 
-namespace Automation.XmlSerializer.MappingData
+namespace Automation.XmlSerializer
 {
-    public class configuration
+    public class Configuration
     {
         public string Browser { get; }
         public string Os { get; }
@@ -11,7 +11,7 @@ namespace Automation.XmlSerializer.MappingData
         public string Screenshots { get; }
 
 
-        public configuration()
+        public Configuration()
         {
             var settings = GetDataFromDb();
 

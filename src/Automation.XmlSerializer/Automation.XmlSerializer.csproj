@@ -58,12 +58,7 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MappingData\configuration.cs" />
-    <Compile Include="MappingData\isActive.cs" />
-    <Compile Include="MappingData\operatingSystem.cs" />
-    <Compile Include="MappingData\screenshotFolder.cs" />
-    <Compile Include="MappingData\seleniumHubUri.cs" />
-    <Compile Include="MappingData\targetBrowser.cs" />
+    <Compile Include="Configuration.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
