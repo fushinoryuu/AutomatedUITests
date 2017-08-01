@@ -7,6 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Automation.Gui.Models
