@@ -15,6 +15,9 @@ namespace Automation.XmlWriter
         {
             var settings = GetDataFromDb();
 
+            if (settings == null)
+                return;
+
             Browser = settings.targetBrowser;
             Os = settings.operatingSystem;
             Hub = settings.seleniumHubUri;
@@ -27,7 +30,7 @@ namespace Automation.XmlWriter
 
             var config = (from item in db.settings
                           where item.isActive == 1
-                          select item).ToList().First();
+                          select item).ToList().FirstOrDefault();
 
             db.Dispose();
 
