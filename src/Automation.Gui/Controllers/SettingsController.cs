@@ -3,6 +3,7 @@ using System.Data;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
+using Automation.XmlWriter;
 using Automation.Gui.Models;
 
 namespace Automation.Gui.Controllers
@@ -154,6 +155,13 @@ namespace Automation.Gui.Controllers
                 _db.Dispose();
 
             base.Dispose(disposing);
+        }
+
+        public ActionResult GenerateXml()
+        {
+            new XmlWriter.XmlWriter().OutputXml();
+
+            return new EmptyResult();
         }
     }
 }
