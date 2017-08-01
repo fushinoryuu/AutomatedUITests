@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using Automation.Gui.Models;
+using Automation.XmlWriter.Data;
 
-namespace Automation.XmlSerializer
+namespace Automation.XmlWriter
 {
     public class Configuration
     {
@@ -23,7 +23,7 @@ namespace Automation.XmlSerializer
 
         private static setting GetDataFromDb()
         {
-            var db = new testsettingsEntities();
+            var db = new xmlTestSettingsEntities();
 
             var config = (from item in db.settings
                           where item.isActive == 1

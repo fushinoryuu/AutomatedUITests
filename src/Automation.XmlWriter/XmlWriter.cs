@@ -1,15 +1,10 @@
 ﻿using System.IO;
 
-namespace Automation.XmlSerializer
+namespace Automation.XmlWriter
 {
-    public class Program
+    public class XmlWriter
     {
-        public static void Main(string[] args)
-        {
-            WriteXml();
-        }
-
-        private static void WriteXml()
+        public static void WriteXml()
         {
             var config = new Configuration();
             const string path = "../../../Automation.Tests/bin/Debug/App.config";
