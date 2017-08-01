@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Selenium", "Auto
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Gui", "Automation.Gui\Automation.Gui.csproj", "{3555571E-BC0E-4C79-B7D1-28FD45A6F1D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.XmlSerializer", "Automation.XmlSerializer\Automation.XmlSerializer.csproj", "{B863BA46-DD40-4517-BE87-7668C169E447}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.XmlWriter", "Automation.XmlWriter\Automation.XmlWriter.csproj", "{B863BA46-DD40-4517-BE87-7668C169E447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

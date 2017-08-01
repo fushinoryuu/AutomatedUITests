@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B863BA46-DD40-4517-BE87-7668C169E447}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Automation.XmlSerializer</RootNamespace>
-    <AssemblyName>Automation.XmlSerializer</AssemblyName>
+    <RootNamespace>Automation.XmlWriter</RootNamespace>
+    <AssemblyName>Automation.XmlWriter</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
