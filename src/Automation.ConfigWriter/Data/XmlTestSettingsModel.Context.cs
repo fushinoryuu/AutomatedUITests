@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Automation.XmlWriter.Data
+namespace Automation.ConfigWriter.Data
 {
     using System;
     using System.Data.Entity;

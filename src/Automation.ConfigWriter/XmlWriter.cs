@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Automation.XmlWriter
+namespace Automation.ConfigWriter
 {
     public class XmlWriter
     {

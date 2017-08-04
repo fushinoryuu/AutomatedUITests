@@ -3,7 +3,6 @@ using System.Data;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
-using Automation.XmlWriter;
 using Automation.Gui.Models;
 
 namespace Automation.Gui.Controllers
@@ -159,7 +158,7 @@ namespace Automation.Gui.Controllers
 
         public ActionResult GenerateXml()
         {
-            new XmlWriter.XmlWriter().OutputXml();
+            new ConfigWriter.XmlWriter().OutputXml();
 
             return View(_db.settings.ToList());
         }
