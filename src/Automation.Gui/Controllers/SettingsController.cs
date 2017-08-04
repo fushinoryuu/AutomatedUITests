@@ -161,7 +161,7 @@ namespace Automation.Gui.Controllers
         {
             new XmlWriter.XmlWriter().OutputXml();
 
-            return new EmptyResult();
+            return View(_db.settings.ToList());
         }
     }
 }

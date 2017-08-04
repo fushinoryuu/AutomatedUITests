@@ -4,12 +4,10 @@ namespace Automation.XmlWriter
 {
     public class XmlWriter
     {
-        private readonly string _curDir = Directory.GetCurrentDirectory();
-        
         public void OutputXml()
         {
             var config = new Configuration();
-            var path = _curDir + "/Automation.Tests/bin/Debug/App.config";
+            const string path = "../../AutomatedUiTests/src/Automation.Tests/bin/Debug/App.config";
             var text = FileText(config);
 
             File.WriteAllText(path, text);
