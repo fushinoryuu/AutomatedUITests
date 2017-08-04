@@ -211,6 +211,7 @@
     <Content Include="Views\Settings\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Settings\GenerateXml.cshtml" />
+    <Content Include="Views\Shared\Table.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
