@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Automation.Gui.Models.setting>
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Run Automated Tests";
 }
 
 <div class="jumbotron">
@@ -24,7 +24,7 @@
         <i class="glyphicon glyphicon-export"></i>
         <span>Generate App.config</span>
     </a>
-    <a class="btn btn-success disabled" href="@Url.Action("RunAutomatedTests")">
+    <a class="btn btn-success disabled"  href="@Url.Action("RunAutomatedTests")">
         <i class="glyphicon glyphicon-play"></i>
         <span>Run automated tests</span>
     </a>

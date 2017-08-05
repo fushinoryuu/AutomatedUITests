@@ -5,9 +5,9 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B863BA46-DD40-4517-BE87-7668C169E447}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Automation.XmlWriter</RootNamespace>
-    <AssemblyName>Automation.XmlWriter</AssemblyName>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Automation.ConfigWriter</RootNamespace>
+    <AssemblyName>Automation.ConfigWriter</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,25 +31,66 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Data\setting.cs">
+      <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\XmlTestSettingsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XmlTestSettingsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\XmlTestSettingsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\XmlTestSettingsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>XmlTestSettingsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="XmlWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Automation.Gui\Automation.Gui.csproj">
-      <Project>{3555571e-bc0e-4c79-b7d1-28fd45a6f1d9}</Project>
-      <Name>Automation.Gui</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <EntityDeploy Include="Data\XmlTestSettingsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>XmlTestSettingsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\XmlTestSettingsModel.edmx.diagram">
+      <DependentUpon>XmlTestSettingsModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\XmlTestSettingsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>XmlTestSettingsModel.Context.cs</LastGenOutput>
+      <DependentUpon>XmlTestSettingsModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\XmlTestSettingsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>XmlTestSettingsModel.edmx</DependentUpon>
+      <LastGenOutput>XmlTestSettingsModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>

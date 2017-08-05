@@ -6,11 +6,11 @@ This repo also includes Cake scripts to automate the building of the project and
 ## Solution
 There are five projects in the solution:
 
-1. Automation.Framework - The framework used to build the automation tests.
-2. Automation.Gui - A simple web app used to updated the settings for the Selenium tests.s
-3. Automation.Selenium - Reads the App.settings file and wraps the Selenium WebDriver.
-4. Automation.Tests - The NUnit tests created using the framework project.
-5. Automation.XmlWriter - Gets the information from the DB and creates a new App.config file.
+1. Automation.ConfigWriter - Gets the information from the DB and creates a new App.config file.
+2. Automation.Framework - The framework containing the Page Objects used to build the automation tests.
+3. Automation.Gui - A simple web app used to updated the settings for the Selenium tests.s
+4. Automation.Selenium - Wraps the Selenium WebDriver and reads the App.settings file.
+5. Automation.Tests - The NUnit tests created using the framework project.
 
 ## Starting the Selenium Hub
 On the host machine:
@@ -83,11 +83,12 @@ The following configuration settings can be set in the [App.config](src/Automati
    - For the root account, you can use `root` as the password.
 3. Open MySQL Workbench.
    - Open the default local instance of MySQL.
-   - Open and run the [setup script](db_setup.sql) included in the project.
-4. Install the Paket dependencies:
-   - First run `.paket\paket.bootstrapper.exe`.
-   - Then run `.paket\paket.exe restore`.
-5. Install the Node dependencies: `npm install`.
+   - Open and run the [db setup script](db_setup.sql) included in the project.
+4. Install the Paket and Node dependencies.
 6. Change to the `AutomatedUiTests` directory and open up the `AutomatedTests.sln` file.
 7. Simply build the solution with `Ctrl + Shift + B` and press `F5` to run the GUI.
    - If the web application doesn't start up, make sure you set `Automation.Gui` as the startup project in Visual Studio.
+
+**Note:** If you run the [db setup script](db_setup.sql), you will have one configuration loaded into the DB. You can save as many configurations as you want, but it will only run the configuration that "Is Active". The active configuration can be easily found since it will be highlighted in green.
+
+If there is no active configuration, the App.config file generated will have empty values and the driver will run using the defaul settings.

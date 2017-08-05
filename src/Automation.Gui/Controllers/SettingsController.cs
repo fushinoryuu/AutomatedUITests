@@ -3,6 +3,8 @@ using System.Data;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Diagnostics;
+using System.IO;
 using Automation.Gui.Models;
 
 namespace Automation.Gui.Controllers
@@ -154,6 +156,40 @@ namespace Automation.Gui.Controllers
                 _db.Dispose();
 
             base.Dispose(disposing);
+        }
+
+        public ActionResult GenerateXml()
+        {
+            new ConfigWriter.XmlWriter().OutputXml();
+
+            return View(_db.settings.ToList());
+        }
+
+        public ActionResult RunAutomatedTests()
+        {
+            RunScript();
+
+            return View(_db.settings.ToList());
+        }
+
+        private static void RunScript()
+        {
+            //var startInfo = new ProcessStartInfo
+            //{
+            //    FileName = @"powershell.exe",
+            //    Arguments = @"& 'C:\AutomatedUiTests\build.ps1'",
+            //    RedirectStandardOutput = true,
+            //    RedirectStandardError = true,
+            //    UseShellExecute = false,
+            //    CreateNoWindow = false
+            //};
+
+            //var process = new Process
+            //{
+            //    StartInfo = startInfo
+            //};
+
+            //process.Start();
         }
     }
 }

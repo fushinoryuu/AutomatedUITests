@@ -1,18 +1,13 @@
 ﻿using System.IO;
 
-namespace Automation.XmlSerializer
+namespace Automation.ConfigWriter
 {
-    public class Program
+    public class XmlWriter
     {
-        public static void Main(string[] args)
-        {
-            WriteXml();
-        }
-
-        private static void WriteXml()
+        public void OutputXml()
         {
             var config = new Configuration();
-            const string path = "../../../Automation.Tests/bin/Debug/App.config";
+            const string path = "../../AutomatedUiTests/src/Automation.Tests/bin/Debug/App.config";
             var text = FileText(config);
 
             File.WriteAllText(path, text);
