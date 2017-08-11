@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Automation.Gui.Models.setting>
 
 @{
-    ViewBag.Title = "Generate XML";
+    ViewBag.Title = "Stop Automated Tests";
 }
 
 <div class="jumbotron">
@@ -15,20 +15,12 @@
 
 <hr />
 
-<div class="alert alert-success alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    <strong>Done!</strong>
-    Successfully created the new App.config file.
-</div>
-
 <div>
     <a class="btn btn-primary" href="@Url.Action("Create")">
         <i class="glyphicon glyphicon-plus"></i>
         <span>Add new configuration</span>
     </a>
-    <a class="btn btn-info disabled" href="@Url.Action("GenerateXml")">
+    <a class="btn btn-info" href="@Url.Action("GenerateXml")">
         <i class="glyphicon glyphicon-export"></i>
         <span>Generate App.config</span>
     </a>
