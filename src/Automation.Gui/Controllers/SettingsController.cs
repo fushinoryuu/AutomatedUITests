@@ -167,7 +167,7 @@ namespace Automation.Gui.Controllers
         public ActionResult RunAutomatedTests()
         {
             _processId = RunTestsHelper.RunNunitTests(
-                @"C:\AutomatedUiTests\src\Automation.Tests\Automation.Tests.csproj --verbose --workers=30 --work=C:\AutomatedUiTests\ --trace=Verbose",
+                @"C:\AutomatedUiTests\src\Automation.Tests\Automation.Tests.csproj --workers=30 --work=C:\AutomatedUiTests\ --trace=Verbose",
                 ProcessWindowStyle.Hidden);
 
             return View(_db.settings.ToList());
