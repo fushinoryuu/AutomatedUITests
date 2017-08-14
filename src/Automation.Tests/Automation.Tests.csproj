@@ -47,7 +47,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="BaseWebtest.cs" />
-    <Compile Include="RunTestsHelper.cs" />
+    <Compile Include="Utils\RunTestsHelper.cs" />
     <Compile Include="TestContainer.cs" />
     <Compile Include="UiTests\HomepageTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

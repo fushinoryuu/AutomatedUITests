@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Diagnostics;
-using Automation.Tests;
 using Automation.Gui.Models;
+using Automation.Tests.Utils;
 
 namespace Automation.Gui.Controllers
 {

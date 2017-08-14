@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Automation.Tests
+namespace Automation.Tests.Utils
 {
     public class RunTestsHelper
     {
