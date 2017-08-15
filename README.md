@@ -11,6 +11,12 @@ This repo also includes:
 
 **Note:** If you are planning on using the GUI in this project to edit/update your test settings, you have to save it to the root of your C: drive. If you are not going to use the GUI, then feel free to save the project wherever you like.
 
+## Known Issues
+Here is a list of known issues with this project:
+
+1. App.config file does not reload at runtime when it has been edited in the same session.
+   - When the user runs the GUI project, they are able to update/edit the test settings and generate a new App.config file. The issue is that when the user clicks the "Run automated tests" button, the tests run with the old values. If you want the tests to run under the new values, you will have to close the GUI and run it again.
+
 ## Visual Studio Solution
 There are five projects in the solution:
 
