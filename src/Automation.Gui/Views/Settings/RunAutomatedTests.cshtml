@@ -20,12 +20,16 @@
         <i class="glyphicon glyphicon-plus"></i>
         <span>Add new configuration</span>
     </a>
-    <a class="btn btn-info" href="@Url.Action("GenerateXml")">
+    <a class="btn btn-info disabled" href="@Url.Action("GenerateXml")">
         <i class="glyphicon glyphicon-export"></i>
         <span>Generate App.config</span>
     </a>
-    <a class="btn btn-success disabled"  href="@Url.Action("RunAutomatedTests")">
+    <a class="btn btn-success disabled" href="@Url.Action("RunAutomatedTests")">
         <i class="glyphicon glyphicon-play"></i>
         <span>Run automated tests</span>
+    </a>
+    <a class="btn btn-danger" href="@Url.Action("StopAutomatedTests")">
+        <i class="glyphicon glyphicon-stop"></i>
+        <span>Stop automated tests</span>
     </a>
 </div>

@@ -16,8 +16,8 @@ nuget Modernizr 2.6.2
 nuget MySql.Data
 nuget MySql.Data.Entity
 nuget Shouldly
-nuget Selenium.Support
-nuget Selenium.WebDriver
+nuget Selenium.Support 3.3.0
+nuget Selenium.WebDriver 3.3.0
 nuget NUnit
 nuget NUnit.Console
 nuget NUnit.ConsoleRunner

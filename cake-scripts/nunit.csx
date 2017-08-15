@@ -1,4 +1,4 @@
-#tool "nuget:?package=NUnit.ConsoleRunner&version=3.6.1"
+#tool "nuget:?package=NUnit.ConsoleRunner&version=3.7.0"
 
 Task("NUnit")
     .Description("Runs the NUnit tests.")
@@ -10,7 +10,6 @@ Task("NUnit")
         NUnit3(testAssemblies, new NUnit3Settings
         {
             Workers = 30,
-            Verbose = true,
             Work = "./Build"
         });
     });

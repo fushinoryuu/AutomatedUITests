@@ -4,14 +4,15 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Diagnostics;
-using System.IO;
 using Automation.Gui.Models;
+using Automation.Tests.Utils;
 
 namespace Automation.Gui.Controllers
 {
     public class SettingsController : Controller
     {
         private readonly testsettingsEntities _db = new testsettingsEntities();
+        private int _processId;
 
         // GET: Settings
         public ActionResult Index()
@@ -93,17 +94,15 @@ namespace Automation.Gui.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,targetBrowser,operatingSystem,seleniumHubUri,screenshotFolder,isActive")] setting setting)
         {
-            if (ModelState.IsValid)
-            {
-                if (setting.isActive == 1)
-                    DeactivateAll();
+            if (!ModelState.IsValid)
+                return View(setting);
 
-                _db.Entry(setting).State = EntityState.Modified;
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            if (setting.isActive == 1)
+                DeactivateAll();
 
-            return View(setting);
+            _db.Entry(setting).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         private static void DeactivateAll()
@@ -167,29 +166,18 @@ namespace Automation.Gui.Controllers
 
         public ActionResult RunAutomatedTests()
         {
-            RunScript();
+            _processId = RunTestsHelper.RunNunitTests(
+                @"C:\AutomatedUiTests\src\Automation.Tests\Automation.Tests.csproj --workers=30 --work=C:\AutomatedUiTests\NunitWork --trace=Verbose",
+                ProcessWindowStyle.Maximized);
 
             return View(_db.settings.ToList());
         }
 
-        private static void RunScript()
+        public ActionResult StopAutomatedTests()
         {
-            //var startInfo = new ProcessStartInfo
-            //{
-            //    FileName = @"powershell.exe",
-            //    Arguments = @"& 'C:\AutomatedUiTests\build.ps1'",
-            //    RedirectStandardOutput = true,
-            //    RedirectStandardError = true,
-            //    UseShellExecute = false,
-            //    CreateNoWindow = false
-            //};
+            RunTestsHelper.StopNunitTests(_processId);
 
-            //var process = new Process
-            //{
-            //    StartInfo = startInfo
-            //};
-
-            //process.Start();
+            return View(_db.settings.ToList());
         }
     }
 }

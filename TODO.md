@@ -1,15 +1,14 @@
 ## To Do List:
 - [x] Add simple GUI to make it easier to update/edit the saved testing configurations
 - [x] Serialize the active stored configuration to an App.config file
-- [x] Wire up the GUI project to use the XmlWriter project.
-- [ ] Wire up the GUI project to run the PowerShell script in the project to build and run the tests.
+- [x] Wire up the GUI project to use the ~~XmlWriter~~ ConfigWriter project.
+- [x] Wire up the GUI project to run ~~the PowerShell script in the project to build and run~~ the tests using Nunit Console Runner.
 - [ ] Make the GUI more user friendly
 - [x] Add dependency injection using [Structure Map](http://structuremap.github.io/)
 - [ ] Programatically start Selenium hub and/or node if one is not already running
 - [ ] Clean up WebDriverExtensions.cs
 - [ ] Clean up WebElementExtensions.cs
-- [ ] Look into using Docker to create the Selenium Grid
-- [ ] Update README.md
+- [x] Look into using Docker to create the Selenium Grid
 - [ ] Add a config setting to allow for retries if a test fails, and set a limit on how many times to retry.
 - [ ] Look into having the option to run tests on multiple browsers.
 - [ ] Clean up the root directory.

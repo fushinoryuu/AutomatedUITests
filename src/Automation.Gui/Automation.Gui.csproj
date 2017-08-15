@@ -213,6 +213,7 @@
     <Content Include="Views\Settings\GenerateXml.cshtml" />
     <Content Include="Views\Shared\Table.cshtml" />
     <Content Include="Views\Settings\RunAutomatedTests.cshtml" />
+    <Content Include="Views\Settings\StopAutomatedTests.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

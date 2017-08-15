@@ -7,10 +7,12 @@ namespace Automation.ConfigWriter
         public void OutputXml()
         {
             var config = new Configuration();
-            const string path = "../../AutomatedUiTests/src/Automation.Tests/bin/Debug/App.config";
+            const string srcPath = @"C:\AutomatedUiTests\src\Automation.Tests\App.config";
+            const string binPath = @"C:\AutomatedUiTests\src\Automation.Tests\bin\Debug\App.config";
             var text = FileText(config);
 
-            File.WriteAllText(path, text);
+            File.WriteAllText(srcPath, text);
+            File.WriteAllText(binPath, text);
         }
 
         private static string FileText(Configuration config)
