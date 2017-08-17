@@ -46,8 +46,10 @@ On each worker/node machine:
 4. Download the latest version of [Selenium Standalone Server](http://www.seleniumhq.org/download) and save it to `C:\Selenium` on each machine.
 5. Download the latest version of [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) and save it to `C:\Selenium` on each machine.
 6. Download the latest version of [Geckodriver](https://github.com/mozilla/geckodriver/releases) and save it to `C:\Selenium` on each machine.
-7. Copy the [NODE_Config.json](selenium/NODE_Config.json) file and save it to `C:\Selenium` on each machine.
-8. Run the following command: `npm run node`.
+7. Download the latest version of [InternetExplorerDriver](http://www.seleniumhq.org/download/) and save it to `C:\Selenium` on each machine.
+   - Go to the `The Internet Explorer Driver Server` section and download either the 32 bit or 64 bit version, depending on the machine.
+8. Copy the [NODE_Config.json](selenium/NODE_Config.json) file and save it to `C:\Selenium` on each machine.
+9. Run the following command: `npm run node`.
    - Or you can also run the `NODE_SeleniumGrid.bat` file included in this repo in the `selenium` folder.
    - If the [Hub](#starting-the-selenium-hub) is running on a different machine, open the `NODE_Config.json` file and update the address for the Hub.
 
