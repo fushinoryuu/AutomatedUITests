@@ -5,7 +5,7 @@ This repo also includes:
 - Cake scripts to automate the building of the project and running the tests.
 - NPM scripts to more easily:
   - Start a local Selenium Hub/Node: `npm run hub` or `npm run node`
-  - Run the Cake scripts: `npm run build`
+  - Run the Cake scripts: `npm run build` or `npm run tests`
   - See descriptions in the console of what you can can do: `npm run help`
 - A simple GUI that allows the user to add/update the test settings. More on this below.
 
@@ -32,7 +32,7 @@ On the host machine:
 1. Update to the latest version of Java.
 2. Download the latest version of [Selenium Standalone Server](http://www.seleniumhq.org/download) and save it to `C:\Selenium`.
 3. Run the following command: `npm run hub`.
-   - Or you can also run the `HUB_SeleniumGrid.bat` file included in this repo.
+   - Or you can also run the `HUB_SeleniumGrid.bat` file included in this repo in the `selenium` folder.
 
 ## Starting the Selenium Nodes
 On each worker/node machine:
@@ -41,11 +41,15 @@ On each worker/node machine:
 2. Update the Chrome browser to the latest version via:
    - The browser options `Customize and Control Google Chrome > Settings > About`.
    - Or by simply entering `chrome://help/` on the url box of an open Chrome tab.
-3. Download the latest version of [Selenium Standalone Server](http://www.seleniumhq.org/download) and save it to `C:\Selenium` on each machine.
-4. Download the latest version of [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads)  and save it to `C:\Selenium` on each machine.
-5. Run the following command: `npm run node`.
-   - Or you can also run the `NODE_SeleniumGrid.bat` file included in this repo.
-   - If the [Hub](#starting-the-selenium-hub) is running on a different machine, open the `NODE_SeleniumGrid.bat` file and update the address for the Hub.
+3. Update the Firefox browser to the latest version via:
+   - The browser Help Menu `Open Help Menu > About Firefox`
+4. Download the latest version of [Selenium Standalone Server](http://www.seleniumhq.org/download) and save it to `C:\Selenium` on each machine.
+5. Download the latest version of [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/downloads) and save it to `C:\Selenium` on each machine.
+6. Download the latest version of [Geckodriver](https://github.com/mozilla/geckodriver/releases) and save it to `C:\Selenium` on each machine.
+7. Copy the [NODE_Config.json](selenium/NODE_Config.json) file and save it to `C:\Selenium` on each machine.
+8. Run the following command: `npm run node`.
+   - Or you can also run the `NODE_SeleniumGrid.bat` file included in this repo in the `selenium` folder.
+   - If the [Hub](#starting-the-selenium-hub) is running on a different machine, open the `NODE_Config.json` file and update the address for the Hub.
 
 **Note:** The host machine can also be a node. You just need to run both bat files to start the hub and node on the same machine.
 
