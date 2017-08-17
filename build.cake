@@ -15,4 +15,8 @@ Task("Default")
     .IsDependentOn("CompileDebug")
     .IsDependentOn("NUnit");
 
+Task("Tests")
+    .Description("Runs only the tests. This assumes the project is already built.")
+    .IsDependentOn("NUnit");
+
 RunTarget(target);
