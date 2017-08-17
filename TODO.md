@@ -10,5 +10,5 @@
 - [ ] Clean up WebElementExtensions.cs
 - [x] Look into using Docker to create the Selenium Grid
 - [ ] Add a config setting to allow for retries if a test fails, and set a limit on how many times to retry.
-- [ ] Look into having the option to run tests on multiple browsers.
+- [x] Look into having the option to run tests on multiple browsers.
 - [ ] Clean up the root directory.

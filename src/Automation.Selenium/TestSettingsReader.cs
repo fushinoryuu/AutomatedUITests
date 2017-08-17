@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
-using static System.Configuration.ConfigurationManager;
+using Automation.Selenium.Utils;
 
-namespace Automation.Selenium.Utils
+namespace Automation.Selenium
 {
     internal class TestSettingsReader
     {
@@ -12,13 +13,18 @@ namespace Automation.Selenium.Utils
             get
             {
                 BrowserType targetBrowser;
-                Enum.TryParse(AppSettings["targetBrowser"], out targetBrowser);
+                Enum.TryParse(ConfigurationManager.AppSettings["targetBrowser"], out targetBrowser);
 
-                // ReSharper disable once SwitchStatementMissingSomeCases
                 switch (targetBrowser)
                 {
+                    case BrowserType.Chrome:
+                        return DesiredCapabilities.Chrome();
+                    case BrowserType.Ie:
+                        return DesiredCapabilities.InternetExplorer();
                     case BrowserType.Firefox:
                         return DesiredCapabilities.Firefox();
+                    case BrowserType.Safari:
+                        return DesiredCapabilities.Safari();
                     default:
                         return DesiredCapabilities.Chrome();
                 }
@@ -29,14 +35,19 @@ namespace Automation.Selenium.Utils
         {
             get
             {
-                var operatingSystem = AppSettings["operatingSystem"];
+                OperatingSystemType operatingSystem;
+                Enum.TryParse(ConfigurationManager.AppSettings["operatingSystem"], out operatingSystem);
 
                 switch (operatingSystem)
                 {
-                    case "Any":
+                    case OperatingSystemType.Any:
                         return new Platform(PlatformType.Any);
-                    case "Mac":
+                    case OperatingSystemType.Linux:
+                        return new Platform(PlatformType.Linux);
+                    case OperatingSystemType.Mac:
                         return new Platform(PlatformType.Mac);
+                    case OperatingSystemType.Windows:
+                        return new Platform(PlatformType.Windows);
                     default:
                         return new Platform(PlatformType.Windows);
                 }
@@ -47,7 +58,7 @@ namespace Automation.Selenium.Utils
         {
             get
             {
-                var uri = AppSettings["seleniumHubUri"];
+                var uri = ConfigurationManager.AppSettings["seleniumHubUri"];
 
                 return string.IsNullOrWhiteSpace(uri) ? new Uri("http://localhost:4444/wd/hub") : new Uri(uri);
             }
@@ -57,9 +68,9 @@ namespace Automation.Selenium.Utils
         {
             get
             {
-                var directory = AppSettings["screenshotFolder"];
+                var directory = ConfigurationManager.AppSettings["screenshotFolder"];
 
-                return directory ?? "C:\\UI_Test_Screenshots\\";
+                return string.IsNullOrWhiteSpace(directory) ? "C:\\UI_Test_Screenshots\\" : directory;
             }
         }
     }
