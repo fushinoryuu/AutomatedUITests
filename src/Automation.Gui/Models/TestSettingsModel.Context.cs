@@ -26,5 +26,6 @@ namespace Automation.Gui.Models
         }
     
         public virtual DbSet<setting> settings { get; set; }
+        public virtual DbSet<testrun> testruns { get; set; }
     }
 }

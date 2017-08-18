@@ -42,6 +42,9 @@
     <Compile Include="Data\setting.cs">
       <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\testrun.cs">
+      <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\XmlTestSettingsModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

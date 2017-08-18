@@ -16,8 +16,24 @@
           <Property Name="screenshotFolder" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="isActive" Type="tinyint" Nullable="false" />
         </EntityType>
+        <EntityType Name="testruns">
+          <Key>
+            <PropertyRef Name="guid" />
+          </Key>
+          <Property Name="guid" Type="guid" Nullable="false" />
+          <Property Name="testcasecount" Type="int" Nullable="false" />
+          <Property Name="result" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="passed" Type="int" Nullable="false" />
+          <Property Name="failed" Type="int" Nullable="false" />
+          <Property Name="inconclusive" Type="int" Nullable="false" />
+          <Property Name="skipped" Type="int" Nullable="false" />
+          <Property Name="starttime" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="endtime" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="duration" Type="double" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="TestSettingsModelStoreContainer">
           <EntitySet Name="settings" EntityType="Self.settings" Schema="testsettings" store:Type="Tables" />
+          <EntitySet Name="testruns" EntityType="Self.testruns" Schema="testsettings" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -36,7 +52,23 @@
         </EntityType>
         <EntityContainer Name="testsettingsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="settings" EntityType="Self.setting" />
+          <EntitySet Name="testruns" EntityType="TestSettingsModel.testrun" />
         </EntityContainer>
+        <EntityType Name="testrun">
+          <Key>
+            <PropertyRef Name="guid" />
+          </Key>
+          <Property Name="guid" Type="Guid" Nullable="false" />
+          <Property Name="testcasecount" Type="Int32" Nullable="false" />
+          <Property Name="result" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="passed" Type="Int32" Nullable="false" />
+          <Property Name="failed" Type="Int32" Nullable="false" />
+          <Property Name="inconclusive" Type="Int32" Nullable="false" />
+          <Property Name="skipped" Type="Int32" Nullable="false" />
+          <Property Name="starttime" Type="DateTime" Nullable="false" />
+          <Property Name="endtime" Type="DateTime" Nullable="false" />
+          <Property Name="duration" Type="Double" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -52,6 +84,22 @@
                 <ScalarProperty Name="operatingSystem" ColumnName="operatingSystem" />
                 <ScalarProperty Name="seleniumHubUri" ColumnName="seleniumHubUri" />
                 <ScalarProperty Name="screenshotFolder" ColumnName="screenshotFolder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="testruns">
+            <EntityTypeMapping TypeName="TestSettingsModel.testrun">
+              <MappingFragment StoreEntitySet="testruns">
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="starttime" ColumnName="starttime" />
+                <ScalarProperty Name="skipped" ColumnName="skipped" />
+                <ScalarProperty Name="inconclusive" ColumnName="inconclusive" />
+                <ScalarProperty Name="failed" ColumnName="failed" />
+                <ScalarProperty Name="passed" ColumnName="passed" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="testcasecount" ColumnName="testcasecount" />
+                <ScalarProperty Name="guid" ColumnName="guid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

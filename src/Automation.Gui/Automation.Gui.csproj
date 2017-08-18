@@ -168,6 +168,9 @@
     <Compile Include="Models\setting.cs">
       <DependentUpon>TestSettingsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\testrun.cs">
+      <DependentUpon>TestSettingsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TestSettingsModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

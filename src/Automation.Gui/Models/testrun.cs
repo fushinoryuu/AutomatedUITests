@@ -12,13 +12,17 @@ namespace Automation.Gui.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class setting
+    public partial class testrun
     {
-        public int id { get; set; }
-        public string targetBrowser { get; set; }
-        public string operatingSystem { get; set; }
-        public string seleniumHubUri { get; set; }
-        public string screenshotFolder { get; set; }
-        public sbyte isActive { get; set; }
+        public System.Guid guid { get; set; }
+        public int testcasecount { get; set; }
+        public string result { get; set; }
+        public int passed { get; set; }
+        public int failed { get; set; }
+        public int inconclusive { get; set; }
+        public int skipped { get; set; }
+        public System.DateTime starttime { get; set; }
+        public System.DateTime endtime { get; set; }
+        public double duration { get; set; }
     }
 }
