@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Diagnostics;
+using Automation.Xml;
 using Automation.Gui.Models;
 using Automation.Tests.Utils;
-using Automation.Xml;
 
 namespace Automation.Gui.Controllers
 {
@@ -168,8 +168,11 @@ namespace Automation.Gui.Controllers
         public ActionResult RunAutomatedTests()
         {
             _processId = RunTestsHelper.RunNunitTests(
-                @"C:\AutomatedUiTests\src\Automation.Tests\Automation.Tests.csproj --workers=30 --work=C:\AutomatedUiTests\NunitWork --trace=Verbose",
-                ProcessWindowStyle.Maximized);
+                @"C:\AutomatedUiTests\src\Automation.Tests\Automation.Tests.csproj " +
+                "--workers=30 " +
+                @"--work=C:\AutomatedUiTests\NunitWork " +
+                "--trace=Verbose",
+                ProcessWindowStyle.Normal);
 
             return View(_db.settings.ToList());
         }
@@ -179,6 +182,13 @@ namespace Automation.Gui.Controllers
             RunTestsHelper.StopNunitTests(_processId);
 
             return View(_db.settings.ToList());
+        }
+
+        public ActionResult NunitDataExtraction()
+        {
+            new NunitDataExtractor().SaveResultsToDb();
+
+            return RedirectToAction("Index");
         }
     }
 }
