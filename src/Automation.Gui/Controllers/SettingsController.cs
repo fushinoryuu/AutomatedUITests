@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Diagnostics;
 using Automation.Gui.Models;
 using Automation.Tests.Utils;
+using Automation.Xml;
 
 namespace Automation.Gui.Controllers
 {
@@ -159,7 +160,7 @@ namespace Automation.Gui.Controllers
 
         public ActionResult GenerateXml()
         {
-            new ConfigWriter.XmlWriter().OutputXml();
+            new XmlWriter().OutputXml();
 
             return View(_db.settings.ToList());
         }

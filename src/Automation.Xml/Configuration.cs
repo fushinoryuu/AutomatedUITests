@@ -1,7 +1,7 @@
 ﻿using System.Linq;
-using Automation.ConfigWriter.Data;
+using Automation.Xml.Data;
 
-namespace Automation.ConfigWriter
+namespace Automation.Xml
 {
     public class Configuration
     {

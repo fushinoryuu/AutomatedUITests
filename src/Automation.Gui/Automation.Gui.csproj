@@ -221,9 +221,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Automation.ConfigWriter\Automation.ConfigWriter.csproj">
+    <ProjectReference Include="..\Automation.Xml\Automation.Xml.csproj">
       <Project>{b863ba46-dd40-4517-be87-7668c169e447}</Project>
-      <Name>Automation.ConfigWriter</Name>
+      <Name>Automation.Xml</Name>
     </ProjectReference>
     <ProjectReference Include="..\Automation.Tests\Automation.Tests.csproj">
       <Project>{f64cd766-d47f-4dc9-82e9-04b7f7004e21}</Project>
