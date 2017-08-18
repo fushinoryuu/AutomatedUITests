@@ -160,7 +160,7 @@ namespace Automation.Gui.Controllers
 
         public ActionResult GenerateXml()
         {
-            new XmlWriter().OutputXml();
+            new AppConfigWriter().OutputXml();
 
             return View(_db.settings.ToList());
         }

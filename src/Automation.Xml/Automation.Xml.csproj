@@ -39,7 +39,6 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
     <Compile Include="Data\setting.cs">
       <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
     </Compile>
@@ -58,7 +57,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>XmlTestSettingsModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="XmlWriter.cs" />
+    <Compile Include="AppConfigWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
