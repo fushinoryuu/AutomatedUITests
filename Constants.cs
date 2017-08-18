@@ -12,12 +12,6 @@ public DropOptions dropOptions = new DropOptions
 	{
 		new Project
 		{
-			Name = "Automation.ConfigWriter",
-			Folders = new string[0],
-			Files = new string[0]
-		},
-		new Project
-		{
 			Name = "Automation.Framework",
 			Folders = new string[0],
 			Files = new string[0]
@@ -37,6 +31,12 @@ public DropOptions dropOptions = new DropOptions
 		new Project
 		{
 			Name = "Automation.Tests",
+			Folders = new string[0],
+			Files = new string[0]
+		},
+		new Project
+		{
+			Name = "Automation.Xml",
 			Folders = new string[0],
 			Files = new string[0]
 		}
