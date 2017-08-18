@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
+using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -92,8 +93,9 @@ namespace Automation.Framework.Utils
         {
             var count = 0;
 
-            while (!element.Displayed && count < 40)
+            while (!element.Displayed && count < 30)
             {
+                Thread.Sleep(1000);
                 count++;
             }
         }
