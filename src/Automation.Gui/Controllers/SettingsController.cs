@@ -21,20 +21,6 @@ namespace Automation.Gui.Controllers
             return View(_db.settings.ToList());
         }
 
-        // GET: Settings/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-            var setting = _db.settings.Find(id);
-
-            if (setting == null)
-                return HttpNotFound();
-
-            return View(setting);
-        }
-
         // GET: Settings/Create
         public ActionResult Create()
         {
@@ -182,13 +168,6 @@ namespace Automation.Gui.Controllers
             RunTestsHelper.StopNunitTests(_processId);
 
             return View(_db.settings.ToList());
-        }
-
-        public ActionResult NunitDataExtraction()
-        {
-            new NunitDataExtractor().SaveResultsToDb();
-
-            return RedirectToAction("Index");
         }
     }
 }

@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<Automation.Gui.Models.setting>
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Settings Page";
 }
 
 <div class="jumbotron">
     <h2>Automation Settings</h2>
-    <p class="lead">You can use this simple web app to update the test settings for your Selenium tests.</p>
+    <p class="lead">You can use this page to update the test configurations for your Selenium tests.</p>
 </div>
 
 <hr />
@@ -31,9 +31,5 @@
     <a class="btn btn-danger" href="@Url.Action("StopAutomatedTests")">
         <i class="glyphicon glyphicon-stop"></i>
         <span>Stop automated tests</span>
-    </a>
-    <a class="btn btn-warning" href="@Url.Action("NunitDataExtraction")">
-        <i class="glyphicon glyphicon-export"></i>
-        <span>Extract Nunit test results</span>
     </a>
 </div>
