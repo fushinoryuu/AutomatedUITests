@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using Automation.Xml;
 using Automation.Gui.Models;
 
 namespace Automation.Gui.Controllers
@@ -15,6 +13,13 @@ namespace Automation.Gui.Controllers
         public ActionResult Index()
         {
             return View(_db.testruns.ToList());
+        }
+
+        public ActionResult NunitDataExtraction()
+        {
+            new NunitDataExtractor().SaveResultsToDb();
+
+            return RedirectToAction("Index");
         }
     }
 }

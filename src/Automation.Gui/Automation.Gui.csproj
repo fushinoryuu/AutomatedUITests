@@ -81,7 +81,8 @@
     <Content Include="Content\bootstrap.min.css">
       <Paket>True</Paket>
     </Content>
-    <Content Include="Content\SeleniumLogo.jpeg" />
+    <Content Include="Content\NunitLogo.png" />
+    <Content Include="Content\SeleniumLogo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2">
       <Paket>True</Paket>
     </Content>
@@ -212,6 +213,7 @@
     <Content Include="Views\Settings\RunAutomatedTests.cshtml" />
     <Content Include="Views\Settings\StopAutomatedTests.cshtml" />
     <Content Include="Views\Testruns\Index.cshtml" />
+    <Content Include="Views\Shared\TestrunsTable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

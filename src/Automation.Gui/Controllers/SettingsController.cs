@@ -183,12 +183,5 @@ namespace Automation.Gui.Controllers
 
             return View(_db.settings.ToList());
         }
-
-        public ActionResult NunitDataExtraction()
-        {
-            new NunitDataExtractor().SaveResultsToDb();
-
-            return RedirectToAction("Index");
-        }
     }
 }
