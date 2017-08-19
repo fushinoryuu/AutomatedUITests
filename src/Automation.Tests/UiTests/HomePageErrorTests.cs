@@ -4,13 +4,15 @@ using NUnit.Framework;
 namespace Automation.Tests.UiTests
 {
     [TestFixture, Parallelizable]
-    public class HomepageTests : BaseWebtest
+    public class HomePageErrorTests : BaseWebtest
     {
         [Test]
-        public void HomePageLoads()
+        public void LoginErrorDisplays()
         {
             HomePage.GoTo();
             HomePage.IsAt().ShouldBeTrue();
+            HomePage.Login("something", "somethingelse");
+            HomePage.LoginErrorIsDisplayed().ShouldBeTrue();
         }
     }
 }
