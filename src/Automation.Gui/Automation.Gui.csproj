@@ -214,6 +214,7 @@
     <Content Include="Views\Testruns\Index.cshtml" />
     <Content Include="Views\Shared\TestrunsTable.cshtml" />
     <Content Include="Views\Testruns\NunitDataExtraction.cshtml" />
+    <Content Include="Views\Testruns\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
