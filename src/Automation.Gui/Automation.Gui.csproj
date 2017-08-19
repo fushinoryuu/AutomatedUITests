@@ -81,6 +81,7 @@
     <Content Include="Content\bootstrap.min.css">
       <Paket>True</Paket>
     </Content>
+    <Content Include="Content\SeleniumLogo.jpeg" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2">
       <Paket>True</Paket>
@@ -207,7 +208,7 @@
     <Content Include="Views\Settings\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Settings\GenerateXml.cshtml" />
-    <Content Include="Views\Shared\Table.cshtml" />
+    <Content Include="Views\Shared\ConfigTable.cshtml" />
     <Content Include="Views\Settings\RunAutomatedTests.cshtml" />
     <Content Include="Views\Settings\StopAutomatedTests.cshtml" />
     <None Include="Web.Debug.config">
