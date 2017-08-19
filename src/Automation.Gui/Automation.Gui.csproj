@@ -82,7 +82,7 @@
       <Paket>True</Paket>
     </Content>
     <Content Include="Content\NunitLogo.png" />
-    <Content Include="Content\SeleniumLogo.png" />
+    <Content Include="Content\SeleniumLogoGreen.png" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2">
       <Paket>True</Paket>
     </Content>
