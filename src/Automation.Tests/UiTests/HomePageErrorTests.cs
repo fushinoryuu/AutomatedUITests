@@ -6,7 +6,7 @@ namespace Automation.Tests.UiTests
     [TestFixture, Parallelizable]
     public class HomePageErrorTests : BaseWebtest
     {
-        [Test]
+        [TestCase(TestName = "Login Error Displays")]
         public void LoginErrorDisplays()
         {
             HomePage.GoTo();

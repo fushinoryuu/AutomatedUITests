@@ -6,7 +6,7 @@ namespace Automation.Tests.UiTests
     [TestFixture, Parallelizable]
     public class HomepageTests : BaseWebtest
     {
-        [Test]
+        [TestCase(TestName = "Home Page Loads")]
         public void HomePageLoads()
         {
             HomePage.GoTo();
