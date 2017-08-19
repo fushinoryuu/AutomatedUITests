@@ -82,7 +82,6 @@
       <Paket>True</Paket>
     </Content>
     <Content Include="Content\SeleniumLogo.jpeg" />
-    <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2">
       <Paket>True</Paket>
     </Content>
@@ -163,6 +162,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
+    <Compile Include="Controllers\TestrunsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,6 +211,7 @@
     <Content Include="Views\Shared\ConfigTable.cshtml" />
     <Content Include="Views\Settings\RunAutomatedTests.cshtml" />
     <Content Include="Views\Settings\StopAutomatedTests.cshtml" />
+    <Content Include="Views\Testruns\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
