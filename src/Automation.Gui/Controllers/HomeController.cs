@@ -6,7 +6,7 @@ namespace Automation.Gui.Controllers
     {
         public ActionResult Index()
         {
-            return Redirect("Settings");
+            return View("Index");
         }
     }
 }

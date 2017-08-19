@@ -12,5 +12,14 @@ namespace Automation.Tests.UiTests
             HomePage.GoTo();
             HomePage.IsAt().ShouldBeTrue();
         }
+
+        [Test]
+        public void LoginErrorDisplays()
+        {
+            HomePage.GoTo();
+            HomePage.IsAt().ShouldBeTrue();
+            HomePage.Login("something", "somethingelse");
+            HomePage.LoginErrorIsDisplayed().ShouldBeTrue();
+        }
     }
 }

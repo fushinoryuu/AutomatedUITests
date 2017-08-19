@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Automation.ConfigWriter.Data
+namespace Automation.Xml.Data
 {
     using System;
     using System.Collections.Generic;

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Automation.ConfigWriter.Data
+namespace Automation.Xml.Data
 {
     using System;
     using System.Data.Entity;
@@ -26,5 +26,6 @@ namespace Automation.ConfigWriter.Data
         }
     
         public virtual DbSet<setting> settings { get; set; }
+        public virtual DbSet<testrun> testruns { get; set; }
     }
 }

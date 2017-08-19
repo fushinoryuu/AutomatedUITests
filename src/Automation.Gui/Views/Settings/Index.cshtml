@@ -11,7 +11,7 @@
 
 <hr />
 
-@Html.Partial("Table")
+@Html.Partial("ConfigTable")
 
 <hr />
 
@@ -21,7 +21,7 @@
         <span>Add new configuration</span>
     </a>
     <a class="btn btn-info" href="@Url.Action("GenerateXml")">
-        <i class="glyphicon glyphicon-export"></i>
+        <i class="glyphicon glyphicon-import"></i>
         <span>Generate App.config</span>
     </a>
     <a class="btn btn-success" href="@Url.Action("RunAutomatedTests")">
@@ -31,5 +31,9 @@
     <a class="btn btn-danger" href="@Url.Action("StopAutomatedTests")">
         <i class="glyphicon glyphicon-stop"></i>
         <span>Stop automated tests</span>
+    </a>
+    <a class="btn btn-warning" href="@Url.Action("NunitDataExtraction")">
+        <i class="glyphicon glyphicon-export"></i>
+        <span>Extract Nunit test results</span>
     </a>
 </div>

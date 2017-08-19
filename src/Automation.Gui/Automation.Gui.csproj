@@ -81,6 +81,7 @@
     <Content Include="Content\bootstrap.min.css">
       <Paket>True</Paket>
     </Content>
+    <Content Include="Content\SeleniumLogo.jpeg" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2">
       <Paket>True</Paket>
@@ -168,6 +169,9 @@
     <Compile Include="Models\setting.cs">
       <DependentUpon>TestSettingsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\testrun.cs">
+      <DependentUpon>TestSettingsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\TestSettingsModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -204,7 +208,7 @@
     <Content Include="Views\Settings\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Settings\GenerateXml.cshtml" />
-    <Content Include="Views\Shared\Table.cshtml" />
+    <Content Include="Views\Shared\ConfigTable.cshtml" />
     <Content Include="Views\Settings\RunAutomatedTests.cshtml" />
     <Content Include="Views\Settings\StopAutomatedTests.cshtml" />
     <None Include="Web.Debug.config">
@@ -221,9 +225,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Automation.ConfigWriter\Automation.ConfigWriter.csproj">
+    <ProjectReference Include="..\Automation.Xml\Automation.Xml.csproj">
       <Project>{b863ba46-dd40-4517-be87-7668c169e447}</Project>
-      <Name>Automation.ConfigWriter</Name>
+      <Name>Automation.Xml</Name>
     </ProjectReference>
     <ProjectReference Include="..\Automation.Tests\Automation.Tests.csproj">
       <Project>{f64cd766-d47f-4dc9-82e9-04b7f7004e21}</Project>
