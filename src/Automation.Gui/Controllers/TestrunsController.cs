@@ -3,6 +3,7 @@ using System.Net;
 using System.Data;
 using System.Linq;
 using System.Web.Mvc;
+using System.Collections.Generic;
 using Automation.Xml;
 using Automation.Gui.Models;
 
@@ -11,11 +12,12 @@ namespace Automation.Gui.Controllers
     public class TestrunsController : Controller
     {
         private readonly testsettingsEntities _db = new testsettingsEntities();
+        public static bool ImportSuccessful;
 
         // GET: Testruns
         public ActionResult Index()
         {
-            return View(_db.testruns.ToList());
+            return View(GetOrderedList());
         }
 
         // GET: Testruns/Delete/5
@@ -50,9 +52,14 @@ namespace Automation.Gui.Controllers
 
         public ActionResult NunitDataExtraction()
         {
-            new NunitDataExtractor().SaveResultsToDb();
+            ImportSuccessful = new NunitDataExtractor().SaveResultsToDb();
 
-            return View("NunitDataExtraction");
+            return View(GetOrderedList());
+        }
+
+        private IList<testrun> GetOrderedList()
+        {
+            return _db.testruns.OrderByDescending(testrun => testrun.starttime).ToList();
         }
     }
 }
