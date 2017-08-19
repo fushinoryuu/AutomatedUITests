@@ -24,7 +24,7 @@ COMMENT = 'This local db will save test configurations you can use to run your a
 --------------------------
 
 CREATE TABLE `testsettings`.`testruns` (
-  `guid` BINARY(16) NOT NULL,
+  `guid` VARCHAR(36) NOT NULL,
   `testcasecount` INT NOT NULL,
   `result` VARCHAR(12) NOT NULL,
   `passed` INT NOT NULL,

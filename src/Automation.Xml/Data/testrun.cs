@@ -14,7 +14,7 @@ namespace Automation.Xml.Data
     
     public partial class testrun
     {
-        public System.Guid guid { get; set; }
+        public string guid { get; set; }
         public int testcasecount { get; set; }
         public string result { get; set; }
         public int passed { get; set; }

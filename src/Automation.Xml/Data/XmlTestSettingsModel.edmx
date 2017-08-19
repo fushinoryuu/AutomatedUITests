@@ -20,7 +20,7 @@
           <Key>
             <PropertyRef Name="guid" />
           </Key>
-          <Property Name="guid" Type="guid" Nullable="false" />
+          <Property Name="guid" Type="varchar" MaxLength="36" Nullable="false" />
           <Property Name="testcasecount" Type="int" Nullable="false" />
           <Property Name="result" Type="varchar" MaxLength="12" Nullable="false" />
           <Property Name="passed" Type="int" Nullable="false" />
@@ -58,7 +58,7 @@
           <Key>
             <PropertyRef Name="guid" />
           </Key>
-          <Property Name="guid" Type="Guid" Nullable="false" />
+          <Property Name="guid" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Name="testcasecount" Type="Int32" Nullable="false" />
           <Property Name="result" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="passed" Type="Int32" Nullable="false" />

@@ -8,26 +8,19 @@ namespace Automation.Xml
     public class NunitDataExtractor
     {
         private readonly XmlDocument _document = new XmlDocument();
-        private Guid _guid;
-        private int _testCaseCount;
-        private string _result;
-        private int _passed;
-        private int _failed;
-        private int _inconclusive;
-        private int _skipped;
-        private DateTime _starttime;
-        private DateTime _endtime;
-        private double _duration;
+        private testrun _result;
 
-        public void SaveResultsToDb()
+        public bool SaveResultsToDb()
         {
             LoadXml();
 
             if (_document.DocumentElement == null)
-                return;
+                return false;
 
             GetDataFromXml();
             SaveResults();
+
+            return true;
         }
 
         private void LoadXml()
@@ -44,37 +37,29 @@ namespace Automation.Xml
 
         private void GetDataFromXml()
         {
-            _guid = Guid.NewGuid();
-            _testCaseCount = int.Parse(_document.DocumentElement.Attributes["testcasecount"].Value);
-            _result = _document.DocumentElement.Attributes["result"].Value;
-            _passed = int.Parse(_document.DocumentElement.Attributes["passed"].Value);
-            _failed = int.Parse(_document.DocumentElement.Attributes["failed"].Value);
-            _inconclusive = int.Parse(_document.DocumentElement.Attributes["inconclusive"].Value);
-            _skipped = int.Parse(_document.DocumentElement.Attributes["skipped"].Value);
-            _starttime = DateTime.Parse(_document.DocumentElement.Attributes["start-time"].Value);
-            _endtime = DateTime.Parse(_document.DocumentElement.Attributes["end-time"].Value);
-            _duration = double.Parse(_document.DocumentElement.Attributes["duration"].Value);
+            _result = new testrun
+            {
+                guid = Guid.NewGuid().ToString(),
+                // ReSharper disable once PossibleNullReferenceException
+                testcasecount = int.Parse(_document.DocumentElement.Attributes["testcasecount"].Value),
+                result = _document.DocumentElement.Attributes["result"].Value,
+                passed = int.Parse(_document.DocumentElement.Attributes["passed"].Value),
+                failed = int.Parse(_document.DocumentElement.Attributes["failed"].Value),
+                inconclusive = int.Parse(_document.DocumentElement.Attributes["inconclusive"].Value),
+                skipped = int.Parse(_document.DocumentElement.Attributes["skipped"].Value),
+                starttime = DateTime.Parse(_document.DocumentElement.Attributes["start-time"].Value),
+                endtime = DateTime.Parse(_document.DocumentElement.Attributes["end-time"].Value),
+                duration = double.Parse(_document.DocumentElement.Attributes["duration"].Value)
+            };
         }
 
         private void SaveResults()
         {
             var db = new xmlTestSettingsEntities();
 
-            db.testruns.Add(new testrun
-            {
-                guid = _guid,
-                testcasecount = _testCaseCount,
-                result = _result,
-                passed = _passed,
-                failed = _failed,
-                inconclusive = _inconclusive,
-                skipped = _skipped,
-                starttime = _starttime,
-                endtime = _endtime,
-                duration = _duration
-            });
-
+            db.testruns.Add(_result);
             db.SaveChanges();
+            db.Dispose();
         }
     }
 }
