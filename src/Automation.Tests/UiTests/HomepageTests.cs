@@ -12,5 +12,14 @@ namespace Automation.Tests.UiTests
             HomePage.GoTo();
             HomePage.IsAt().ShouldBeTrue();
         }
+
+        [TestCase(TestName = "Buttons Are Visible")]
+        public void ButtonsAreVisible()
+        {
+            HomePage.GoTo();
+            HomePage.IsAt().ShouldBeTrue();
+            HomePage.SigninButtonIsVisible().ShouldBeTrue();
+            HomePage.CreateAccountButtonIsVisible().ShouldBeTrue();
+        }
     }
 }
