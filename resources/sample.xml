@@ -1,11 +1,17 @@
 <tests>
-    <test-suite name="Home Page Tests">
+    <test-suite name="HomepageTests">
         <test-case name="Home Page Loads">
             <step>Go to Home page.</step>
             <step>Make sure Home page loads.</step>
         </test-case>
+        <test-case name="Buttons Are Visible">
+            <step>Go to Home page.</step>
+            <step>Make sure Home page loads.</step>
+            <step>Make sure the 'Sign In' button is visible.</step>
+            <step>Make sure the 'Create an Account' button is visible.</step>
+        </test-case>
     </test-suite>
-    <test-suite name="Home Page Error Tests">
+    <test-suite name="HomePageErrorTests">
         <test-case name="Login Error Displays">
             <step>Go to Home page.</step>
             <step>Make sure Home page loads.</step>

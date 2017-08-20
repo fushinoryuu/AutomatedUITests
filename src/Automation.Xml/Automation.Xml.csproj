@@ -64,6 +64,8 @@
     <Compile Include="AppConfigWriter.cs" />
     <Compile Include="NunitDataExtractor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestCaseImporter.cs" />
+    <Compile Include="Utils\TestsFromXml.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
