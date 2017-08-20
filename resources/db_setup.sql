@@ -17,7 +17,7 @@ CREATE TABLE `testsettings`.`settings` (
   `isActive` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC))
-COMMENT = 'This local db will save test configurations you can use to run your automated tests.';
+COMMENT = 'This table will save test configurations you can use to run your automated tests.';
 
 --------------------------
 -- Create 'testruns' table
@@ -36,7 +36,42 @@ CREATE TABLE `testsettings`.`testruns` (
   `duration` DOUBLE NOT NULL,
   PRIMARY KEY (`guid`),
   UNIQUE INDEX `guid_UNIQUE` (`guid` ASC))
-COMMENT = 'This local db will save test run results after running the automated tests.';
+COMMENT = 'This table will save test run results after running the automated tests.';
+
+----------------------------
+-- Create 'testsuites' table
+----------------------------
+
+CREATE TABLE `testsettings`.`testsuites` (
+  `testsuiteid` INT NOT NULL AUTO_INCREMENT,
+  `testsuitename` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`testsuiteid`),
+  UNIQUE INDEX `testsuiteid_UNIQUE` (`testsuiteid` ASC),
+  UNIQUE INDEX `testsuitename_UNIQUE` (`testsuitename` ASC))
+COMMENT = 'This table will save test suites that are imported using the web app.';
+
+---------------------------
+-- Create 'testcases' table
+---------------------------
+
+CREATE TABLE `testsettings`.`testcases` (
+  `testcaseid` INT NOT NULL AUTO_INCREMENT,
+  `testcasename` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`testcaseid`),
+  UNIQUE INDEX `testcaseid_UNIQUE` (`testcaseid` ASC),
+  UNIQUE INDEX `testcasename_UNIQUE` (`testcasename` ASC))
+COMMENT = 'This table will save test cases that are imported using the web app.';
+
+--------------------------
+-- Create 'teststeps' table
+--------------------------
+
+CREATE TABLE `testsettings`.`teststeps` (
+  `teststepid` INT NOT NULL AUTO_INCREMENT,
+  `steptext` TEXT(500) NOT NULL,
+  PRIMARY KEY (`teststepid`),
+  UNIQUE INDEX `teststepid_UNIQUE` (`teststepid` ASC))
+COMMENT = 'This table will save test steps that are imported using the web app.';
 
 ----------------------------
 -- Populate 'settings' table
