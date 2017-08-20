@@ -23,8 +23,5 @@ namespace Automation.Xml.Utils
     {
         [XmlAttribute("name")]
         public string Name { get; set; }
-
-        [XmlElement("step")]
-        public List<string> TestSteps { get; set; }
     }
 }

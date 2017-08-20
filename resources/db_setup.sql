@@ -57,21 +57,16 @@ COMMENT = 'This table will save test suites that are imported using the web app.
 CREATE TABLE `testsettings`.`testcases` (
   `testcaseid` INT NOT NULL AUTO_INCREMENT,
   `testcasename` VARCHAR(100) NOT NULL,
+  `belongstosuite` INT NOT NULL,
   PRIMARY KEY (`testcaseid`),
   UNIQUE INDEX `testcaseid_UNIQUE` (`testcaseid` ASC),
-  UNIQUE INDEX `testcasename_UNIQUE` (`testcasename` ASC))
+  INDEX `belongstosuite_idx` (`belongstosuite` ASC),
+  CONSTRAINT `belongstosuite`
+    FOREIGN KEY (`belongstosuite`)
+    REFERENCES `testsettings`.`testsuites` (`testsuiteid`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 COMMENT = 'This table will save test cases that are imported using the web app.';
-
---------------------------
--- Create 'teststeps' table
---------------------------
-
-CREATE TABLE `testsettings`.`teststeps` (
-  `teststepid` INT NOT NULL AUTO_INCREMENT,
-  `steptext` TEXT(500) NOT NULL,
-  PRIMARY KEY (`teststepid`),
-  UNIQUE INDEX `teststepid_UNIQUE` (`teststepid` ASC))
-COMMENT = 'This table will save test steps that are imported using the web app.';
 
 ----------------------------
 -- Populate 'settings' table
