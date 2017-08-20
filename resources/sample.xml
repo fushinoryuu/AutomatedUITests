@@ -1,0 +1,16 @@
+<tests>
+    <test-suite name="Home Page Tests">
+        <test-case name="Home Page Loads">
+            <step>Go to Home page.</step>
+            <step>Make sure Home page loads.</step>
+        </test-case>
+    </test-suite>
+    <test-suite name="Home Page Error Tests">
+        <test-case name="Login Error Displays">
+            <step>Go to Home page.</step>
+            <step>Make sure Home page loads.</step>
+            <step>Login using - username: 'something', password: 'somethingelse'. Click Sign In button.</step>
+            <step>Login error should display.</step>
+        </test-case>
+    </test-suite>
+</tests>
