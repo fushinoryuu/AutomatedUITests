@@ -170,6 +170,9 @@
     <Compile Include="Models\setting.cs">
       <DependentUpon>TestSettingsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\testcas.cs">
+      <DependentUpon>TestSettingsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\testrun.cs">
       <DependentUpon>TestSettingsModel.tt</DependentUpon>
     </Compile>
@@ -187,6 +190,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TestSettingsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\testsuite.cs">
+      <DependentUpon>TestSettingsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

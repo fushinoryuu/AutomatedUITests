@@ -43,7 +43,13 @@
     <Compile Include="Data\setting.cs">
       <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\testcas.cs">
+      <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\testrun.cs">
+      <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\testsuite.cs">
       <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\XmlTestSettingsModel.Context.cs">
