@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Data;
 using System.Linq;
 using System.Web.Mvc;
@@ -21,9 +20,9 @@ namespace Automation.Gui.Controllers
         }
 
         // GET: Testruns/Delete/5
-        public ActionResult Delete(Guid guid)
+        public ActionResult Delete(string guid)
         {
-            if (string.IsNullOrWhiteSpace(guid.ToString()))
+            if (string.IsNullOrWhiteSpace(guid))
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var testrun = _db.testruns.Find(guid);
@@ -37,7 +36,7 @@ namespace Automation.Gui.Controllers
         // POST: Testruns/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid guid)
+        public ActionResult DeleteConfirmed(string guid)
         {
             var item = _db.testruns.Find(guid);
 
@@ -53,6 +52,8 @@ namespace Automation.Gui.Controllers
         public ActionResult NunitDataExtraction()
         {
             ImportSuccessful = new NunitDataExtractor().SaveResultsToDb();
+
+            //var testCaseImporter = new TestCaseImporter();
 
             return View(GetOrderedList());
         }
