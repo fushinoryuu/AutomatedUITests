@@ -83,6 +83,7 @@
     </Content>
     <Content Include="Content\NunitLogo.png" />
     <Content Include="Content\SeleniumLogoGreen.png" />
+    <Content Include="Content\TestcasesLogo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2">
       <Paket>True</Paket>
     </Content>
@@ -164,6 +165,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Controllers\TestrunsController.cs" />
+    <Compile Include="Controllers\TestsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,6 +223,8 @@
     <Content Include="Views\Shared\TestrunsTable.cshtml" />
     <Content Include="Views\Testruns\NunitDataExtraction.cshtml" />
     <Content Include="Views\Testruns\Delete.cshtml" />
+    <Content Include="Views\Tests\Index.cshtml" />
+    <Content Include="Views\Shared\TestsTable.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
