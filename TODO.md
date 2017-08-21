@@ -14,3 +14,4 @@
 - [ ] Clean up the root directory.
 - [ ] Store screenshots in db
 - [ ] Store test run results in db
+- [ ] Set environment variables instead of reading the environment variables to fix issue of not running the new config at run time.
