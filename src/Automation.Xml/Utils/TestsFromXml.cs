@@ -6,22 +6,18 @@ namespace Automation.Xml.Utils
     [XmlRoot("tests")]
     public class TestsFromXml
     {
-        [XmlElement("test-suite")]
-        public List<TestSuite> Suites { get; set; }
-    }
+        [XmlElement("test")]
+        public List<Tests> Suites { get; set; }
 
-    public class TestSuite
-    {
-        [XmlAttribute("name")]
-        public string Name { get; set; }
+        public class Tests
+        {
+            [XmlAttribute("suite")]
+            public string Suite { get; set; }
 
-        [XmlElement("test-case")]
-        public List<TestCase> TestCases { get; set; }
-    }
+            [XmlElement("name")]
+            public string Name { get; set; }
 
-    public class TestCase
-    {
-        [XmlAttribute("name")]
-        public string Name { get; set; }
+            public int Id { get; set; }
+        }
     }
 }
