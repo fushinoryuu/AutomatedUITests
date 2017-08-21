@@ -1,51 +1,49 @@
 ﻿@using Automation.Gui.Controllers
 
-@model IEnumerable<Automation.Gui.Models.testrun>
-
 @{
-    ViewBag.Title = "Import Nunit Data Page";
+    ViewBag.Title = "Test Cases Page";
 }
 
-@Html.Partial("TestrunsJumbotron")
+@Html.Partial("TestsJumbotron")
 
 <hr />
 
-@if (TestrunsController.ImportSuccessful)
+@if (TestsController.ImportSuccessful)
 {
     <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         <strong>Done!</strong>
-        Successfully imported NUnit test results.
+        Successfully imported the test cases.
     </div>
 
     <div>
-        <a class="btn btn-success disabled" href="@Url.Action("NunitDataExtraction")">
+        <a class="btn btn-success disabled" href="@Url.Action("ImportTests")">
             <i class="glyphicon glyphicon-import"></i>
-            <span>Import NUnit test results</span>
+            <span>Import test cases</span>
         </a>
     </div>
 }
 
-@if (!TestrunsController.ImportSuccessful)
+@if (!TestsController.ImportSuccessful)
 {
     <div class="alert alert-danger alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
         <strong>Something went wrong!</strong>
-        Could not import NUnit test results.
+        Could not import the test cases.
     </div>
 
     <div>
-        <a class="btn btn-success" href="@Url.Action("NunitDataExtraction")">
+        <a class="btn btn-success" href="@Url.Action("ImportTests")">
             <i class="glyphicon glyphicon-import"></i>
-            <span>Import NUnit test results</span>
+            <span>Import test cases</span>
         </a>
     </div>
 }
 
 <hr />
 
-@Html.Partial("TestrunsTable")
+@Html.Partial("TestsTable")

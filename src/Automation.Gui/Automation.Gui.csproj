@@ -225,6 +225,10 @@
     <Content Include="Views\Testruns\Delete.cshtml" />
     <Content Include="Views\Tests\Index.cshtml" />
     <Content Include="Views\Shared\TestsTable.cshtml" />
+    <Content Include="Views\Tests\ImportTests.cshtml" />
+    <Content Include="Views\Shared\SettingsJumbotron.cshtml" />
+    <Content Include="Views\Shared\TestrunsJumbotron.cshtml" />
+    <Content Include="Views\Shared\TestsJumbotron.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

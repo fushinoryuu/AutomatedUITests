@@ -2,16 +2,13 @@
     ViewBag.Title = "Test Runs Page";
 }
 
-<div class="jumbotron">
-    <h2>Automation Settings</h2>
-    <p class="lead">You can use this page to see the results of old test runs or import the results of a new test run for your Selenium tests.</p>
-</div>
+@Html.Partial("TestrunsJumbotron")
 
 <hr />
 
 <div>
     <a class="btn btn-success" href="@Url.Action("NunitDataExtraction")">
-        <i class="glyphicon glyphicon-export"></i>
+        <i class="glyphicon glyphicon-import"></i>
         <span>Import NUnit test results</span>
     </a>
 </div>

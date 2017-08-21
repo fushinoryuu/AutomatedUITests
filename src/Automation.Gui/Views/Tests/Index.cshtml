@@ -2,16 +2,13 @@
     ViewBag.Title = "Test Cases Page";
 }
 
-<div class="jumbotron">
-    <h2>Automation Settings</h2>
-    <p class="lead">You can use this page to import test cases to be displayed properly in the test runs page.</p>
-</div>
+@Html.Partial("TestsJumbotron")
 
 <hr />
 
 <div>
-    <a class="btn btn-success">
-        <i class="glyphicon glyphicon-export"></i>
+    <a class="btn btn-success" href="@Url.Action("ImportTests")">
+        <i class="glyphicon glyphicon-import"></i>
         <span>Import test cases</span>
     </a>
 </div>

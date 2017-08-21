@@ -53,8 +53,6 @@ namespace Automation.Gui.Controllers
         {
             ImportSuccessful = new NunitDataExtractor().SaveResultsToDb();
 
-            //var testCaseImporter = new TestCaseImporter();
-
             return View(GetOrderedList());
         }
 
