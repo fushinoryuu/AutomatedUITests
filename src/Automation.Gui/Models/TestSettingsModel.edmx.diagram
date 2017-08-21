@@ -6,10 +6,10 @@
     <edmx:Diagrams>
       <Diagram DiagramId="d24c0d00718d4d47842cd846cbfb69da" Name="Diagram1">
         <EntityTypeShape EntityType="TestSettingsModel.setting" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TestSettingsModel.testcas" Width="1.5" PointX="3" PointY="4.875" />
-        <EntityTypeShape EntityType="TestSettingsModel.testsuite" Width="1.5" PointX="1" PointY="4.875" />
-        <AssociationConnector Association="TestSettingsModel.belongstosuite" />
         <EntityTypeShape EntityType="TestSettingsModel.testrun" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TestSettingsModel.testcase" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="TestSettingsModel.testsuite" Width="1.5" PointX="0.75" PointY="5" />
+        <AssociationConnector Association="TestSettingsModel.belongstosuite" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

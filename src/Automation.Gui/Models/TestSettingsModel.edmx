@@ -87,15 +87,30 @@
         </EntityType>
         <EntityContainer Name="testsettingsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="settings" EntityType="Self.setting" />
-          <EntitySet Name="testcases" EntityType="TestSettingsModel.testcas" />
+          <EntitySet Name="testruns" EntityType="TestSettingsModel.testrun" />
+          <EntitySet Name="testcases" EntityType="TestSettingsModel.testcase" />
           <EntitySet Name="testsuites" EntityType="TestSettingsModel.testsuite" />
           <AssociationSet Name="belongstosuite" Association="TestSettingsModel.belongstosuite">
             <End Role="testsuite" EntitySet="testsuites" />
             <End Role="testcas" EntitySet="testcases" />
           </AssociationSet>
-          <EntitySet Name="testruns" EntityType="TestSettingsModel.testrun" />
         </EntityContainer>
-        <EntityType Name="testcas">
+        <EntityType Name="testrun">
+          <Key>
+            <PropertyRef Name="guid" />
+          </Key>
+          <Property Name="guid" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="testcasecount" Type="Int32" Nullable="false" />
+          <Property Name="result" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="passed" Type="Int32" Nullable="false" />
+          <Property Name="failed" Type="Int32" Nullable="false" />
+          <Property Name="inconclusive" Type="Int32" Nullable="false" />
+          <Property Name="skipped" Type="Int32" Nullable="false" />
+          <Property Name="starttime" Type="DateTime" Nullable="false" />
+          <Property Name="endtime" Type="DateTime" Nullable="false" />
+          <Property Name="duration" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="testcase">
           <Key>
             <PropertyRef Name="testcaseid" />
           </Key>
@@ -116,7 +131,7 @@
           <End Type="TestSettingsModel.testsuite" Role="testsuite" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="TestSettingsModel.testcas" Role="testcas" Multiplicity="*" />
+          <End Type="TestSettingsModel.testcase" Role="testcas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="testsuite">
               <PropertyRef Name="testsuiteid" />
@@ -126,21 +141,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="testrun">
-          <Key>
-            <PropertyRef Name="guid" />
-          </Key>
-          <Property Name="guid" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
-          <Property Name="testcasecount" Type="Int32" Nullable="false" />
-          <Property Name="result" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="passed" Type="Int32" Nullable="false" />
-          <Property Name="failed" Type="Int32" Nullable="false" />
-          <Property Name="inconclusive" Type="Int32" Nullable="false" />
-          <Property Name="skipped" Type="Int32" Nullable="false" />
-          <Property Name="starttime" Type="DateTime" Nullable="false" />
-          <Property Name="endtime" Type="DateTime" Nullable="false" />
-          <Property Name="duration" Type="Double" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -159,23 +159,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="testcases">
-            <EntityTypeMapping TypeName="TestSettingsModel.testcas">
-              <MappingFragment StoreEntitySet="testcases">
-                <ScalarProperty Name="belongstosuite" ColumnName="belongstosuite" />
-                <ScalarProperty Name="testcasename" ColumnName="testcasename" />
-                <ScalarProperty Name="testcaseid" ColumnName="testcaseid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="testsuites">
-            <EntityTypeMapping TypeName="TestSettingsModel.testsuite">
-              <MappingFragment StoreEntitySet="testsuites">
-                <ScalarProperty Name="testsuitename" ColumnName="testsuitename" />
-                <ScalarProperty Name="testsuiteid" ColumnName="testsuiteid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="testruns">
             <EntityTypeMapping TypeName="TestSettingsModel.testrun">
               <MappingFragment StoreEntitySet="testruns">
@@ -189,6 +172,23 @@
                 <ScalarProperty Name="result" ColumnName="result" />
                 <ScalarProperty Name="testcasecount" ColumnName="testcasecount" />
                 <ScalarProperty Name="guid" ColumnName="guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="testcases">
+            <EntityTypeMapping TypeName="TestSettingsModel.testcase">
+              <MappingFragment StoreEntitySet="testcases">
+                <ScalarProperty Name="belongstosuite" ColumnName="belongstosuite" />
+                <ScalarProperty Name="testcasename" ColumnName="testcasename" />
+                <ScalarProperty Name="testcaseid" ColumnName="testcaseid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="testsuites">
+            <EntityTypeMapping TypeName="TestSettingsModel.testsuite">
+              <MappingFragment StoreEntitySet="testsuites">
+                <ScalarProperty Name="testsuitename" ColumnName="testsuitename" />
+                <ScalarProperty Name="testsuiteid" ColumnName="testsuiteid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

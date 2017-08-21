@@ -12,7 +12,7 @@ namespace Automation.Gui.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class testcas
+    public partial class testcase
     {
         public int testcaseid { get; set; }
         public string testcasename { get; set; }

@@ -170,7 +170,7 @@
     <Compile Include="Models\setting.cs">
       <DependentUpon>TestSettingsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\testcas.cs">
+    <Compile Include="Models\testcase.cs">
       <DependentUpon>TestSettingsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\testrun.cs">
