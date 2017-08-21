@@ -27,7 +27,7 @@ namespace Automation.Xml.Data
     
         public virtual DbSet<setting> settings { get; set; }
         public virtual DbSet<testrun> testruns { get; set; }
-        public virtual DbSet<testcas> testcases { get; set; }
+        public virtual DbSet<testcase> testcases { get; set; }
         public virtual DbSet<testsuite> testsuites { get; set; }
     }
 }

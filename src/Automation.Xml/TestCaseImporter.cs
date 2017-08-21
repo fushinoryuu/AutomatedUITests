@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using Automation.Xml.Utils;
 using System.Xml.Serialization;
+using Automation.Xml.Data;
 
 namespace Automation.Xml
 {

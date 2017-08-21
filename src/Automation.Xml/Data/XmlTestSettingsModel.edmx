@@ -88,7 +88,7 @@
         <EntityContainer Name="xmlTestSettingsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="settings" EntityType="Self.setting" />
           <EntitySet Name="testruns" EntityType="xmlTestSettingsModel.testrun" />
-          <EntitySet Name="testcases" EntityType="xmlTestSettingsModel.testcas" />
+          <EntitySet Name="testcases" EntityType="xmlTestSettingsModel.testcase" />
           <EntitySet Name="testsuites" EntityType="xmlTestSettingsModel.testsuite" />
           <AssociationSet Name="belongstosuite" Association="xmlTestSettingsModel.belongstosuite">
             <End Role="testsuite" EntitySet="testsuites" />
@@ -110,7 +110,7 @@
           <Property Name="endtime" Type="DateTime" Nullable="false" />
           <Property Name="duration" Type="Double" Nullable="false" />
         </EntityType>
-        <EntityType Name="testcas">
+        <EntityType Name="testcase">
           <Key>
             <PropertyRef Name="testcaseid" />
           </Key>
@@ -131,7 +131,7 @@
           <End Type="xmlTestSettingsModel.testsuite" Role="testsuite" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="xmlTestSettingsModel.testcas" Role="testcas" Multiplicity="*" />
+          <End Type="xmlTestSettingsModel.testcase" Role="testcas" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="testsuite">
               <PropertyRef Name="testsuiteid" />
@@ -176,7 +176,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="testcases">
-            <EntityTypeMapping TypeName="xmlTestSettingsModel.testcas">
+            <EntityTypeMapping TypeName="xmlTestSettingsModel.testcase">
               <MappingFragment StoreEntitySet="testcases">
                 <ScalarProperty Name="belongstosuite" ColumnName="belongstosuite" />
                 <ScalarProperty Name="testcasename" ColumnName="testcasename" />

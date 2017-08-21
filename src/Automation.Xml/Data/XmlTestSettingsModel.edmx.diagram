@@ -7,8 +7,8 @@
       <Diagram DiagramId="55e4008cd4d74d768016056f08531fa9" Name="Diagram1">
         <EntityTypeShape EntityType="xmlTestSettingsModel.setting" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="xmlTestSettingsModel.testrun" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="xmlTestSettingsModel.testcas" Width="1.5" PointX="3.375" PointY="5.25" />
-        <EntityTypeShape EntityType="xmlTestSettingsModel.testsuite" Width="1.5" PointX="1.25" PointY="5.25" />
+        <EntityTypeShape EntityType="xmlTestSettingsModel.testcase" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="xmlTestSettingsModel.testsuite" Width="1.5" PointX="0.75" PointY="5" />
         <AssociationConnector Association="xmlTestSettingsModel.belongstosuite" />
       </Diagram>
     </edmx:Diagrams>

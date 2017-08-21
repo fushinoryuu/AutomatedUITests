@@ -43,7 +43,7 @@
     <Compile Include="Data\setting.cs">
       <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\testcas.cs">
+    <Compile Include="Data\testcase.cs">
       <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\testrun.cs">
