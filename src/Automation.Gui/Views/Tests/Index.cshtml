@@ -2,9 +2,26 @@
     ViewBag.Title = "Test Cases Page";
 }
 
+@section scripts
+{
+    <script src="~/Scripts/UploadButton.js"></script>
+}
+
+
 @Html.Partial("TestsJumbotron")
 
 <hr />
+
+<div class="input-group">
+    <label class="input-group-btn">
+        <span class="btn btn-primary">
+            Browse&hellip; <input type="file" style="display: none;" multiple>
+        </span>
+    </label>
+    <input type="text" class="form-control" readonly>
+</div>
+
+<br />
 
 <div>
     <a class="btn btn-success" href="@Url.Action("ImportTests")">

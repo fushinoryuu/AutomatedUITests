@@ -158,6 +158,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js">
       <Paket>True</Paket>
     </Content>
+    <Content Include="Scripts\UploadButton.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
