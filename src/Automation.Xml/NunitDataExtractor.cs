@@ -7,14 +7,14 @@ namespace Automation.Xml
 {
     public class NunitDataExtractor
     {
-        private readonly XmlDocument _document = new XmlDocument();
+        private XmlDocument _document = new XmlDocument();
         private testrun _result;
 
         public bool SaveResultsToDb()
         {
             LoadXml();
 
-            if (_document.DocumentElement == null)
+            if (_document == null)
                 return false;
 
             GetDataFromXml();
@@ -31,7 +31,7 @@ namespace Automation.Xml
             }
             catch (FileNotFoundException)
             {
-                // ignored
+                _document = null;
             }
         }
 
