@@ -1,8 +1,7 @@
-﻿using System.Net;
-using System.Data;
+﻿using System.IO;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
-using System.Collections.Generic;
 using Automation.Xml;
 using Automation.Gui.Models;
 
@@ -12,6 +11,7 @@ namespace Automation.Gui.Controllers
     {
         private readonly testsettingsEntities _db = new testsettingsEntities();
         public static bool ImportSuccessful;
+        public static bool TriedToImport;
 
         // GET: Tests
         public ActionResult Index()
@@ -21,11 +21,27 @@ namespace Automation.Gui.Controllers
 
         public ActionResult ImportTests()
         {
-            const string path = @"C:\AutomatedUiTests\resources\sample.xml";
+            return View();
+        }
 
-            ImportSuccessful = new TestCaseImporter().SaveTestsToDb(path);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ImportTest()
+        {
+            TriedToImport = true;
 
-            return View(_db.testsuites.ToList());
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    var path = Path.GetFullPath(file.FileName);
+                    ImportSuccessful = new TestCaseImporter().SaveTestsToDb(path);
+                }
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

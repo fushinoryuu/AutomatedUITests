@@ -1,34 +1,58 @@
-﻿@{
+﻿@using Automation.Gui.Controllers
+
+@{
     ViewBag.Title = "Test Cases Page";
 }
-
-@section scripts
-{
-    <script src="~/Scripts/UploadButton.js"></script>
-}
-
 
 @Html.Partial("TestsJumbotron")
 
 <hr />
 
-<div class="input-group">
-    <label class="input-group-btn">
-        <span class="btn btn-primary">
-            Browse&hellip; <input type="file" style="display: none;" multiple>
-        </span>
-    </label>
-    <input type="text" class="form-control" readonly>
-</div>
+@if (TestsController.TriedToImport && TestsController.ImportSuccessful)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Done!</strong>
+        Your last attempt to import tests was successful.
+    </div>
 
-<br />
+    <div>
+        <a class="btn btn-success disabled" href="@Url.Action("ImportTests")">
+            <i class="glyphicon glyphicon-import"></i>
+            <span>Import test cases</span>
+        </a>
+    </div>
+}
 
-<div>
-    <a class="btn btn-success" href="@Url.Action("ImportTests")">
-        <i class="glyphicon glyphicon-import"></i>
-        <span>Import test cases</span>
-    </a>
-</div>
+else if (TestsController.TriedToImport && !TestsController.ImportSuccessful)
+{
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Something went wrong!</strong>
+        Your last attempt to import tests failed. Please try again.
+    </div>
+
+    <div>
+        <a class="btn btn-success" href="@Url.Action("ImportTests")">
+            <i class="glyphicon glyphicon-import"></i>
+            <span>Import test cases</span>
+        </a>
+    </div>
+}
+
+else
+{
+    <div>
+        <a class="btn btn-success" href="@Url.Action("ImportTests")">
+            <i class="glyphicon glyphicon-import"></i>
+            <span>Import test cases</span>
+        </a>
+    </div>
+}
 
 <hr />
 

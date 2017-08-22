@@ -43,6 +43,7 @@ namespace Automation.Gui.Controllers
 
                 _db.settings.Add(setting);
                 _db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 

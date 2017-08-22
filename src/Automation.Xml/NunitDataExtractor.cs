@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Xml;
 using Automation.Xml.Data;
 
@@ -29,7 +28,7 @@ namespace Automation.Xml
             {
                 _document.Load(@"C:\AutomatedUiTests\NunitWork\TestResult.xml");
             }
-            catch (FileNotFoundException)
+            catch (Exception)
             {
                 _document = null;
             }
