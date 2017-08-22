@@ -23,10 +23,14 @@ namespace Automation.Selenium
 
         private static IWebDriver SetupWebDriver()
         {
-            var capabilities = TestSettingsReader.TargetBrowser;
-            capabilities.Platform = TestSettingsReader.OperatingSystem;
+            var capabilities = EnvironmentVariables.TargetBrowserEnv
+                ?? TestSettingsReader.TargetBrowser;
 
-            var hub = TestSettingsReader.SeleniumHubUri;
+            capabilities.Platform = EnvironmentVariables.OperatingSystemEnv
+                ?? TestSettingsReader.OperatingSystem;
+
+            var hub = EnvironmentVariables.SeleniumHubUriEnv
+                ?? TestSettingsReader.SeleniumHubUri;
 
             return new RemoteWebDriver(hub, capabilities);
         }
@@ -46,7 +50,8 @@ namespace Automation.Selenium
         {
             var date = DateTime.Now.ToString("yyyy-MM-dd");
 
-            return TestSettingsReader.ScreenshotFolder + $"{date}\\";
+            return (EnvironmentVariables.ScreenshotFolderEnv
+                ?? TestSettingsReader.ScreenshotFolder) + $"{date}\\";
         }
 
         private static void MakeDirectory(string path)
