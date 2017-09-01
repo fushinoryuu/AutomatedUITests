@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
-using Automation.Xml.Data;
+using Automation.Database.Model;
 
 namespace Automation.Xml
 {
@@ -27,7 +26,7 @@ namespace Automation.Xml
 
         private static setting GetDataFromDb()
         {
-            var db = new xmlTestSettingsEntities();
+            var db = new testsettingsEntities();
 
             var config = (from item in db.settings
                           where item.isActive == 1

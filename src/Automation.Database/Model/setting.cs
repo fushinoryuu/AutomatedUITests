@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Automation.Xml.Data
+namespace Automation.Database.Model
 {
     using System;
     using System.Collections.Generic;

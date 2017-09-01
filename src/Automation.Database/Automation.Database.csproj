@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B863BA46-DD40-4517-BE87-7668C169E447}</ProjectGuid>
+    <ProjectGuid>{536868AA-BE34-4BD6-B0FB-368BE72B0672}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Automation.Xml</RootNamespace>
-    <AssemblyName>Automation.Xml</AssemblyName>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Automation.Database</RootNamespace>
+    <AssemblyName>Automation.Database</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -31,44 +29,78 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppConfigWriter.cs" />
-    <Compile Include="NunitDataExtractor.cs" />
+    <Compile Include="Model\AutomationModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutomationModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AutomationModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutomationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AutomationModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AutomationModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\setting.cs">
+      <DependentUpon>AutomationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\testcas.cs">
+      <DependentUpon>AutomationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\testrun.cs">
+      <DependentUpon>AutomationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\testsuite.cs">
+      <DependentUpon>AutomationModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
+    <None Include="App.config" />
+    <EntityDeploy Include="Model\AutomationModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AutomationModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\AutomationModel.edmx.diagram">
+      <DependentUpon>AutomationModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Model\AutomationModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutomationModel.edmx</DependentUpon>
+      <LastGenOutput>AutomationModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\AutomationModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AutomationModel.edmx</DependentUpon>
+      <LastGenOutput>AutomationModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Automation.Database\Automation.Database.csproj">
-      <Project>{536868aa-be34-4bd6-b0fb-368be72b0672}</Project>
-      <Name>Automation.Database</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Automation.Selenium\Automation.Selenium.csproj">
-      <Project>{dff5e1ad-696a-44a3-bd37-d3344035da53}</Project>
-      <Name>Automation.Selenium</Name>
-    </ProjectReference>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
       <ItemGroup>
-        <Reference Include="System.ComponentModel.DataAnnotations">
-          <Paket>True</Paket>
-        </Reference>
         <Reference Include="EntityFramework">
           <HintPath>..\..\packages\EntityFramework\lib\net45\EntityFramework.dll</HintPath>
           <Private>True</Private>

@@ -5,8 +5,8 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using System.Diagnostics;
 using Automation.Xml;
-using Automation.Gui.Models;
 using Automation.Tests.Utils;
+using Automation.Database.Model;
 
 namespace Automation.Gui.Controllers
 {
