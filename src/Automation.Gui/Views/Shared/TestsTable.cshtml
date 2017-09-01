@@ -1,18 +1,14 @@
-﻿@model IEnumerable<Automation.Gui.Models.testsuite>
+﻿@model IEnumerable<Automation.Database.Model.testsuite>
 
 <div class="panel panel-primary">
     <div class="panel-heading">Tests</div>
     <table class="table">
         <tr>
-            <th>
-                Test Suite Name
-            </th>
-            <th>
-                # of Tests Contained
-            </th>
-            <th>
-                <!--This column is for the action buttons-->
-            </th>
+            <th>Test Suite Name</th>
+
+            <th># of Tests Contained</th>
+
+            <th><!--This column is for the action buttons--></th>
         </tr>
 
         @foreach (var item in Model)

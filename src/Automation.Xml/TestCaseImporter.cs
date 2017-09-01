@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
-using Automation.Xml.Data;
 using Automation.Xml.Utils;
+using Automation.Database.Model;
 
 namespace Automation.Xml
 {
@@ -9,7 +9,7 @@ namespace Automation.Xml
     {
         private XmlSerializer _serializer;
         private TestsFromXml _testsFromXml;
-        private xmlTestSettingsEntities _db;
+        private testsettingsEntities _db;
 
         public bool SaveTestsToDb(string path)
         {

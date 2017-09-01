@@ -1,9 +1,8 @@
 ﻿using System.IO;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Automation.Xml;
-using Automation.Gui.Models;
+using Automation.Database.Model;
 
 namespace Automation.Gui.Controllers
 {

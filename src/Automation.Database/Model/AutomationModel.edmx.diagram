@@ -5,11 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="34a972918a9b4074ab64b47201d4e393" Name="Diagram1">
-        <EntityTypeShape EntityType="testsettingsModel.setting" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testsettingsModel.testcas" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="testsettingsModel.testrun" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testsettingsModel.testsuite" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="testsettingsModel.belongstosuite" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="testsettingsModel.setting" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="testsettingsModel.testcas" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="testsettingsModel.testrun" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="testsettingsModel.testsuite" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="testsettingsModel.belongstosuite" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
