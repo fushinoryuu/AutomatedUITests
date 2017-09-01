@@ -13,8 +13,11 @@ namespace Automation.Selenium
         private static setting GetDataFromDb()
         {
             var db = new testsettingsEntities();
+            var setting = db.settings.FirstOrDefault(item => item.isActive == 1);
 
-            return db.settings.FirstOrDefault(item => item.isActive == 1);
+            db.Dispose();
+
+            return setting;
         }
 
         public static DesiredCapabilities TargetBrowser
