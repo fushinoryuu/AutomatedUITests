@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="TestSettingsModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="testsettingsModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="settings">
           <Key>
             <PropertyRef Name="id" />
@@ -60,7 +60,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TestSettingsModelStoreContainer">
+        <EntityContainer Name="testsettingsModelStoreContainer">
           <EntitySet Name="settings" EntityType="Self.settings" Schema="testsettings" store:Type="Tables" />
           <EntitySet Name="testcases" EntityType="Self.testcases" Schema="testsettings" store:Type="Tables" />
           <EntitySet Name="testruns" EntityType="Self.testruns" Schema="testsettings" store:Type="Tables" />
@@ -70,10 +70,11 @@
             <End Role="testcases" EntitySet="testcases" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="TestSettingsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="testsettingsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="setting">
           <Key>
             <PropertyRef Name="id" />
@@ -85,23 +86,22 @@
           <Property Name="screenshotFolder" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="isActive" Type="SByte" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="testsettingsEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="settings" EntityType="Self.setting" />
-          <EntitySet Name="testruns" EntityType="TestSettingsModel.testrun" />
-          <EntitySet Name="testcases" EntityType="TestSettingsModel.testcase" />
-          <EntitySet Name="testsuites" EntityType="TestSettingsModel.testsuite" />
-          <AssociationSet Name="belongstosuite" Association="TestSettingsModel.belongstosuite">
-            <End Role="testsuite" EntitySet="testsuites" />
-            <End Role="testcas" EntitySet="testcases" />
-          </AssociationSet>
-        </EntityContainer>
+        <EntityType Name="testcas">
+          <Key>
+            <PropertyRef Name="testcaseid" />
+          </Key>
+          <Property Name="testcaseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="testcasename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="belongstosuite" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="testsuite" Relationship="Self.belongstosuite" FromRole="testcases" ToRole="testsuites" />
+        </EntityType>
         <EntityType Name="testrun">
           <Key>
             <PropertyRef Name="guid" />
           </Key>
-          <Property Name="guid" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
+          <Property Name="guid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="testcasecount" Type="Int32" Nullable="false" />
-          <Property Name="result" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="result" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="passed" Type="Int32" Nullable="false" />
           <Property Name="failed" Type="Int32" Nullable="false" />
           <Property Name="inconclusive" Type="Int32" Nullable="false" />
@@ -110,68 +110,86 @@
           <Property Name="endtime" Type="DateTime" Nullable="false" />
           <Property Name="duration" Type="Double" Nullable="false" />
         </EntityType>
-        <EntityType Name="testcase">
-          <Key>
-            <PropertyRef Name="testcaseid" />
-          </Key>
-          <Property Name="testcaseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="testcasename" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="belongstosuite" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="testsuite" Relationship="TestSettingsModel.belongstosuite" FromRole="testcas" ToRole="testsuite" />
-        </EntityType>
         <EntityType Name="testsuite">
           <Key>
             <PropertyRef Name="testsuiteid" />
           </Key>
           <Property Name="testsuiteid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="testsuitename" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="testcases" Relationship="TestSettingsModel.belongstosuite" FromRole="testsuite" ToRole="testcas" />
+          <Property Name="testsuitename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="testcases" Relationship="Self.belongstosuite" FromRole="testsuites" ToRole="testcases" />
         </EntityType>
         <Association Name="belongstosuite">
-          <End Type="TestSettingsModel.testsuite" Role="testsuite" Multiplicity="1">
+          <End Role="testsuites" Type="Self.testsuite" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="TestSettingsModel.testcase" Role="testcas" Multiplicity="*" />
+          <End Role="testcases" Type="Self.testcas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="testsuite">
+            <Principal Role="testsuites">
               <PropertyRef Name="testsuiteid" />
             </Principal>
-            <Dependent Role="testcas">
+            <Dependent Role="testcases">
               <PropertyRef Name="belongstosuite" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="testsettingsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="settings" EntityType="Self.setting" />
+          <EntitySet Name="testcases" EntityType="Self.testcas" />
+          <EntitySet Name="testruns" EntityType="Self.testrun" />
+          <EntitySet Name="testsuites" EntityType="Self.testsuite" />
+          <AssociationSet Name="belongstosuite" Association="Self.belongstosuite">
+            <End Role="testsuites" EntitySet="testsuites" />
+            <End Role="testcases" EntitySet="testcases" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="TestSettingsModelStoreContainer" CdmEntityContainer="testsettingsEntities">
+        <EntityContainerMapping StorageEntityContainer="testsettingsModelStoreContainer" CdmEntityContainer="testsettingsEntities">
           <EntitySetMapping Name="settings">
-            <EntityTypeMapping TypeName="TestSettingsModel.setting">
+            <EntityTypeMapping TypeName="testsettingsModel.setting">
               <MappingFragment StoreEntitySet="settings">
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="targetBrowser" ColumnName="targetBrowser" />
                 <ScalarProperty Name="operatingSystem" ColumnName="operatingSystem" />
                 <ScalarProperty Name="seleniumHubUri" ColumnName="seleniumHubUri" />
                 <ScalarProperty Name="screenshotFolder" ColumnName="screenshotFolder" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="testcases">
+            <EntityTypeMapping TypeName="testsettingsModel.testcas">
+              <MappingFragment StoreEntitySet="testcases">
+                <ScalarProperty Name="testcaseid" ColumnName="testcaseid" />
+                <ScalarProperty Name="testcasename" ColumnName="testcasename" />
+                <ScalarProperty Name="belongstosuite" ColumnName="belongstosuite" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="testruns">
-            <EntityTypeMapping TypeName="TestSettingsModel.testrun">
+            <EntityTypeMapping TypeName="testsettingsModel.testrun">
               <MappingFragment StoreEntitySet="testruns">
-                <ScalarProperty Name="duration" ColumnName="duration" />
-                <ScalarProperty Name="endtime" ColumnName="endtime" />
-                <ScalarProperty Name="starttime" ColumnName="starttime" />
-                <ScalarProperty Name="skipped" ColumnName="skipped" />
-                <ScalarProperty Name="inconclusive" ColumnName="inconclusive" />
-                <ScalarProperty Name="failed" ColumnName="failed" />
-                <ScalarProperty Name="passed" ColumnName="passed" />
-                <ScalarProperty Name="result" ColumnName="result" />
-                <ScalarProperty Name="testcasecount" ColumnName="testcasecount" />
                 <ScalarProperty Name="guid" ColumnName="guid" />
+                <ScalarProperty Name="testcasecount" ColumnName="testcasecount" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="passed" ColumnName="passed" />
+                <ScalarProperty Name="failed" ColumnName="failed" />
+                <ScalarProperty Name="inconclusive" ColumnName="inconclusive" />
+                <ScalarProperty Name="skipped" ColumnName="skipped" />
+                <ScalarProperty Name="starttime" ColumnName="starttime" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="testsuites">
+            <EntityTypeMapping TypeName="testsettingsModel.testsuite">
+              <MappingFragment StoreEntitySet="testsuites">
+                <ScalarProperty Name="testsuiteid" ColumnName="testsuiteid" />
+                <ScalarProperty Name="testsuitename" ColumnName="testsuitename" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

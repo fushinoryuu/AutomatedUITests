@@ -7,18 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Automation.Gui.Models
+namespace Automation.Database.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class setting
+    public partial class testcas
     {
-        public int id { get; set; }
-        public string targetBrowser { get; set; }
-        public string operatingSystem { get; set; }
-        public string seleniumHubUri { get; set; }
-        public string screenshotFolder { get; set; }
-        public sbyte isActive { get; set; }
+        public int testcaseid { get; set; }
+        public string testcasename { get; set; }
+        public int belongstosuite { get; set; }
+    
+        public virtual testsuite testsuite { get; set; }
     }
 }

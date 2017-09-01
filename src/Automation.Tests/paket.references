@@ -3,3 +3,6 @@ NUnit
 NUnit.Console
 NUnit.ConsoleRunner
 structuremap
+EntityFramework
+MySql.Data
+MySql.Data.Entity

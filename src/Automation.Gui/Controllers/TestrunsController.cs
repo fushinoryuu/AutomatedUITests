@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Collections.Generic;
 using Automation.Xml;
-using Automation.Gui.Models;
+using Automation.Database.Model;
 
 namespace Automation.Gui.Controllers
 {

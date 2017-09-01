@@ -24,6 +24,7 @@ namespace Automation.Selenium
         private static IWebDriver SetupWebDriver()
         {
             var capabilities = TestSettingsReader.TargetBrowser;
+
             capabilities.Platform = TestSettingsReader.OperatingSystem;
 
             var hub = TestSettingsReader.SeleniumHubUri;

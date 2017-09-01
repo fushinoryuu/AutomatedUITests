@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Xml;
-using Automation.Xml.Data;
+using Automation.Database.Model;
 
 namespace Automation.Xml
 {
@@ -54,7 +54,7 @@ namespace Automation.Xml
 
         private void SaveResults()
         {
-            var db = new xmlTestSettingsEntities();
+            var db = new testsettingsEntities();
 
             db.testruns.Add(_result);
             db.SaveChanges();
