@@ -40,27 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\setting.cs">
-      <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\testrun.cs">
-      <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\XmlTestSettingsModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>XmlTestSettingsModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\XmlTestSettingsModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>XmlTestSettingsModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\XmlTestSettingsModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>XmlTestSettingsModel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="AppConfigWriter.cs" />
     <Compile Include="NunitDataExtractor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,30 +48,15 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="Data\XmlTestSettingsModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>XmlTestSettingsModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Data\XmlTestSettingsModel.edmx.diagram">
-      <DependentUpon>XmlTestSettingsModel.edmx</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Data\XmlTestSettingsModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>XmlTestSettingsModel.Context.cs</LastGenOutput>
-      <DependentUpon>XmlTestSettingsModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Data\XmlTestSettingsModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>XmlTestSettingsModel.edmx</DependentUpon>
-      <LastGenOutput>XmlTestSettingsModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Automation.Database\Automation.Database.csproj">
+      <Project>{536868aa-be34-4bd6-b0fb-368be72b0672}</Project>
+      <Name>Automation.Database</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Automation.Selenium\Automation.Selenium.csproj">
       <Project>{dff5e1ad-696a-44a3-bd37-d3344035da53}</Project>
       <Name>Automation.Selenium</Name>
