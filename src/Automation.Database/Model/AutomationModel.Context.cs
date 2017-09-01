@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Automation.Gui.Models
+namespace Automation.Database.Model
 {
     using System;
     using System.Data.Entity;
@@ -26,6 +26,8 @@ namespace Automation.Gui.Models
         }
     
         public virtual DbSet<setting> settings { get; set; }
+        public virtual DbSet<testcas> testcases { get; set; }
         public virtual DbSet<testrun> testruns { get; set; }
+        public virtual DbSet<testsuite> testsuites { get; set; }
     }
 }

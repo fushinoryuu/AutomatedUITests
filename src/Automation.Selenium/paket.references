@@ -1,3 +1,6 @@
 Selenium.Support
 Selenium.WebDriver
 structuremap
+EntityFramework
+MySql.Data
+MySql.Data.Entity

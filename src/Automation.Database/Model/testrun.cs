@@ -7,14 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Automation.Gui.Models
+namespace Automation.Database.Model
 {
     using System;
     using System.Collections.Generic;
     
     public partial class testrun
     {
-        public System.Guid guid { get; set; }
+        public string guid { get; set; }
         public int testcasecount { get; set; }
         public string result { get; set; }
         public int passed { get; set; }
