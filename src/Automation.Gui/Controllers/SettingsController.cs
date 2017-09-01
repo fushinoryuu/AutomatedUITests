@@ -34,12 +34,12 @@ namespace Automation.Gui.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,targetBrowser,operatingSystem,seleniumHubUri,screenshotFolder,isActive")] setting setting)
         {
-            setting.id = GetNextId();
+            setting.id = Database.DbHelpers.GetNextId();
 
             if (ModelState.IsValid)
             {
                 if (setting.isActive == 1)
-                    DeactivateAll();
+                    Database.DbHelpers.DeactivateAll();
 
                 _db.settings.Add(setting);
                 _db.SaveChanges();
@@ -47,17 +47,6 @@ namespace Automation.Gui.Controllers
             }
 
             return View(setting);
-        }
-
-        protected int GetNextId()
-        {
-            var items = (from item in _db.settings
-                         orderby item.id
-                         select item).ToList();
-
-            var nextNumber = items.Last().id;
-
-            return ++nextNumber;
         }
 
         // GET: Settings/Edit/5
@@ -85,25 +74,12 @@ namespace Automation.Gui.Controllers
                 return View(setting);
 
             if (setting.isActive == 1)
-                DeactivateAll();
+                Database.DbHelpers.DeactivateAll();
 
             _db.Entry(setting).State = EntityState.Modified;
             _db.SaveChanges();
+
             return RedirectToAction("Index");
-        }
-
-        private static void DeactivateAll()
-        {
-            using (var localDb = new testsettingsEntities())
-            {
-                var toUpdate = (from item in localDb.settings
-                                where item.isActive == 1
-                                select item).ToList();
-
-                toUpdate.ForEach(i => i.isActive = 0);
-                localDb.SaveChanges();
-                localDb.Dispose();
-            }
         }
 
         // GET: Settings/Delete/5
