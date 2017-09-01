@@ -1,19 +1,34 @@
 ﻿using System;
+using System.Linq;
 using System.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
+using Automation.Database.Model;
 using Automation.Selenium.Utils;
 
 namespace Automation.Selenium
 {
     internal class TestSettingsReader
     {
+        private static setting GetDataFromDb()
+        {
+            var db = new testsettingsEntities();
+
+            return db.settings.FirstOrDefault(item => item.isActive == 1);
+        }
+
         public static DesiredCapabilities TargetBrowser
         {
             get
             {
+                var settings = GetDataFromDb();
                 BrowserType targetBrowser;
-                Enum.TryParse(ConfigurationManager.AppSettings["targetBrowser"], out targetBrowser);
+
+                if (settings != null)
+                    Enum.TryParse(settings.targetBrowser, out targetBrowser);
+
+                else
+                    Enum.TryParse(ConfigurationManager.AppSettings["targetBrowser"], out targetBrowser);
 
                 switch (targetBrowser)
                 {
@@ -35,8 +50,14 @@ namespace Automation.Selenium
         {
             get
             {
+                var settings = GetDataFromDb();
                 OperatingSystemType operatingSystem;
-                Enum.TryParse(ConfigurationManager.AppSettings["operatingSystem"], out operatingSystem);
+
+                if (settings != null)
+                    Enum.TryParse(settings.operatingSystem, out operatingSystem);
+
+                else
+                    Enum.TryParse(ConfigurationManager.AppSettings["operatingSystem"], out operatingSystem);
 
                 switch (operatingSystem)
                 {
@@ -58,7 +79,11 @@ namespace Automation.Selenium
         {
             get
             {
-                var uri = ConfigurationManager.AppSettings["seleniumHubUri"];
+                var settings = GetDataFromDb();
+
+                var uri = settings != null
+                    ? settings.seleniumHubUri
+                    : ConfigurationManager.AppSettings["seleniumHubUri"];
 
                 return string.IsNullOrWhiteSpace(uri) ? new Uri("http://localhost:4444/wd/hub") : new Uri(uri);
             }
@@ -68,7 +93,11 @@ namespace Automation.Selenium
         {
             get
             {
-                var directory = ConfigurationManager.AppSettings["screenshotFolder"];
+                var settings = GetDataFromDb();
+
+                var directory = settings != null
+                    ? settings.screenshotFolder
+                    : ConfigurationManager.AppSettings["screenshotFolder"];
 
                 return string.IsNullOrWhiteSpace(directory) ? "C:\\UI_Test_Screenshots\\" : directory;
             }

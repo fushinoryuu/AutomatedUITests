@@ -153,16 +153,6 @@ namespace Automation.Gui.Controllers
 
         public ActionResult RunAutomatedTests()
         {
-            var setting = (from item in _db.settings
-                           where item.isActive == 1
-                           select item).FirstOrDefault();
-
-            if (setting != null)
-            {
-                Selenium.EnvironmentVariables.SetVariables(setting.targetBrowser,
-                    setting.operatingSystem, setting.seleniumHubUri, setting.screenshotFolder);
-            }
-
             _processId = RunTestsHelper.RunNunitTests(
                 @"C:\AutomatedUiTests\src\Automation.Tests\Automation.Tests.csproj " +
                 "--workers=30 " +
