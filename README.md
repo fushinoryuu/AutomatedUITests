@@ -11,20 +11,15 @@ This repo also includes:
 
 **Note:** If you are planning on using the GUI in this project to edit/update your test settings, you have to save it to the root of your C: drive. If you are not going to use the GUI, then feel free to save the project wherever you like.
 
-## Known Issues
-Here is a list of known issues with this project:
-
-1. App.config file does not reload at runtime when it has been edited in the same session.
-   - When the user runs the GUI project, they are able to update/edit the test settings and generate a new App.config file. The issue is that when the user clicks the "Run automated tests" button, the tests run with the old values. If you want the tests to run under the new values, you will have to close the GUI and run it again.
-
 ## Visual Studio Solution
-There are five projects in the solution:
+There are six projects in the solution:
 
-1. Automation.ConfigWriter - Gets the information from the DB and generates a new App.config file.
+1. Automation.Database - This project constains the database model that all the other projects will reference if they need to connect to the db.
 2. Automation.Framework - The framework containing the Page Objects used to build the automation tests.
 3. Automation.Gui - A simple web app used to updated the settings for the Selenium tests.
-4. Automation.Selenium - Wraps the Selenium WebDriver and reads the App.config file.
+4. Automation.Selenium - Wraps the Selenium WebDriver and reads the setting the db or the App.config file.
 5. Automation.Tests - The NUnit tests created using the Framework & Selenium projects.
+6. Automation.Xml - Gets the information from the db and generates a new App.config file.
 
 ## Starting the Selenium Hub
 On the host machine:
