@@ -15,3 +15,9 @@
 - [ ] Store screenshots in db
 - [ ] Store test run results in db
 - [x] Set environment variables instead of reading the environment variables to fix issue of not running the new config at run time.
+- [ ] Provide historical look of test cases to see if any fail consistently.
+- [ ] Hook it up to a CI
+- [ ] Display available options for settings as dropdown from valid entries.
+- [ ] Add a field for which site/environment the tests will run against.
+- [ ] Show tests available, and select a group or single tests to run.
+- [ ] Convert web app to ASP.Net Core and React.
