@@ -73,7 +73,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <EntityDeploy Include="Model\AutomationModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AutomationModel.Designer.cs</LastGenOutput>
