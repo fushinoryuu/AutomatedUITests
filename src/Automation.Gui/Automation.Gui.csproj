@@ -98,9 +98,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot">
       <Paket>True</Paket>
     </Content>
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.1.1-vsdoc.js">
       <Paket>True</Paket>
     </Content>
@@ -131,7 +128,6 @@
     <Content Include="Scripts\bootstrap.min.js">
       <Paket>True</Paket>
     </Content>
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js">
       <Paket>True</Paket>
