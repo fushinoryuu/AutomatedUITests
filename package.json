@@ -1,25 +1,22 @@
 {
-  "name": "automated-ui-tests",
-  "version": "1.0.0",
-  "description": "This is the skeleton code to starting Selenium automation for a site. The skeleton uses oneexchange.com, but it can be easily updated to something else.",
-  "private": true,
-  "scripts":
-  {
-    "help": "npm-scripts-info",
-    "build": "powershell ./build.ps1 -Target default",
-    "tests": "powershell ./build.ps1 -Target tests",
-    "hub": "start call powershell ./selenium/HUB_SeleniumGrid.bat",
-    "node": "start call powershell ./selenium/NODE_SeleniumGrid.bat"
-  },
-  "scripts-info":
-  {
-    "build": "Installs the dependencies, builds the project, and executes tests.",
-    "tests": "Assumes dependencies are already installed, builds the project, and executes tests.",
-    "hub": "Starts a Selenium Server Hub.",
-    "node": "Starts a Selenium Server Node."
-  },
-  "devDependencies":
-  {
-    "npm-scripts-info": "^0.3.6"
-  }
+    "name": "selenium-automation-toolbox",
+    "version": "1.0.0",
+    "description": "This is the skeleton code to starting Selenium automation for a site. The skeleton uses oneexchange.com, but it can be easily updated to something else.",
+    "private": true,
+    "scripts": {
+        "help": "npm-scripts-info",
+        "build": "powershell ./build.ps1 -Target default",
+        "tests": "powershell ./build.ps1 -Target tests",
+        "hub": "start call powershell ./selenium/HUB_SeleniumGrid.bat",
+        "node": "start call powershell ./selenium/NODE_SeleniumGrid.bat"
+    },
+    "scripts-info": {
+        "build": "Installs the dependencies, builds the project, and executes tests.",
+        "tests": "Assumes dependencies are already installed, builds the project, and executes tests.",
+        "hub": "Starts a Selenium Server Hub.",
+        "node": "Starts a Selenium Server Node."
+    },
+    "devDependencies": {
+        "npm-scripts-info": "^0.3.6"
+    }
 }
