@@ -274,3 +274,6 @@ __pycache__/
 # Cake & Build related
 tools/**
 !tools/packages.config
+
+# Other files
+src/Automation.Gui/App_Data/

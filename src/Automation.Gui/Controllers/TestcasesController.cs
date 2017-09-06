@@ -1,7 +1,8 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
+using System.Web;
 using System.Linq;
 using System.Web.Mvc;
-using Automation.Xml;
 using Automation.Database.Model;
 
 namespace Automation.Gui.Controllers
@@ -25,19 +26,25 @@ namespace Automation.Gui.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ImportTest()
+        public ActionResult ImportXml(HttpPostedFileBase file)
         {
-            TriedToImport = true;
-
-            if (Request.Files.Count > 0)
+            if (file != null && file.ContentLength > 0)
             {
-                var file = Request.Files[0];
-
-                if (file != null && file.ContentLength > 0)
+                try
                 {
-                    var path = Path.GetFullPath(file.FileName);
-                    ImportSuccessful = new TestCaseImporter().SaveTestsToDb(path);
+                    var path = Path.Combine(Server.MapPath("~/App_Data"), Path.GetFileName(file.FileName));
+
+                    file.SaveAs(path);
                 }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.Message);
+                }
+            }
+
+            else
+            {
+                Console.WriteLine("You have not specified a file.");
             }
 
             return RedirectToAction("Index");
