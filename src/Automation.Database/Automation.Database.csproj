@@ -62,7 +62,7 @@
     <Compile Include="Model\setting.cs">
       <DependentUpon>AutomationModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\testcas.cs">
+    <Compile Include="Model\testcase.cs">
       <DependentUpon>AutomationModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\testrun.cs">

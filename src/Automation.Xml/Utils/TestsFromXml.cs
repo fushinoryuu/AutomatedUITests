@@ -7,7 +7,7 @@ namespace Automation.Xml.Utils
     public class TestsFromXml
     {
         [XmlElement("test")]
-        public List<Tests> Suites { get; set; }
+        public List<Tests> ListOfTests { get; set; }
 
         public class Tests
         {

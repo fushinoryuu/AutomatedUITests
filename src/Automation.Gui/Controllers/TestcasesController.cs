@@ -4,6 +4,7 @@ using System.Web;
 using System.Linq;
 using System.Web.Mvc;
 using Automation.Database.Model;
+using Automation.Xml;
 
 namespace Automation.Gui.Controllers
 {
@@ -28,24 +29,26 @@ namespace Automation.Gui.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ImportXml(HttpPostedFileBase file)
         {
-            if (file != null && file.ContentLength > 0)
-            {
-                try
-                {
-                    // ReSharper disable once AssignNullToNotNullAttribute
-                    var path = Path.Combine(Server.MapPath("~/App_Data"), Path.GetFileName(file.FileName));
+            TriedToImport = true;
 
-                    file.SaveAs(path);
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine(exception.Message);
-                }
+            if (file == null || file.ContentLength <= 0 || !file.FileName.EndsWith("xml"))
+            {
+                ImportSuccessful = false;
+                return RedirectToAction("Index");
             }
 
-            else
+            try
             {
-                Console.WriteLine("You have not specified a file.");
+                // ReSharper disable once AssignNullToNotNullAttribute
+                var path = Path.Combine(Server.MapPath("~/App_Data"), Path.GetFileName(file.FileName));
+
+                file.SaveAs(path);
+
+                ImportSuccessful = new TestCaseImporter().SaveTestsToDb(path);
+            }
+            catch (Exception)
+            {
+                ImportSuccessful = false;
             }
 
             return RedirectToAction("Index");

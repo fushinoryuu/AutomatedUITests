@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using Automation.Xml.Utils;
 using Automation.Database.Model;
@@ -7,16 +9,18 @@ namespace Automation.Xml
 {
     public class TestCaseImporter
     {
-        private XmlSerializer _serializer;
         private TestsFromXml _testsFromXml;
-        private testsettingsEntities _db;
+        private List<testcase> _cases;
+        private List<testsuite> _suites;
 
         public bool SaveTestsToDb(string path)
         {
             DesirializeXml(path);
 
-            if (_serializer == null)
+            if (_testsFromXml == null)
                 return false;
+
+            SaveSuites();
 
             return true;
         }
@@ -26,15 +30,41 @@ namespace Automation.Xml
             try
             {
                 var reader = new StreamReader(path);
-
-                _serializer = new XmlSerializer(typeof(TestsFromXml));
-                _testsFromXml = (TestsFromXml)_serializer.Deserialize(reader);
+                var serializer = new XmlSerializer(typeof(TestsFromXml));
+                _testsFromXml = (TestsFromXml)serializer.Deserialize(reader);
                 reader.Close();
             }
             catch (FileNotFoundException)
             {
-                _serializer = null;
+                _testsFromXml = null;
             }
+        }
+
+        private void SaveSuites()
+        {
+            var suiteNameSet = new HashSet<string>();
+
+            foreach (var item in _testsFromXml.ListOfTests)
+                suiteNameSet.Add(item.Suite);
+
+            var db = new testsettingsEntities();
+
+            foreach (var name in suiteNameSet)
+            {
+                var inDb = db.testsuites.FirstOrDefault(i => i.testsuitename == name);
+
+                // Item already in db
+                if (inDb != null)
+                    continue;
+
+                // Item not in db
+                db.testsuites.Add(new testsuite { testsuitename = name });
+                db.SaveChanges();
+            }
+        }
+
+        private void SaveTests()
+        {
         }
     }
 }
