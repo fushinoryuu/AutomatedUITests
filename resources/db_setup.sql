@@ -43,7 +43,7 @@ COMMENT = 'This table will save test run results after running the automated tes
 ----------------------------
 
 CREATE TABLE `testsettings`.`testsuites` (
-  `testsuiteid` INT NOT NULL,
+  `testsuiteid` INT NOT NULL AUTO_INCREMENT,
   `testsuitename` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`testsuiteid`),
   UNIQUE INDEX `testsuiteid_UNIQUE` (`testsuiteid` ASC),
