@@ -44,10 +44,11 @@ namespace Automation.Gui.Controllers
 
                 file.SaveAs(path);
 
-                ImportSuccessful = new TestCaseImporter().SaveTestsToDb(path);
+                ImportSuccessful = new TestCaseImporter().ImportXmlFile(path);
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                Console.WriteLine(exception.Message);
                 ImportSuccessful = false;
             }
 

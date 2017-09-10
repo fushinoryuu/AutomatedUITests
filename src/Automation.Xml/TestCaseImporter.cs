@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
+using System.Collections.Generic;
 using Automation.Xml.Utils;
 using Automation.Database.Model;
 
@@ -10,10 +11,8 @@ namespace Automation.Xml
     public class TestCaseImporter
     {
         private TestsFromXml _testsFromXml;
-        private List<testcase> _cases;
-        private List<testsuite> _suites;
 
-        public bool SaveTestsToDb(string path)
+        public bool ImportXmlFile(string path)
         {
             DesirializeXml(path);
 
@@ -21,6 +20,7 @@ namespace Automation.Xml
                 return false;
 
             SaveSuites();
+            SaveTests();
 
             return true;
         }
@@ -45,7 +45,7 @@ namespace Automation.Xml
             var suiteNameSet = new HashSet<string>();
 
             foreach (var item in _testsFromXml.ListOfTests)
-                suiteNameSet.Add(item.Suite);
+                suiteNameSet.Add(item.TestSuite);
 
             var db = new testsettingsEntities();
 
@@ -65,6 +65,29 @@ namespace Automation.Xml
 
         private void SaveTests()
         {
+            var db = new testsettingsEntities();
+
+            foreach (var item in _testsFromXml.ListOfTests)
+            {
+                var inDb = db.testcases.FirstOrDefault(i => i.testcasename == item.TestName);
+
+                // Item alrady in db
+                if (inDb != null)
+                    continue;
+
+                // Item not in db
+                var newTest = new testcase();
+                var suite = db.testsuites.FirstOrDefault(i => i.testsuitename == item.TestSuite);
+
+                if (suite == null)
+                    throw new Exception("TestSuite not found");
+
+                newTest.testcasename = item.TestName;
+                newTest.belongstosuite = suite.testsuiteid;
+                newTest.testsuite = suite;
+                db.testcases.Add(newTest);
+                db.SaveChanges();
+            }
         }
     }
 }

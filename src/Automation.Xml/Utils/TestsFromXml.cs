@@ -11,13 +11,11 @@ namespace Automation.Xml.Utils
 
         public class Tests
         {
-            [XmlAttribute("suite")]
-            public string Suite { get; set; }
+            [XmlAttribute("testsuite")]
+            public string TestSuite { get; set; }
 
-            [XmlElement("name")]
-            public string Name { get; set; }
-
-            public int Id { get; set; }
+            [XmlAttribute("testname")]
+            public string TestName { get; set; }
         }
     }
 }

@@ -1,5 +1,5 @@
 <tests>
-    <test suite="HomepageTests" name="Home Page Loads"></test>
-    <test suite="HomepageTests" name="Buttons Are Visible"></test>
-    <test suite="HomePageErrorTests" name="Login Error Displays"></test>
+    <test testsuite="HomepageTests" testname="Home Page Loads" />
+    <test testsuite="HomepageTests" testname="Buttons Are Visible" />
+    <test testsuite="HomePageErrorTests" testname="Login Error Displays" />
 </tests>
