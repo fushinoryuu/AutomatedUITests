@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Automation.Database.Model.testcase>
+
+@{
+    ViewBag.Title = "Test Suite Details";
+}
+
+<div class="panel panel-primary">
+    <div class="panel-heading">Test Cases</div>
+    <table class="table">
+        <tr>
+            <th>Case Id</th>
+
+            <th>Test Case Name</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.testcaseid)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.testcasename)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

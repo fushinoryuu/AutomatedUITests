@@ -2,6 +2,7 @@
 using System.IO;
 using System.Web;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 using Automation.Database.Model;
 using Automation.Xml;
@@ -54,5 +55,28 @@ namespace Automation.Gui.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Details(int? suiteId)
+        {
+            if (suiteId == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var items = _db.testcases.Where(i => i.testsuite.testsuiteid == suiteId).ToList();
+
+            if (items.Count == 0)
+                return HttpNotFound();
+
+            return View(items);
+        }
+
+        //public ActionResult DeleteSuite(int? suiteId)
+        //{
+        //    RedirectToAction("Index");
+        //}
+
+        //public ActionResult DeleteSuiteConfirmed(int id)
+        //{
+        //    RedirectToAction("Index");
+        //}
     }
 }
