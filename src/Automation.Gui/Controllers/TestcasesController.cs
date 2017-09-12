@@ -9,7 +9,7 @@ using Automation.Xml;
 
 namespace Automation.Gui.Controllers
 {
-    public class TestcasesController : Controller
+    public class TestCasesController : Controller
     {
         private readonly testsettingsEntities _db = new testsettingsEntities();
         public static bool ImportSuccessful;

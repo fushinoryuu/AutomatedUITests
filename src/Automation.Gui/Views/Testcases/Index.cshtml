@@ -9,7 +9,7 @@
 
 <hr />
 
-@if (TestcasesController.TriedToImport && TestcasesController.ImportSuccessful)
+@if (TestCasesController.TriedToImport && TestCasesController.ImportSuccessful)
 {
     <!--Tried to import and was successful-->
     <div class="alert alert-success alert-dismissible" role="alert">
@@ -21,7 +21,7 @@
     </div>
 }
 
-else if (TestcasesController.TriedToImport && !TestcasesController.ImportSuccessful)
+else if (TestCasesController.TriedToImport && !TestCasesController.ImportSuccessful)
 {
     <!--Tried to import and there was an error-->
     <div class="alert alert-danger alert-dismissible" role="alert">
@@ -68,7 +68,7 @@ else if (TestcasesController.TriedToImport && !TestcasesController.ImportSuccess
 
                 <td>
                     <div class="btn-group" role="group">
-                        <a class="btn btn-info" href="@Url.Action("Details", "Testcases", new {item.testsuiteid})">
+                        <a class="btn btn-info" href="@Url.Action("Details", "TestCases", new {item.testsuiteid})">
                             <span class="glyphicon glyphicon glyphicon-th-list"></span>
                             <span>Details</span>
                         </a>

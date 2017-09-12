@@ -8,7 +8,7 @@ using Automation.Database.Model;
 
 namespace Automation.Gui.Controllers
 {
-    public class TestrunsController : Controller
+    public class RunTestsController : Controller
     {
         private readonly testsettingsEntities _db = new testsettingsEntities();
         public static bool ImportSuccessful;
