@@ -12,6 +12,12 @@ public DropOptions dropOptions = new DropOptions
 	{
 		new Project
 		{
+			Name = "Automation.Database",
+			Folders = new string[0],
+			Files = new string[0]
+		},
+		new Project
+		{
 			Name = "Automation.Framework",
 			Folders = new string[0],
 			Files = new string[0]
