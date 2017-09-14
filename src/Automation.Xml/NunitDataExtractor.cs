@@ -26,7 +26,7 @@ namespace Automation.Xml
         {
             try
             {
-                _document.Load(@"C:\AutomatedUiTests\NunitWork\TestResult.xml");
+                _document.Load(@"C:\AutomationToolboox\NunitWork\TestResult.xml");
             }
             catch (Exception)
             {

@@ -151,7 +151,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
-    <Compile Include="Controllers\RunTestsController.cs" />
+    <Compile Include="Controllers\TestResultsController.cs" />
     <Compile Include="Controllers\TestCasesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -172,10 +172,10 @@
     <Content Include="Views\Shared\ConfigTable.cshtml" />
     <Content Include="Views\Settings\RunAutomatedTests.cshtml" />
     <Content Include="Views\Settings\StopAutomatedTests.cshtml" />
-    <Content Include="Views\RunTests\Index.cshtml" />
+    <Content Include="Views\TestResults\Index.cshtml" />
     <Content Include="Views\Shared\TestrunsTable.cshtml" />
-    <Content Include="Views\RunTests\NunitDataExtraction.cshtml" />
-    <Content Include="Views\RunTests\Delete.cshtml" />
+    <Content Include="Views\TestResults\NunitDataExtraction.cshtml" />
+    <Content Include="Views\TestResults\Delete.cshtml" />
     <Content Include="Views\TestCases\Index.cshtml" />
     <Content Include="Views\TestCases\ImportTests.cshtml" />
     <Content Include="Views\Shared\SettingsJumbotron.cshtml" />
