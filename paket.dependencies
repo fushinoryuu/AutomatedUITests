@@ -8,7 +8,7 @@ nuget jQuery.Validation
 nuget Microsoft.AspNet.Mvc
 nuget Microsoft.AspNet.Razor
 nuget Microsoft.AspNet.WebPages
-nuget Microsoft.CodeDom.Providers.DotNetCompilerPlatform
+nuget Microsoft.CodeDom.Providers.DotNetCompilerPlatform 1.0.3.0
 nuget Microsoft.jQuery.Unobtrusive.Validation
 nuget Microsoft.Net.Compilers
 nuget Microsoft.Web.Infrastructure
