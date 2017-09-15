@@ -173,8 +173,6 @@
     <Content Include="Views\Settings\RunAutomatedTests.cshtml" />
     <Content Include="Views\Settings\StopAutomatedTests.cshtml" />
     <Content Include="Views\TestResults\Index.cshtml" />
-    <Content Include="Views\Shared\TestrunsTable.cshtml" />
-    <Content Include="Views\TestResults\NunitDataExtraction.cshtml" />
     <Content Include="Views\TestResults\Delete.cshtml" />
     <Content Include="Views\TestCases\Index.cshtml" />
     <Content Include="Views\TestCases\ImportTests.cshtml" />

@@ -12,6 +12,7 @@ namespace Automation.Gui.Controllers
     {
         private readonly testsettingsEntities _db = new testsettingsEntities();
         public static bool ImportSuccessful;
+        public static bool TriedToImport;
 
         // GET: Testruns
         public ActionResult Index()
@@ -51,9 +52,10 @@ namespace Automation.Gui.Controllers
 
         public ActionResult NunitDataExtraction()
         {
+            TriedToImport = true;
             ImportSuccessful = new NunitDataExtractor().SaveResultsToDb();
 
-            return View(GetOrderedList());
+            return RedirectToAction("Index");
         }
 
         private IList<testrun> GetOrderedList()
