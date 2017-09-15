@@ -35,8 +35,7 @@ namespace Automation.Gui.Controllers
         }
 
         // POST: Testruns/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string guid)
         {
             var item = _db.testruns.Find(guid);

@@ -16,13 +16,9 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.testcaseid)
-                </td>
+                <td>@Html.DisplayFor(modelItem => item.testcaseid)</td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.testcasename)
-                </td>
+                <td>@Html.DisplayFor(modelItem => item.testcasename)</td>
             </tr>
         }
     </table>

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 using System.Web;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
-using Automation.Database.Model;
 using Automation.Xml;
+using Automation.Database.Model;
 
 namespace Automation.Gui.Controllers
 {
@@ -56,7 +56,7 @@ namespace Automation.Gui.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Details(int? suiteId)
+        public ActionResult SuiteDetails(int? suiteId)
         {
             if (suiteId == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -69,14 +69,23 @@ namespace Automation.Gui.Controllers
             return View(items);
         }
 
-        //public ActionResult DeleteSuite(int? suiteId)
-        //{
-        //    RedirectToAction("Index");
-        //}
+        public ActionResult DeleteSuite(int? suiteId)
+        {
+            if (suiteId == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-        //public ActionResult DeleteSuiteConfirmed(int id)
-        //{
-        //    RedirectToAction("Index");
-        //}
+            var items = _db.testsuites.Find(suiteId);
+
+            if (items.Count == 0)
+                return HttpNotFound();
+
+            return View(items);
+        }
+
+        [HttpPost, ActionName("DeleteSuite"), ValidateAntiForgeryToken]
+        public ActionResult DeleteSuiteConfirmed(int id)
+        {
+            return RedirectToAction("Index");
+        }
     }
 }

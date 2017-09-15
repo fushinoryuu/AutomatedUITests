@@ -68,15 +68,15 @@ else if (TestCasesController.TriedToImport && !TestCasesController.ImportSuccess
 
                 <td>
                     <div class="btn-group" role="group">
-                        <a class="btn btn-info" href="@Url.Action("Details", "TestCases", new {item.testsuiteid})">
+                        <a class="btn btn-info" href="@Url.Action("SuiteDetails", "TestCases", new {item.testsuiteid})">
                             <span class="glyphicon glyphicon glyphicon-th-list"></span>
                             <span>Details</span>
                         </a>
 
-                        @*<a class="btn btn-danger disabled">
+                        <a class="btn btn-danger" href="@Url.Action("DeleteSuite", "TestCases", new {item.testsuiteid})">
                             <span class="glyphicon glyphicon-trash"></span>
                             <span>Delete</span>
-                        </a>*@
+                        </a>
                     </div>
                 </td>
             </tr>

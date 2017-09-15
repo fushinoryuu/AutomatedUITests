@@ -179,7 +179,8 @@
     <Content Include="Views\Shared\SettingsJumbotron.cshtml" />
     <Content Include="Views\Shared\TestrunsJumbotron.cshtml" />
     <Content Include="Views\Shared\TestsJumbotron.cshtml" />
-    <Content Include="Views\TestCases\Details.cshtml" />
+    <Content Include="Views\TestCases\SuiteDetails.cshtml" />
+    <Content Include="Views\TestCases\DeleteSuite.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

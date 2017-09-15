@@ -20,27 +20,23 @@
         @foreach (var item in Model)
         {
             <tr class=@(item.isActive == 1 ? "bg-success" : "")>
-                <td>
-                    @Html.DisplayFor(modelItem => item.targetBrowser)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.operatingSystem)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.seleniumHubUri)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.screenshotFolder)
-                </td>
-                <td>
-                    @(item.isActive == 1 ? "True" : "False")
-                </td>
+                <td>@Html.DisplayFor(modelItem => item.targetBrowser)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.operatingSystem)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.seleniumHubUri)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.screenshotFolder)</td>
+
+                <td>@(item.isActive == 1 ? "True" : "False")</td>
+
                 <td>
                     <div class="btn-group" role="group">
                         <a class="btn btn-info" href="@Url.Action("Edit", "Settings", new {item.id})">
                             <span class="glyphicon glyphicon-wrench"></span>
                             <span>Edit</span>
                         </a>
+
                         <a class="btn btn-danger" href="@Url.Action("Delete", "Settings", new {item.id})">
                             <span class="glyphicon glyphicon-trash"></span>
                             <span>Delete</span>
