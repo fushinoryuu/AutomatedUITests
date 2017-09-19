@@ -74,12 +74,12 @@ namespace Automation.Gui.Controllers
             if (suiteId == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var items = _db.testsuites.Find(suiteId);
+            var suite = _db.testsuites.Find(suiteId);
 
-            if (items.Count == 0)
+            if (suite == null)
                 return HttpNotFound();
 
-            return View(items);
+            return View(suite);
         }
 
         [HttpPost, ActionName("DeleteSuite"), ValidateAntiForgeryToken]
