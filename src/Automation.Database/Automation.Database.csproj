@@ -43,6 +43,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="docs\MySqlCommand.xml">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="docs\MySqlCommandBuilder.xml">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="docs\MySqlConnection.xml">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="docs\MySqlConnectionStringBuilder.xml">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="docs\MySqlDataAdapter.xml">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="docs\MySqlDataReader.xml">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="docs\MySqlException.xml">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="docs\MySqlHelper.xml">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="docs\MySqlParameter.xml">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="docs\MySqlParameterCollection.xml">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="docs\MySqlTransaction.xml">
+      <Paket>True</Paket>
+    </Content>
     <Compile Include="DbHelpers.cs" />
     <Compile Include="Model\AutomationModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -102,7 +135,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="EntityFramework">
           <HintPath>..\..\packages\EntityFramework\lib\net45\EntityFramework.dll</HintPath>
@@ -118,10 +151,10 @@
     </When>
   </Choose>
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="MySql.Data">
-          <HintPath>..\..\packages\MySql.Data\lib\net45\MySql.Data.dll</HintPath>
+          <HintPath>..\..\packages\MySql.Data\lib\net452\MySql.Data.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
@@ -129,10 +162,10 @@
     </When>
   </Choose>
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="MySql.Data.Entity.EF6">
-          <HintPath>..\..\packages\MySql.Data.Entity\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+          <HintPath>..\..\packages\MySql.Data.Entity\lib\net452\MySql.Data.Entity.EF6.dll</HintPath>
           <Private>True</Private>
           <Paket>True</Paket>
         </Reference>
