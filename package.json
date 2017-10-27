@@ -2,7 +2,10 @@
     "name": "selenium-automation-toolbox",
     "version": "1.0.0",
     "description": "This is the skeleton code to starting Selenium automation for a site. The skeleton uses oneexchange.com, but it can be easily updated to something else.",
-    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/fushinoryuu/SeleniumAutomationToolbox"
+    },
     "scripts": {
         "help": "npm-scripts-info",
         "build": "powershell ./build.ps1 -Target default",
@@ -12,7 +15,7 @@
     },
     "scripts-info": {
         "build": "Installs the dependencies, builds the project, and executes tests.",
-        "tests": "Assumes dependencies are already installed, builds the project, and executes tests.",
+        "tests": "Assumes dependencies are already installed. This will only build the project and execute the tests.",
         "hub": "Starts a Selenium Server Hub.",
         "node": "Starts a Selenium Server Node."
     },
