@@ -1,8 +1,9 @@
 public static class Constants
 {
+	public const int NunitWorkers = 30;
 	public const string PaketExecutible = ".paket/paket.exe";
 	public const string PaketBootstrapperExecutible = "./.paket/paket.bootstrapper.exe";
-	public const string SolutionFile = "./src/AutomatedTests.sln";
+	public const string SolutionFile = "./src/SeleniumAutomationToolbox.sln";
 	public const string TestAssembliesGlob = "./src/**/bin/Debug/*.Tests.dll";
 }
 

@@ -1,5 +1,16 @@
+Task("PaketInstall")
+    .Description("Runs paket install")
+    .IsDependentOn("BootstrapPaket")
+    .Does(() =>
+    {
+        if (StartProcess(Constants.PaketExecutible, "install") != 0)
+        {
+            Error("Paket restore failed");
+        }
+    });
+
 Task("PaketRestore")
-    .Description("Runs paket restore command.")
+    .Description("Runs paket restore")
     .IsDependentOn("BootstrapPaket")
     .Does(() =>
     {
@@ -10,7 +21,7 @@ Task("PaketRestore")
     });
 
 Task("BootstrapPaket")
-    .Description("Downloads paket if not installed.")
+    .Description("Downloads paket if not installed. Called by paketInstall")
     .Does(() =>
     {
         if (StartProcess(Constants.PaketBootstrapperExecutible) != 0)

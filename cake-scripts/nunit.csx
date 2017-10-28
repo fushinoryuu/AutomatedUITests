@@ -9,7 +9,7 @@ Task("NUnit")
 
         NUnit3(testAssemblies, new NUnit3Settings
         {
-            Workers = 30,
+            Workers = Constants.NunitWorkers,
             Work = "./Build"
         });
     });
