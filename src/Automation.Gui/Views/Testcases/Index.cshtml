@@ -1,37 +1,10 @@
 ﻿@model IEnumerable<Automation.Database.Model.testsuite>
-@using Automation.Gui.Controllers
 
 @{
-    ViewBag.Title = "Test Cases Page";
+    ViewBag.Title = "Test Suites Page";
 }
 
-@Html.Partial("TestsJumbotron")
-
-<hr />
-
-@if (TestCasesController.TriedToImport && TestCasesController.ImportSuccessful)
-{
-    <!--Tried to import and was successful-->
-    <div class="alert alert-success alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <strong>Done!</strong>
-        Your last attempt to import a file was successful.
-    </div>
-}
-
-else if (TestCasesController.TriedToImport && !TestCasesController.ImportSuccessful)
-{
-    <!--Tried to import and there was an error-->
-    <div class="alert alert-danger alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <strong>Something went wrong!</strong>
-        Your last attempt to import a file failed, please try again.
-    </div>
-}
+@Html.Partial("TestSuitesJumbotron")
 
 <!--Button takes you to upload page-->
 <div>
@@ -68,12 +41,12 @@ else if (TestCasesController.TriedToImport && !TestCasesController.ImportSuccess
 
                 <td>
                     <div class="btn-group" role="group">
-                        <a class="btn btn-info" href="@Url.Action("SuiteDetails", "TestCases", new {item.testsuiteid})">
+                        <a class="btn btn-info" href="@Url.Action("SuiteDetails", "TestCases", new { suiteId = item.testsuiteid })">
                             <span class="glyphicon glyphicon glyphicon-th-list"></span>
                             <span>Details</span>
                         </a>
 
-                        <a class="btn btn-danger" href="@Url.Action("DeleteSuite", "TestCases", new {item.testsuiteid})">
+                        <a class="btn btn-danger" href="@Url.Action("DeleteSuite", "TestCases", new { suiteId = item.testsuiteid })">
                             <span class="glyphicon glyphicon-trash"></span>
                             <span>Delete</span>
                         </a>

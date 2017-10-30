@@ -40,7 +40,6 @@ namespace Automation.Gui.Controllers
 
             try
             {
-                // ReSharper disable once AssignNullToNotNullAttribute
                 var path = Path.Combine(Server.MapPath("~/App_Data"), Path.GetFileName(file.FileName));
 
                 file.SaveAs(path);

@@ -4,6 +4,8 @@
     ViewBag.Title = "Test Suite Details";
 }
 
+@Html.Partial("TestSuitesJumbotron")
+
 <div class="panel panel-primary">
     <div class="panel-heading">Test Cases</div>
     <table class="table">
@@ -11,6 +13,10 @@
             <th>Case Id</th>
 
             <th>Test Case Name</th>
+
+            <th>Description</th>
+
+            <th><!--This column is for the action buttons--></th>
         </tr>
 
         @foreach (var item in Model)
@@ -19,6 +25,17 @@
                 <td>@Html.DisplayFor(modelItem => item.testcaseid)</td>
 
                 <td>@Html.DisplayFor(modelItem => item.testcasename)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.testcasedescription)</td>
+
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-danger" >
+                            <span class="glyphicon glyphicon-trash"></span>
+                            <span>Delete</span>
+                        </a>
+                    </div>
+                </td>
             </tr>
         }
     </table>

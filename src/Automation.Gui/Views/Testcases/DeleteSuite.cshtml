@@ -4,7 +4,7 @@
     ViewBag.Title = "Delete Test Suite";
 }
 
-<br />
+@Html.Partial("TestSuitesJumbotron")
 
 <h2>Are you sure you want to delete this?</h2>
 
@@ -28,14 +28,18 @@
                 <th>Test Case Id</th>
 
                 <th>Test Case Name</th>
+
+                <th>Description</th>
             </tr>
 
             @foreach (var item in Model.testcases)
             {
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.testcaseid)</td>
-                    
+
                     <td>@Html.DisplayFor(modelItem => item.testcasename)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.testcasedescription)</td>
                 </tr>
             }
         </table>

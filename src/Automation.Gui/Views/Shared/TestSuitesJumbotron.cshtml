@@ -1,0 +1,35 @@
+﻿@using Automation.Gui.Controllers
+
+<div class="jumbotron">
+    <h2>Test Suites</h2>
+    <p class="lead">
+        These are all the test suites that have been imported.
+        From here you can drill down into each suite and see what test cases are in the suite.
+    </p>
+</div>
+
+<hr />
+
+@if (TestCasesController.TriedToImport && TestCasesController.ImportSuccessful)
+{
+    <!--Tried to import and was successful-->
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Done!</strong>
+        Your last attempt to import a file was successful.
+    </div>
+}
+
+else if (TestCasesController.TriedToImport && !TestCasesController.ImportSuccessful)
+{
+    <!--Tried to import and there was an error-->
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>Something went wrong!</strong>
+        Your last attempt to import a file failed, please try again.
+    </div>
+}
