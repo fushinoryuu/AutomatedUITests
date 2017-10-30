@@ -58,6 +58,7 @@ CREATE TABLE `testsettings`.`testcases` (
   `testcaseid` INT NOT NULL AUTO_INCREMENT,
   `testcasename` VARCHAR(100) NOT NULL,
   `belongstosuite` INT NOT NULL,
+  `testcasedescription` VARCHAR(500) NOT NULL,
   PRIMARY KEY (`testcaseid`),
   UNIQUE INDEX `testcaseid_UNIQUE` (`testcaseid` ASC),
   INDEX `belongstosuite_idx` (`belongstosuite` ASC),

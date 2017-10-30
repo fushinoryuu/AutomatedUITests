@@ -1,5 +1,14 @@
 <tests>
-    <test testsuite="HomepageTests" testname="Home Page Loads" />
-    <test testsuite="HomepageTests" testname="Buttons Are Visible" />
-    <test testsuite="HomePageErrorTests" testname="Login Error Displays" />
+    <test
+        testsuite="HomepageTests"
+        testname="Home Page Loads"
+        description="Makes sure the home page loads within 30 seconds." />
+    <test
+        testsuite="HomepageTests"
+        testname="Buttons Are Visible"
+        description="Makes sure the 'Sign In' and the 'Create Account' buttons are visible." />
+    <test
+        testsuite="HomePageErrorTests"
+        testname="Login Error Displays"
+        description="Makes sure an error is displayed when a user inputs a wrong username and password combination." />
 </tests>
