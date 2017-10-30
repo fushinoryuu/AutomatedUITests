@@ -84,7 +84,9 @@ namespace Automation.Xml
 
                 newTest.testcasename = item.TestName;
                 newTest.belongstosuite = suite.testsuiteid;
+                newTest.testcasedescription = item.TestCaseDescription;
                 newTest.testsuite = suite;
+
                 db.testcases.Add(newTest);
                 db.SaveChanges();
             }

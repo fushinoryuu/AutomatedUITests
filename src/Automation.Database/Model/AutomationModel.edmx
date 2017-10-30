@@ -23,6 +23,7 @@
           <Property Name="testcaseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="testcasename" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="belongstosuite" Type="int" Nullable="false" />
+          <Property Name="testcasedescription" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="testruns">
           <Key>
@@ -103,6 +104,7 @@
           <Property Name="testcasename" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="belongstosuite" Type="Int32" Nullable="false" />
           <NavigationProperty Name="testsuite" Relationship="testsettingsModel.belongstosuite" FromRole="testcas" ToRole="testsuite" />
+          <Property Name="testcasedescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="testrun">
           <Key>
@@ -162,6 +164,7 @@
           <EntitySetMapping Name="testcases">
             <EntityTypeMapping TypeName="testsettingsModel.testcase">
               <MappingFragment StoreEntitySet="testcases">
+                <ScalarProperty Name="testcasedescription" ColumnName="testcasedescription" />
                 <ScalarProperty Name="belongstosuite" ColumnName="belongstosuite" />
                 <ScalarProperty Name="testcasename" ColumnName="testcasename" />
                 <ScalarProperty Name="testcaseid" ColumnName="testcaseid" />

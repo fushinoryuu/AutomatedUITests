@@ -17,6 +17,7 @@ namespace Automation.Database.Model
         public int testcaseid { get; set; }
         public string testcasename { get; set; }
         public int belongstosuite { get; set; }
+        public string testcasedescription { get; set; }
     
         public virtual testsuite testsuite { get; set; }
     }

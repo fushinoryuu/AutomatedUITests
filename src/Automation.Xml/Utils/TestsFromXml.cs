@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Automation.Xml.Utils
 {
     [XmlRoot("tests")]
-    public class TestsFromXml
+    internal class TestsFromXml
     {
         [XmlElement("test")]
         public List<Tests> ListOfTests { get; set; }
@@ -16,6 +16,9 @@ namespace Automation.Xml.Utils
 
             [XmlAttribute("testname")]
             public string TestName { get; set; }
+
+            [XmlAttribute("testcasedescription")]
+            public string TestCaseDescription { get; set; }
         }
     }
 }
