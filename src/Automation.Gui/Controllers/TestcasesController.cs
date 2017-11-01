@@ -76,13 +76,32 @@ namespace Automation.Gui.Controllers
             var suite = _db.testsuites.Find(suiteId);
 
             if (suite == null)
-                return HttpNotFound();
+                return HttpNotFound("Test suite not found.");
 
             return View(suite);
         }
 
         [HttpPost, ActionName("DeleteSuite"), ValidateAntiForgeryToken]
         public ActionResult DeleteSuiteConfirmed(int id)
+        {
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DeleteCase(int? caseId)
+        {
+            if (caseId == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            var caseObj = _db.testcases.Find(caseId);
+
+            if (caseObj == null)
+                return HttpNotFound("Test case not found.");
+
+            return View(caseObj);
+        }
+
+        [HttpPost, ActionName("DeleteCase"), ValidateAntiForgeryToken]
+        public ActionResult DeleteCaseConfirmed(int id)
         {
             return RedirectToAction("Index");
         }
