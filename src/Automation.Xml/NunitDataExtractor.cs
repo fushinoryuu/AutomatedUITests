@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Xml;
 using Automation.Database.Model;
 
@@ -7,14 +6,14 @@ namespace Automation.Xml
 {
     public class NunitDataExtractor
     {
-        private readonly XmlDocument _document = new XmlDocument();
+        private XmlDocument _document = new XmlDocument();
         private testrun _result;
 
         public bool SaveResultsToDb()
         {
             LoadXml();
 
-            if (_document.DocumentElement == null)
+            if (_document == null)
                 return false;
 
             GetDataFromXml();
@@ -27,11 +26,11 @@ namespace Automation.Xml
         {
             try
             {
-                _document.Load(@"C:\AutomatedUiTests\NunitWork\TestResult.xml");
+                _document.Load(@"C:\AutomationToolboox\NunitWork\TestResult.xml");
             }
-            catch (FileNotFoundException)
+            catch (Exception)
             {
-                // ignored
+                _document = null;
             }
         }
 

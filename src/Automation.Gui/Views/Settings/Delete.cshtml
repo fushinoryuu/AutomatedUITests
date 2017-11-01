@@ -13,31 +13,17 @@
 <div>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            Target Browser
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.targetBrowser)
-        </dd>
-        <dt>
-            Operating System
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.operatingSystem)
-        </dd>
-        <dt>
-            Selenium Hub Uri
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.seleniumHubUri)
-        </dd>
+        <dt>Target Browser</dt>
+        <dd>@Html.DisplayFor(model => model.targetBrowser)</dd>
 
-        <dt>
-            Screenshot Folder
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.screenshotFolder)
-        </dd>
+        <dt>Operating System</dt>
+        <dd>@Html.DisplayFor(model => model.operatingSystem)</dd>
+
+        <dt>Selenium Hub Uri</dt>
+        <dd>@Html.DisplayFor(model => model.seleniumHubUri)</dd>
+
+        <dt>Screenshot Folder</dt>
+        <dd>@Html.DisplayFor(model => model.screenshotFolder)</dd>
     </dl>
 
     <hr />
@@ -51,6 +37,7 @@
                 <i class="glyphicon glyphicon-arrow-left"></i>
                 <span>Back to List</span>
             </a>
+
             <button class="btn btn-danger" type="submit" value="Delete">
                 <span class="glyphicon glyphicon-trash"></span>
                 <span>Delete</span>

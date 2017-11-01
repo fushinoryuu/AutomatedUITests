@@ -1,8 +1,9 @@
 public static class Constants
 {
+	public const int NunitWorkers = 30;
 	public const string PaketExecutible = ".paket/paket.exe";
 	public const string PaketBootstrapperExecutible = "./.paket/paket.bootstrapper.exe";
-	public const string SolutionFile = "./src/AutomatedTests.sln";
+	public const string SolutionFile = "./src/SeleniumAutomationToolbox.sln";
 	public const string TestAssembliesGlob = "./src/**/bin/Debug/*.Tests.dll";
 }
 
@@ -10,6 +11,12 @@ public DropOptions dropOptions = new DropOptions
 {
 	Projects = new[]
 	{
+		new Project
+		{
+			Name = "Automation.Database",
+			Folders = new string[0],
+			Files = new string[0]
+		},
 		new Project
 		{
 			Name = "Automation.Framework",

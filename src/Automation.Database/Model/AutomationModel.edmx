@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="testsettingsModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="testsettingsModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="settings">
           <Key>
             <PropertyRef Name="id" />
@@ -23,6 +23,7 @@
           <Property Name="testcaseid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="testcasename" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="belongstosuite" Type="int" Nullable="false" />
+          <Property Name="testcasedescription" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="testruns">
           <Key>
@@ -70,38 +71,48 @@
             <End Role="testcases" EntitySet="testcases" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="testsettingsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="testsettingsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="settings" EntityType="testsettingsModel.setting" />
+          <EntitySet Name="testcases" EntityType="testsettingsModel.testcase" />
+          <EntitySet Name="testruns" EntityType="testsettingsModel.testrun" />
+          <EntitySet Name="testsuites" EntityType="testsettingsModel.testsuite" />
+          <AssociationSet Name="belongstosuite" Association="testsettingsModel.belongstosuite">
+            <End Role="testsuite" EntitySet="testsuites" />
+            <End Role="testcas" EntitySet="testcases" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="setting">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="targetBrowser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="operatingSystem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="seleniumHubUri" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="screenshotFolder" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="targetBrowser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="operatingSystem" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="seleniumHubUri" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="screenshotFolder" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="isActive" Type="SByte" Nullable="false" />
         </EntityType>
-        <EntityType Name="testcas">
+        <EntityType Name="testcase">
           <Key>
             <PropertyRef Name="testcaseid" />
           </Key>
           <Property Name="testcaseid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="testcasename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="testcasename" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="belongstosuite" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="testsuite" Relationship="Self.belongstosuite" FromRole="testcases" ToRole="testsuites" />
+          <NavigationProperty Name="testsuite" Relationship="testsettingsModel.belongstosuite" FromRole="testcas" ToRole="testsuite" />
+          <Property Name="testcasedescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="testrun">
           <Key>
             <PropertyRef Name="guid" />
           </Key>
-          <Property Name="guid" Type="String" MaxLength="36" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="guid" Type="String" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Name="testcasecount" Type="Int32" Nullable="false" />
-          <Property Name="result" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="result" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="passed" Type="Int32" Nullable="false" />
           <Property Name="failed" Type="Int32" Nullable="false" />
           <Property Name="inconclusive" Type="Int32" Nullable="false" />
@@ -115,33 +126,23 @@
             <PropertyRef Name="testsuiteid" />
           </Key>
           <Property Name="testsuiteid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="testsuitename" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="testcases" Relationship="Self.belongstosuite" FromRole="testsuites" ToRole="testcases" />
+          <Property Name="testsuitename" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="testcases" Relationship="testsettingsModel.belongstosuite" FromRole="testsuite" ToRole="testcas" />
         </EntityType>
         <Association Name="belongstosuite">
-          <End Role="testsuites" Type="Self.testsuite" Multiplicity="1">
+          <End Type="testsettingsModel.testsuite" Role="testsuite" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="testcases" Type="Self.testcas" Multiplicity="*" />
+          <End Type="testsettingsModel.testcase" Role="testcas" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="testsuites">
+            <Principal Role="testsuite">
               <PropertyRef Name="testsuiteid" />
             </Principal>
-            <Dependent Role="testcases">
+            <Dependent Role="testcas">
               <PropertyRef Name="belongstosuite" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="testsettingsEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="settings" EntityType="Self.setting" />
-          <EntitySet Name="testcases" EntityType="Self.testcas" />
-          <EntitySet Name="testruns" EntityType="Self.testrun" />
-          <EntitySet Name="testsuites" EntityType="Self.testsuite" />
-          <AssociationSet Name="belongstosuite" Association="Self.belongstosuite">
-            <End Role="testsuites" EntitySet="testsuites" />
-            <End Role="testcases" EntitySet="testcases" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -151,45 +152,46 @@
           <EntitySetMapping Name="settings">
             <EntityTypeMapping TypeName="testsettingsModel.setting">
               <MappingFragment StoreEntitySet="settings">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="targetBrowser" ColumnName="targetBrowser" />
-                <ScalarProperty Name="operatingSystem" ColumnName="operatingSystem" />
-                <ScalarProperty Name="seleniumHubUri" ColumnName="seleniumHubUri" />
-                <ScalarProperty Name="screenshotFolder" ColumnName="screenshotFolder" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="screenshotFolder" ColumnName="screenshotFolder" />
+                <ScalarProperty Name="seleniumHubUri" ColumnName="seleniumHubUri" />
+                <ScalarProperty Name="operatingSystem" ColumnName="operatingSystem" />
+                <ScalarProperty Name="targetBrowser" ColumnName="targetBrowser" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="testcases">
-            <EntityTypeMapping TypeName="testsettingsModel.testcas">
+            <EntityTypeMapping TypeName="testsettingsModel.testcase">
               <MappingFragment StoreEntitySet="testcases">
-                <ScalarProperty Name="testcaseid" ColumnName="testcaseid" />
-                <ScalarProperty Name="testcasename" ColumnName="testcasename" />
+                <ScalarProperty Name="testcasedescription" ColumnName="testcasedescription" />
                 <ScalarProperty Name="belongstosuite" ColumnName="belongstosuite" />
+                <ScalarProperty Name="testcasename" ColumnName="testcasename" />
+                <ScalarProperty Name="testcaseid" ColumnName="testcaseid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="testruns">
             <EntityTypeMapping TypeName="testsettingsModel.testrun">
               <MappingFragment StoreEntitySet="testruns">
-                <ScalarProperty Name="guid" ColumnName="guid" />
-                <ScalarProperty Name="testcasecount" ColumnName="testcasecount" />
-                <ScalarProperty Name="result" ColumnName="result" />
-                <ScalarProperty Name="passed" ColumnName="passed" />
-                <ScalarProperty Name="failed" ColumnName="failed" />
-                <ScalarProperty Name="inconclusive" ColumnName="inconclusive" />
-                <ScalarProperty Name="skipped" ColumnName="skipped" />
-                <ScalarProperty Name="starttime" ColumnName="starttime" />
-                <ScalarProperty Name="endtime" ColumnName="endtime" />
                 <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="endtime" ColumnName="endtime" />
+                <ScalarProperty Name="starttime" ColumnName="starttime" />
+                <ScalarProperty Name="skipped" ColumnName="skipped" />
+                <ScalarProperty Name="inconclusive" ColumnName="inconclusive" />
+                <ScalarProperty Name="failed" ColumnName="failed" />
+                <ScalarProperty Name="passed" ColumnName="passed" />
+                <ScalarProperty Name="result" ColumnName="result" />
+                <ScalarProperty Name="testcasecount" ColumnName="testcasecount" />
+                <ScalarProperty Name="guid" ColumnName="guid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="testsuites">
             <EntityTypeMapping TypeName="testsettingsModel.testsuite">
               <MappingFragment StoreEntitySet="testsuites">
-                <ScalarProperty Name="testsuiteid" ColumnName="testsuiteid" />
                 <ScalarProperty Name="testsuitename" ColumnName="testsuitename" />
+                <ScalarProperty Name="testsuiteid" ColumnName="testsuiteid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -8,19 +8,20 @@ namespace Automation.Framework.Pages
 {
     public class HomePage : BasePage
     {
-#pragma warning disable 649
         [FindsBy(How = How.Id, Using = "UserName")]
-        private IWebElement _userNameTextbox;
+        protected IWebElement UserNameTextbox;
 
         [FindsBy(How = How.Id, Using = "Password")]
-        private IWebElement _passwordTextbox;
+        protected IWebElement PasswordTextbox;
 
         [FindsBy(How = How.ClassName, Using = "login-btn")]
-        private IWebElement _signInButton;
+        protected IWebElement SignInButton;
 
         [FindsBy(How = How.ClassName, Using = "alert-summary")]
-        private IWebElement _loginError;
-#pragma warning restore 649
+        protected IWebElement LoginError;
+
+        [FindsBy(How = How.XPath, Using = "//*[@id='mainContent']/div[3]/div[2]/div/a")]
+        protected IWebElement CreateAccountButton;
 
         private const string Url = "https://www.oneexchange.com";
         private const string Title = "Find Healthcare Coverage at OneExchange";
@@ -56,24 +57,34 @@ namespace Automation.Framework.Pages
 
         private void EnterUser(string userName)
         {
-            _userNameTextbox.EnterText(userName);
+            UserNameTextbox.EnterText(userName);
         }
 
         private void EnterPassword(string password)
         {
-            _passwordTextbox.EnterText(password);
+            PasswordTextbox.EnterText(password);
         }
 
         private void ClickSignInButton()
         {
-            _signInButton.Click();
+            SignInButton.Click();
         }
 
         public bool LoginErrorIsDisplayed()
         {
-            _loginError.WaitUntilDisplayed();
+            LoginError.WaitUntilDisplayed();
 
-            return _loginError.Displayed;
+            return LoginError.Displayed;
+        }
+
+        public bool SigninButtonIsVisible()
+        {
+            return SignInButton.Displayed;
+        }
+
+        public bool CreateAccountButtonIsVisible()
+        {
+            return CreateAccountButton.Displayed;
         }
     }
 }

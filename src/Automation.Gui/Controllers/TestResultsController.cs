@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using System.Data;
 using System.Linq;
 using System.Web.Mvc;
@@ -9,10 +8,11 @@ using Automation.Database.Model;
 
 namespace Automation.Gui.Controllers
 {
-    public class TestrunsController : Controller
+    public class TestResultsController : Controller
     {
         private readonly testsettingsEntities _db = new testsettingsEntities();
         public static bool ImportSuccessful;
+        public static bool TriedToImport;
 
         // GET: Testruns
         public ActionResult Index()
@@ -21,9 +21,9 @@ namespace Automation.Gui.Controllers
         }
 
         // GET: Testruns/Delete/5
-        public ActionResult Delete(Guid guid)
+        public ActionResult Delete(string guid)
         {
-            if (string.IsNullOrWhiteSpace(guid.ToString()))
+            if (string.IsNullOrWhiteSpace(guid))
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
             var testrun = _db.testruns.Find(guid);
@@ -35,9 +35,8 @@ namespace Automation.Gui.Controllers
         }
 
         // POST: Testruns/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid guid)
+        [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(string guid)
         {
             var item = _db.testruns.Find(guid);
 
@@ -52,9 +51,10 @@ namespace Automation.Gui.Controllers
 
         public ActionResult NunitDataExtraction()
         {
+            TriedToImport = true;
             ImportSuccessful = new NunitDataExtractor().SaveResultsToDb();
 
-            return View(GetOrderedList());
+            return RedirectToAction("Index");
         }
 
         private IList<testrun> GetOrderedList()

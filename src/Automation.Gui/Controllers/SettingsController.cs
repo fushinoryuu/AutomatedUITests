@@ -43,6 +43,7 @@ namespace Automation.Gui.Controllers
 
                 _db.settings.Add(setting);
                 _db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
@@ -130,9 +131,9 @@ namespace Automation.Gui.Controllers
         public ActionResult RunAutomatedTests()
         {
             _processId = RunTestsHelper.RunNunitTests(
-                @"C:\AutomatedUiTests\src\Automation.Tests\Automation.Tests.csproj " +
+                @"C:\AutomationToolboox\src\Automation.Tests\Automation.Tests.csproj " +
                 "--workers=30 " +
-                @"--work=C:\AutomatedUiTests\NunitWork " +
+                @"--work=C:\AutomationToolboox\NunitWork " +
                 "--trace=Verbose",
                 ProcessWindowStyle.Normal);
 

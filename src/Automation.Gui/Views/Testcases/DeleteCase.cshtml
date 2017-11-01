@@ -1,0 +1,41 @@
+﻿@model Automation.Database.Model.testcase
+
+@{
+    ViewBag.Title = "Delete Test Case";
+}
+
+@Html.Partial("TestSuitesJumbotron")
+
+<h2>Are you sure you want to delete this?</h2>
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>Test Case Id</dt>
+        <dd>@Html.DisplayFor(model => model.testcaseid)</dd>
+
+        <dt>Test Case Name</dt>
+        <dd>@Html.DisplayFor(model => model.testcasename)</dd>
+
+        <dt>Description</dt>
+        <dd>@Html.DisplayFor(model => model.testcasedescription)</dd>
+    </dl>
+
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div>
+            <a class="btn btn-primary" href="@Url.Action("Index")">
+                <i class="glyphicon glyphicon-arrow-left"></i>
+                <span>Back to Suites</span>
+            </a>
+
+            <button class="btn btn-danger" type="submit" value="Delete">
+                <span class="glyphicon glyphicon-trash"></span>
+                <span>Delete</span>
+            </button>
+        </div>
+    }
+</div>

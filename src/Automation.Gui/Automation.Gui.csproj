@@ -83,6 +83,7 @@
     </Content>
     <Content Include="Content\NunitLogo.png" />
     <Content Include="Content\SeleniumLogoGreen.png" />
+    <Content Include="Content\TestcasesLogo.png" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2">
       <Paket>True</Paket>
     </Content>
@@ -97,28 +98,28 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot">
       <Paket>True</Paket>
     </Content>
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-3.1.1-vsdoc.js">
+    <Content Include="Scripts\jquery-3.2.1-vsdoc.js">
       <Paket>True</Paket>
     </Content>
-    <Content Include="Scripts\jquery-3.1.1.js">
+    <Content Include="Scripts\jquery-3.2.1.js">
       <Paket>True</Paket>
     </Content>
-    <Content Include="Scripts\jquery-3.1.1.min.js">
+    <Content Include="Scripts\jquery-3.2.1.min.js">
       <Paket>True</Paket>
     </Content>
-    <Content Include="Scripts\jquery-3.1.1.min.map">
+    <Content Include="Scripts\jquery-3.2.1.min.map">
       <Paket>True</Paket>
     </Content>
-    <Content Include="Scripts\jquery-3.1.1.slim.js">
+    <Content Include="Scripts\jquery-3.2.1.slim.js">
       <Paket>True</Paket>
     </Content>
-    <Content Include="Scripts\jquery-3.1.1.slim.min.js">
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js">
       <Paket>True</Paket>
     </Content>
-    <Content Include="Scripts\jquery-3.1.1.slim.min.map">
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map">
+      <Paket>True</Paket>
+    </Content>
+    <Content Include="Scripts\modernizr-2.8.3.js">
       <Paket>True</Paket>
     </Content>
     <Content Include="Scripts\jquery.validate-vsdoc.js">
@@ -130,7 +131,6 @@
     <Content Include="Scripts\bootstrap.min.js">
       <Paket>True</Paket>
     </Content>
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js">
       <Paket>True</Paket>
@@ -144,16 +144,15 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
       <Paket>True</Paket>
     </Content>
-    <Content Include="Scripts\modernizr-2.6.2.js">
-      <Paket>True</Paket>
-    </Content>
+    <Content Include="Scripts\UploadButton.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
-    <Compile Include="Controllers\TestrunsController.cs" />
+    <Compile Include="Controllers\TestResultsController.cs" />
+    <Compile Include="Controllers\TestCasesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -173,10 +172,16 @@
     <Content Include="Views\Shared\ConfigTable.cshtml" />
     <Content Include="Views\Settings\RunAutomatedTests.cshtml" />
     <Content Include="Views\Settings\StopAutomatedTests.cshtml" />
-    <Content Include="Views\Testruns\Index.cshtml" />
-    <Content Include="Views\Shared\TestrunsTable.cshtml" />
-    <Content Include="Views\Testruns\NunitDataExtraction.cshtml" />
-    <Content Include="Views\Testruns\Delete.cshtml" />
+    <Content Include="Views\TestResults\Index.cshtml" />
+    <Content Include="Views\TestResults\Delete.cshtml" />
+    <Content Include="Views\TestCases\Index.cshtml" />
+    <Content Include="Views\TestCases\ImportTests.cshtml" />
+    <Content Include="Views\Shared\SettingsJumbotron.cshtml" />
+    <Content Include="Views\Shared\TestrunsJumbotron.cshtml" />
+    <Content Include="Views\Shared\TestSuitesJumbotron.cshtml" />
+    <Content Include="Views\TestCases\SuiteDetails.cshtml" />
+    <Content Include="Views\TestCases\DeleteSuite.cshtml" />
+    <Content Include="Views\TestCases\DeleteCase.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -242,7 +247,7 @@
   </Target>
   -->
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="EntityFramework">
           <HintPath>..\..\packages\EntityFramework\lib\net45\EntityFramework.dll</HintPath>
@@ -258,7 +263,7 @@
     </When>
   </Choose>
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="System.Web.Mvc">
           <HintPath>..\..\packages\Microsoft.AspNet.Mvc\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -269,7 +274,7 @@
     </When>
   </Choose>
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="System.Web.Razor">
           <HintPath>..\..\packages\Microsoft.AspNet.Razor\lib\net45\System.Web.Razor.dll</HintPath>
@@ -280,7 +285,7 @@
     </When>
   </Choose>
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="System.Web.Helpers">
           <HintPath>..\..\packages\Microsoft.AspNet.WebPages\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -306,7 +311,7 @@
     </When>
   </Choose>
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
           <HintPath>..\..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -317,7 +322,7 @@
     </When>
   </Choose>
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="Microsoft.Web.Infrastructure">
           <HintPath>..\..\packages\Microsoft.Web.Infrastructure\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -328,7 +333,7 @@
     </When>
   </Choose>
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="MySql.Data">
           <HintPath>..\..\packages\MySql.Data\lib\net45\MySql.Data.dll</HintPath>
@@ -339,7 +344,7 @@
     </When>
   </Choose>
   <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v5.0')">
+    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And ($(TargetFrameworkVersion) == 'v4.6.1' Or $(TargetFrameworkVersion) == 'v4.6.2' Or $(TargetFrameworkVersion) == 'v4.6.3' Or $(TargetFrameworkVersion) == 'v4.7' Or $(TargetFrameworkVersion) == 'v4.7.1')">
       <ItemGroup>
         <Reference Include="MySql.Data.Entity.EF6">
           <HintPath>..\..\packages\MySql.Data.Entity\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>

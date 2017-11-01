@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Automation.Database.Model.testsuite>
+
+@{
+    ViewBag.Title = "Test Suites Page";
+}
+
+@Html.Partial("TestSuitesJumbotron")
+
+<!--Button takes you to upload page-->
+<div>
+    <a class="btn btn-success" href="@Url.Action("ImportTests")">
+        <i class="glyphicon glyphicon-import"></i>
+        <span>Import test cases</span>
+    </a>
+</div>
+
+<hr />
+
+<!--Table-->
+<div class="panel panel-primary">
+    <div class="panel-heading">Test Suites</div>
+    <table class="table">
+        <tr>
+            <th>Suite Id</th>
+
+            <th>Suite Name</th>
+
+            <th># of Test Cases Contained</th>
+
+            <th><!--This column is for the action buttons--></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.testsuiteid)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.testsuitename)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.testcases.Count)</td>
+
+                <td>
+                    <div class="btn-group" role="group">
+                        <a class="btn btn-info" href="@Url.Action("SuiteDetails", "TestCases", new { suiteId = item.testsuiteid })">
+                            <span class="glyphicon glyphicon glyphicon-th-list"></span>
+                            <span>Details</span>
+                        </a>
+
+                        <a class="btn btn-danger" href="@Url.Action("DeleteSuite", "TestCases", new { suiteId = item.testsuiteid })">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            <span>Delete</span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

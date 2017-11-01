@@ -17,13 +17,13 @@ namespace Automation.Database.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public testsuite()
         {
-            this.testcases = new HashSet<testcas>();
+            this.testcases = new HashSet<testcase>();
         }
     
         public int testsuiteid { get; set; }
         public string testsuitename { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<testcas> testcases { get; set; }
+        public virtual ICollection<testcase> testcases { get; set; }
     }
 }

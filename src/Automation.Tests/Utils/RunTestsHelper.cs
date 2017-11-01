@@ -8,9 +8,9 @@ namespace Automation.Tests.Utils
         {
             var startInfo = new ProcessStartInfo
             {
-                WorkingDirectory = @"C:\AutomatedUiTests",
+                WorkingDirectory = @"C:\AutomationToolboox",
                 WindowStyle = showWindow,
-                FileName = @"C:\AutomatedUiTests\packages\NUnit.ConsoleRunner\tools\nunit3-console.exe",
+                FileName = @"C:\AutomationToolboox\packages\NUnit.ConsoleRunner\tools\nunit3-console.exe",
                 UseShellExecute = false,
                 Arguments = arguments
             };

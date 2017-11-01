@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Import File Page";
+}
+
+@section scripts
+{
+    <script src="~/Scripts/UploadButton.js"></script>
+}
+
+
+@Html.Partial("TestsJumbotron")
+
+<hr />
+
+@using (Html.BeginForm("ImportXml", "TestCases", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="input-group">
+        <label class="input-group-btn">
+            <span class="btn btn-primary">
+                Browse&hellip; <input type="file" name="file" id="file" style="display: none;" multiple>
+            </span>
+        </label>
+        <input type="text" class="form-control" readonly>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <button type="submit" value="submit" class="btn btn-primary">
+            <i class="glyphicon glyphicon-import"></i>
+            <span>Upload XML</span>
+        </button>
+    </div>
+}
+
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
