@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - NETCoreSandbox</title>
-
+    <title>@ViewData["Title"] - Automation Dashboard</title>
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -18,6 +17,7 @@
     </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
+
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -28,22 +28,21 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">NETCoreSandbox</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Automation Dashboard</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Test Configurations</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - NETCoreSandbox</p>
+            <p>&copy; @DateTime.Now.Year - Automation Settings</p>
         </footer>
     </div>
 
@@ -53,6 +52,7 @@
         <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/js/main.build.js"></script>
     </environment>
+
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -68,7 +68,6 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>
