@@ -17,7 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Database", "Auto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.SeleniumCore", "Automation.SeleniumCore\Automation.SeleniumCore.csproj", "{82F20E86-83C0-455E-A56D-6566A2ECC5EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.TestsCore", "Automation.TestsCore\Automation.TestsCore.csproj", "{8FFCDE5F-CDF0-4BE4-891A-E3219A29A44D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.TestsCore", "Automation.TestsCore\Automation.TestsCore.csproj", "{8FFCDE5F-CDF0-4BE4-891A-E3219A29A44D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.FrameworkCore", "Automation.FrameworkCore\Automation.FrameworkCore.csproj", "{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{8FFCDE5F-CDF0-4BE4-891A-E3219A29A44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FFCDE5F-CDF0-4BE4-891A-E3219A29A44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FFCDE5F-CDF0-4BE4-891A-E3219A29A44D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
