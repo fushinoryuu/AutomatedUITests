@@ -1,6 +1,7 @@
-﻿using Automation.SeleniumCore.Utils;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
+using Automation.SeleniumCore.Utils;
+using Automation.FrameworkCore.Pages;
 
 namespace Automation.TestsCore
 {
@@ -8,11 +9,13 @@ namespace Automation.TestsCore
     public abstract class BaseWebtest : TestContainer
     {
         protected IRunSelenium Runner;
+        protected HomePage HomePage;
 
         [SetUp]
         public void Setup()
         {
             Runner = GetContainerInstance<IRunSelenium>();
+            HomePage = new HomePage(Runner);
         }
 
         [TearDown]

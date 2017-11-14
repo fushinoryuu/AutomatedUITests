@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2008
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Gui", "Automation.Gui\Automation.Gui.csproj", "{3555571E-BC0E-4C79-B7D1-28FD45A6F1D9}"
 EndProject
@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Database", "Auto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.SeleniumCore", "Automation.SeleniumCore\Automation.SeleniumCore.csproj", "{82F20E86-83C0-455E-A56D-6566A2ECC5EA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.TestsCore", "Automation.TestsCore\Automation.TestsCore.csproj", "{8FFCDE5F-CDF0-4BE4-891A-E3219A29A44D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.FrameworkCore", "Automation.FrameworkCore\Automation.FrameworkCore.csproj", "{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.FrameworkCore", "Automation.FrameworkCore\Automation.FrameworkCore.csproj", "{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.TestsCore", "Automation.TestsCore\Automation.TestsCore.csproj", "{B85DFF76-35B7-4E20-BEA8-7E12D9FF78D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,14 +55,14 @@ Global
 		{82F20E86-83C0-455E-A56D-6566A2ECC5EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82F20E86-83C0-455E-A56D-6566A2ECC5EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82F20E86-83C0-455E-A56D-6566A2ECC5EA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8FFCDE5F-CDF0-4BE4-891A-E3219A29A44D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8FFCDE5F-CDF0-4BE4-891A-E3219A29A44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8FFCDE5F-CDF0-4BE4-891A-E3219A29A44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8FFCDE5F-CDF0-4BE4-891A-E3219A29A44D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B85DFF76-35B7-4E20-BEA8-7E12D9FF78D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B85DFF76-35B7-4E20-BEA8-7E12D9FF78D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B85DFF76-35B7-4E20-BEA8-7E12D9FF78D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B85DFF76-35B7-4E20-BEA8-7E12D9FF78D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
