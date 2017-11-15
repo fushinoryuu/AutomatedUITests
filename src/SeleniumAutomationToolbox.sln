@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.SeleniumCore", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.FrameworkCore", "Automation.FrameworkCore\Automation.FrameworkCore.csproj", "{272FC0F5-F0CF-462D-B2B9-5545AEF9DEC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.TestsCore", "Automation.TestsCore\Automation.TestsCore.csproj", "{B85DFF76-35B7-4E20-BEA8-7E12D9FF78D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.TestsCore", "Automation.TestsCore\Automation.TestsCore.csproj", "{B85DFF76-35B7-4E20-BEA8-7E12D9FF78D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.XmlCore", "Automation.XmlCore\Automation.XmlCore.csproj", "{2212AA81-A394-4FCD-91C9-457EDB62481D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{B85DFF76-35B7-4E20-BEA8-7E12D9FF78D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B85DFF76-35B7-4E20-BEA8-7E12D9FF78D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B85DFF76-35B7-4E20-BEA8-7E12D9FF78D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2212AA81-A394-4FCD-91C9-457EDB62481D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2212AA81-A394-4FCD-91C9-457EDB62481D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2212AA81-A394-4FCD-91C9-457EDB62481D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2212AA81-A394-4FCD-91C9-457EDB62481D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
