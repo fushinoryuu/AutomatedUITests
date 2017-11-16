@@ -7,7 +7,7 @@ namespace Automation.DatabaseCore
         public static void DeactivateAll()
         {
             var settingsDb = new SettingsContext("server=localhost;database=testsettings;user id=root;password=root");
-            var toUpdate = settingsDb.WhereQuery<Setting>("isActive", "1");
+            var toUpdate = settingsDb.WhereQuery("isActive", "1");
 
             foreach (var item in toUpdate)
                 item.IsActive = 0;

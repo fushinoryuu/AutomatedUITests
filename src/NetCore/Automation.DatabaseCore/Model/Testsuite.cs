@@ -2,7 +2,7 @@
 
 namespace Automation.DatabaseCore.Model
 {
-    public class Testsuite : TestSettingsContext
+    public class Testsuite : TestSettingsEntities
     {
         public int TestsuiteId { get; set; }
         public string TestsuiteName { get; set; }

@@ -11,10 +11,6 @@ namespace Automation.DatabaseCore.Model
         public string ScreenshotFolder { get; set; }
         public sbyte IsActive { get; set; }
 
-        public Setting()
-        {
-        }
-
         public Setting(MySqlDataReader reader)
         {
             Id = reader.GetInt32("id");

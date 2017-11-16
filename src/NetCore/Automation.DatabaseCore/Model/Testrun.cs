@@ -2,7 +2,7 @@
 
 namespace Automation.DatabaseCore.Model
 {
-    public class Testrun : TestSettingsContext
+    public class Testrun : TestSettingsEntities
     {
         public string Guid { get; set; }
         public int TestcaseCount { get; set; }

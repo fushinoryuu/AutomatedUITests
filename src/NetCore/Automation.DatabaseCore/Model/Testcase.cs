@@ -1,6 +1,6 @@
 ﻿namespace Automation.DatabaseCore.Model
 {
-    public class Testcase : TestSettingsContext
+    public class Testcase : TestSettingsEntities
     {
         public int TestcaseId { get; set; }
         public string TestcaseName { get; set; }
