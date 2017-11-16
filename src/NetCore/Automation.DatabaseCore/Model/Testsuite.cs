@@ -2,14 +2,10 @@
 
 namespace Automation.DatabaseCore.Model
 {
-    public class Testsuite : TestSettingsEntities
+    public class Testsuite
     {
         public int TestsuiteId { get; set; }
         public string TestsuiteName { get; set; }
         public virtual HashSet<Testcase> Testcases { get; set; }
-
-        public Testsuite(string connectionString) : base(connectionString)
-        {
-        }
     }
 }

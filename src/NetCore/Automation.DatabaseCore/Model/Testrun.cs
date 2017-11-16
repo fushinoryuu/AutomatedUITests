@@ -2,7 +2,7 @@
 
 namespace Automation.DatabaseCore.Model
 {
-    public class Testrun : TestSettingsEntities
+    public class Testrun
     {
         public string Guid { get; set; }
         public int TestcaseCount { get; set; }
@@ -14,9 +14,5 @@ namespace Automation.DatabaseCore.Model
         public DateTime Starttime { get; set; }
         public DateTime Endtime { get; set; }
         public double Duration { get; set; }
-
-        public Testrun(string connectionString) : base(connectionString)
-        {
-        }
     }
 }
