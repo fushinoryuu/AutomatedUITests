@@ -1,6 +1,8 @@
-﻿namespace Automation.DatabaseCore.Model
+﻿using MySql.Data.MySqlClient;
+
+namespace Automation.DatabaseCore.Model
 {
-    public class Setting : TestSettingsContext
+    public class Setting
     {
         public int Id { get; set; }
         public string TargetBrowser { get; set; }
@@ -9,8 +11,18 @@
         public string ScreenshotFolder { get; set; }
         public sbyte IsActive { get; set; }
 
-        public Setting(string connectionString) : base(connectionString)
+        public Setting()
         {
+        }
+
+        public Setting(MySqlDataReader reader)
+        {
+            Id = reader.GetInt32("id");
+            TargetBrowser = reader.GetString("targetBrowser");
+            OperatingSystem = reader.GetString("operatingSystem");
+            SeleniumHubUri = reader.GetString("seleniumHubUri");
+            ScreenshotFolder = reader.GetString("screenshotFolder");
+            IsActive = reader.GetSByte("isActive");
         }
     }
 }
