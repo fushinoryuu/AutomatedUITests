@@ -1,20 +1,33 @@
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
+using Automation.SeleniumCore;
 using Automation.SeleniumCore.Utils;
 using Automation.FrameworkCore.Pages;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Automation.TestsCore
 {
     [TestFixture, Parallelizable]
-    public abstract class BaseWebtest : TestContainer
+    public abstract class BaseWebtest
     {
+        protected IConfigurationRoot Configuration { get; }
         protected IRunSelenium Runner;
         protected HomePage HomePage;
+
+        protected BaseWebtest()
+        {
+            var builder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+            Configuration = builder.Build();
+        }
 
         [SetUp]
         public void Setup()
         {
-            Runner = GetContainerInstance<IRunSelenium>();
+            Runner = new RunSelenium();
             HomePage = new HomePage(Runner);
         }
 
