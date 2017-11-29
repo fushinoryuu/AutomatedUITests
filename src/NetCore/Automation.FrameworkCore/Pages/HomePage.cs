@@ -1,41 +1,26 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium.Support.PageObjects;
 using Automation.SeleniumCore.Utils;
 using Automation.FrameworkCore.Utils;
+using Automation.FrameworkCore.Interfaces;
 
 namespace Automation.FrameworkCore.Pages
 {
-    public class HomePage : BasePage
+    public class HomePage : BasePage, IHome
     {
         // TODO - PageFactory not supported in Net Core 2
-        //[FindsBy(How = How.Id, Using = "UserName")]
-        //protected IWebElement UserNameTextbox;
+        protected IWebElement UserNameTextbox => Runner.Driver.FindElement(By.Id("UserName"));
+        protected IWebElement PasswordTextbox => Runner.Driver.FindElement(By.Id("Password"));
+        protected IWebElement SignInButton => Runner.Driver.FindElement(By.ClassName("login-btn"));
+        protected IWebElement LoginError => Runner.Driver.FindElement(By.ClassName("alert-summary"));
+        protected IWebElement CreateAccountButton => Runner.Driver.FindElement(By.XPath("//*[@id='mainContent']/div[3]/div[2]/div/a"));
 
-        //[FindsBy(How = How.Id, Using = "Password")]
-        //protected IWebElement PasswordTextbox;
-
-        //[FindsBy(How = How.ClassName, Using = "login-btn")]
-        //protected IWebElement SignInButton;
-
-        //[FindsBy(How = How.ClassName, Using = "alert-summary")]
-        //protected IWebElement LoginError;
-
-        //[FindsBy(How = How.XPath, Using = "//*[@id='mainContent']/div[3]/div[2]/div/a")]
-        //protected IWebElement CreateAccountButton;
-
-        protected const string UserNameTextboxLocator = "UserName";
-        protected const string PasswordTextboxLocator = "Password";
-        protected const string SignInButtonLocator = "login-btn";
-        protected const string LoginErrorLocator = "alert-summary";
-        protected const string CreateAccountButtonLocator = "//*[@id='mainContent']/div[3]/div[2]/div/a";
         private const string Url = "https://stage.oneexchange.com";
         private const string Title = "Find Healthcare Coverage at OneExchange";
 
         public HomePage(IRunSelenium runner)
         {
             Runner = runner;
-            //PageFactory.InitElements(runner.Driver, this);
         }
 
         public void GoTo()
@@ -45,9 +30,7 @@ namespace Automation.FrameworkCore.Pages
 
         public override bool IsAt()
         {
-            var logo = Runner.Driver.FindElement(By.Id("oe-logo"));
-
-            Runner.Wait.Until(ExpectedConditions.ElementToBeClickable(logo));
+            Runner.Wait.Until(ExpectedConditions.ElementToBeClickable(OeLogo));
 
             if (Title != Runner.Driver.Title)
                 throw new StaleElementReferenceException(
@@ -58,53 +41,41 @@ namespace Automation.FrameworkCore.Pages
 
         public void Login(string userName, string password)
         {
-            EnterUser(userName);
+            EnterUserName(userName);
             EnterPassword(password);
             ClickSignInButton();
         }
 
-        private void EnterUser(string userName)
+        private void EnterUserName(string userName)
         {
-            var userNameTextbox = Runner.Driver.FindElement(By.Id(UserNameTextboxLocator));
-
-            userNameTextbox.EnterText(userName);
+            UserNameTextbox.EnterText(userName);
         }
 
         private void EnterPassword(string password)
         {
-            var passwordTextbox = Runner.Driver.FindElement(By.Id(PasswordTextboxLocator));
-
-            passwordTextbox.EnterText(password);
+            PasswordTextbox.EnterText(password);
         }
 
         private void ClickSignInButton()
         {
-            var signInButton = Runner.Driver.FindElement(By.ClassName(SignInButtonLocator));
-
-            signInButton.Click();
+            SignInButton.Click();
         }
 
         public bool LoginErrorIsDisplayed()
         {
-            var loginError = Runner.Driver.FindElement(By.ClassName(LoginErrorLocator));
+            LoginError.WaitUntilDisplayed();
 
-            loginError.WaitUntilDisplayed();
-
-            return loginError.Displayed;
+            return LoginError.Displayed;
         }
 
         public bool SigninButtonIsVisible()
         {
-            var signInButton = Runner.Driver.FindElement(By.ClassName(SignInButtonLocator));
-
-            return signInButton.Displayed;
+            return SignInButton.Displayed;
         }
 
         public bool CreateAccountButtonIsVisible()
         {
-            var createAccountButton = Runner.Driver.FindElement(By.XPath(CreateAccountButtonLocator));
-
-            return createAccountButton.Displayed;
+            return CreateAccountButton.Displayed;
         }
     }
 }
