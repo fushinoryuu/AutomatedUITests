@@ -1,17 +1,12 @@
-﻿using Xunit;
-using Shouldly;
-using Automation.SeleniumCore.Utils;
-using Automation.FrameworkCore.Interfaces;
+﻿using Shouldly;
+using NUnit.Framework;
 
 namespace Automation.TestsCore.UiTests
 {
+    [TestFixture, Parallelizable]
     public class HomePageErrorTests : BaseWebtest
     {
-        public HomePageErrorTests(IRunSelenium runner, IHomePage homePage) : base(runner, homePage)
-        {
-        }
-
-        [Fact/*(DisplayName = "Login Error Displays")*/]
+        [TestCase(TestName = "Login Error Displays")]
         public void LoginErrorDisplays()
         {
             HomePage.GoTo();

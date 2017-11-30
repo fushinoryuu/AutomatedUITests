@@ -1,39 +1,51 @@
-using Xunit;
+using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using Automation.SeleniumCore;
 using Automation.SeleniumCore.Utils;
 using Automation.FrameworkCore.Pages;
 using Automation.FrameworkCore.Interfaces;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Automation.TestsCore
 {
-    public abstract class BaseWebtest : ICollectionFixture<BaseWebtest>
+    [TestFixture, Parallelizable]
+    public abstract class BaseWebtest
     {
         protected IConfigurationRoot Configuration { get; }
         protected IRunSelenium Runner;
         protected IHomePage HomePage;
 
-        protected BaseWebtest(IRunSelenium runner, IHomePage homePage)
+        protected BaseWebtest()
         {
             // Load config file
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
             Configuration = builder.Build();
-
-            Runner = runner;
-            HomePage = homePage;
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        [SetUp]
+        public void Setup()
         {
-            // Setup Dependency Injection
-            services.AddSingleton<IRunSelenium, RunSelenium>();
-            services.AddTransient<IHomePage, HomePagePagePage>();
+            Runner = new RunSelenium();
+            HomePage = new HomePage(Runner);
         }
-        public void Cleanup()
+
+        [TearDown]
+        public void Teardown()
         {
+            var testStatus = TestContext.CurrentContext.Result.Outcome.Status;
+
+            // ReSharper disable once SwitchStatementMissingSomeCases
+            switch (testStatus)
+            {
+                case TestStatus.Failed:
+                case TestStatus.Inconclusive:
+                case TestStatus.Warning:
+                    Runner.TakeAndSaveScreenshot(TestContext.CurrentContext.Test.Name);
+                    break;
+            }
+
             Runner.Cleanup();
         }
     }

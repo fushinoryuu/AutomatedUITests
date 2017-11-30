@@ -6,7 +6,7 @@ using Automation.FrameworkCore.Interfaces;
 
 namespace Automation.FrameworkCore.Pages
 {
-    public class HomePagePagePage : BasePagePage, IHomePage
+    public class HomePage : BasePagePage, IHomePage
     {
         // TODO - PageFactory not supported in Net Core 2
         protected IWebElement UserNameTextbox => Runner.Driver.FindElement(By.Id("UserName"));
@@ -18,7 +18,7 @@ namespace Automation.FrameworkCore.Pages
         private const string Url = "https://stage.oneexchange.com";
         private const string Title = "Find Healthcare Coverage at OneExchange";
 
-        public HomePagePagePage(IRunSelenium runner)
+        public HomePage(IRunSelenium runner)
         {
             Runner = runner;
         }
