@@ -1,6 +1,6 @@
 ﻿namespace Automation.FrameworkCore.Interfaces
 {
-    public interface IBase
+    public interface IBasePage
     {
         bool IsAt();
     }

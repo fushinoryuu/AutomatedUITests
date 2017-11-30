@@ -1,6 +1,6 @@
 ﻿namespace Automation.FrameworkCore.Interfaces
 {
-    public interface IHome : IBase
+    public interface IHomePage : IBasePage
     {
         void GoTo();
         void Login(string userName, string password);

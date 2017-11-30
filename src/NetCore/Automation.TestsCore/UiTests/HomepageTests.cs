@@ -1,19 +1,24 @@
-﻿using Shouldly;
-using NUnit.Framework;
+﻿using Xunit;
+using Shouldly;
+using Automation.SeleniumCore.Utils;
+using Automation.FrameworkCore.Interfaces;
 
 namespace Automation.TestsCore.UiTests
 {
-    [TestFixture, Parallelizable]
-    public class HomepageTests : BaseWebtest
+    public class HomepageTests : BaseWebtest/*, ICollectionFixture<HomepageTests>*/
     {
-        [TestCase(TestName = "Home Page Loads")]
+        public HomepageTests(IRunSelenium runner, IHomePage homePage) : base(runner, homePage)
+        {
+        }
+
+        [Fact/*(DisplayName = "Home Page Loads")*/]
         public void HomePageLoads()
         {
             HomePage.GoTo();
             HomePage.IsAt().ShouldBeTrue();
         }
 
-        [TestCase(TestName = "Buttons Are Visible")]
+        [Fact/*(DisplayName = "Buttons Are Visible")*/]
         public void ButtonsAreVisible()
         {
             HomePage.GoTo();

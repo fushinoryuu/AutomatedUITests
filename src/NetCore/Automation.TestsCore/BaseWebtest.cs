@@ -1,51 +1,39 @@
-using NUnit.Framework;
-using NUnit.Framework.Interfaces;
+using Xunit;
 using Automation.SeleniumCore;
 using Automation.SeleniumCore.Utils;
 using Automation.FrameworkCore.Pages;
+using Automation.FrameworkCore.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace Automation.TestsCore
 {
-    [TestFixture, Parallelizable]
-    public abstract class BaseWebtest
+    public abstract class BaseWebtest : ICollectionFixture<BaseWebtest>
     {
         protected IConfigurationRoot Configuration { get; }
         protected IRunSelenium Runner;
-        protected HomePage HomePage;
+        protected IHomePage HomePage;
 
-        protected BaseWebtest()
+        protected BaseWebtest(IRunSelenium runner, IHomePage homePage)
         {
+            // Load config file
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
             Configuration = builder.Build();
+
+            Runner = runner;
+            HomePage = homePage;
         }
 
-        [SetUp]
-        public void Setup()
+        public void ConfigureServices(IServiceCollection services)
         {
-            Runner = new RunSelenium();
-            HomePage = new HomePage(Runner);
+            // Setup Dependency Injection
+            services.AddSingleton<IRunSelenium, RunSelenium>();
+            services.AddTransient<IHomePage, HomePagePagePage>();
         }
-
-        [TearDown]
-        public void Teardown()
+        public void Cleanup()
         {
-            var testStatus = TestContext.CurrentContext.Result.Outcome.Status;
-
-            // ReSharper disable once SwitchStatementMissingSomeCases
-            switch (testStatus)
-            {
-                case TestStatus.Failed:
-                case TestStatus.Inconclusive:
-                case TestStatus.Warning:
-                    Runner.TakeAndSaveScreenshot(TestContext.CurrentContext.Test.Name);
-                    break;
-            }
-
             Runner.Cleanup();
         }
     }
