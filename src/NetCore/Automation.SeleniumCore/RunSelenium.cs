@@ -2,10 +2,9 @@
 using System.IO;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.Extensions;
 using OpenQA.Selenium.Support.UI;
+using OpenQA.Selenium.Support.Extensions;
 using Automation.SeleniumCore.Utils;
-using OpenQA.Selenium.Chrome;
 
 namespace Automation.SeleniumCore
 {

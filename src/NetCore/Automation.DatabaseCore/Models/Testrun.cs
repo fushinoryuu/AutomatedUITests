@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Automation.DatabaseCore.Interfaces;
 
-namespace Automation.DatabaseCore.Model
+namespace Automation.DatabaseCore.Models
 {
-    public class Testrun
+    public class Testrun : ITestData
     {
         [MaxLength(36)]
         public string Guid { get; set; }

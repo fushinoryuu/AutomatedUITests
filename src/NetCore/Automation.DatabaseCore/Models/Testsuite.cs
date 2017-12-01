@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using Automation.DatabaseCore.Interfaces;
 
-namespace Automation.DatabaseCore.Model
+namespace Automation.DatabaseCore.Models
 {
-    public class Testsuite
+    public class Testsuite : ITestData
     {
         public int TestsuiteId { get; set; }
         public string TestsuiteName { get; set; }

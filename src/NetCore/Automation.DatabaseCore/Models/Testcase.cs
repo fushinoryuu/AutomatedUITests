@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Automation.DatabaseCore.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
-namespace Automation.DatabaseCore.Model
+namespace Automation.DatabaseCore.Models
 {
-    public class Testcase
+    public class Testcase : ITestData
     {
         public int TestcaseId { get; set; }
 

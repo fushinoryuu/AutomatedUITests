@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Automation.DatabaseCore.Model
+namespace Automation.DatabaseCore.Models
 {
     public class Setting
     {

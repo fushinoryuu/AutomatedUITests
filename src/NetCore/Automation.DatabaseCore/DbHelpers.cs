@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Automation.DatabaseCore.Model;
+using Automation.DatabaseCore.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace Automation.DatabaseCore

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Automation.DatabaseCore.Model
+namespace Automation.DatabaseCore.Models
 {
     public class TestSettingsFactory
     {

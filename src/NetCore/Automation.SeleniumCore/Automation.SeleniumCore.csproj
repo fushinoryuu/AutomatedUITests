@@ -7,7 +7,10 @@
   <ItemGroup>
     <PackageReference Include="Selenium.Support" Version="3.7.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.7.0" />
-    <PackageReference Include="structuremap" Version="4.5.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Automation.DatabaseCore\Automation.DatabaseCore.csproj" />
   </ItemGroup>
 
 </Project>
