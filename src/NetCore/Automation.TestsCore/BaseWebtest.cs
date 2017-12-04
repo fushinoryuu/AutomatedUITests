@@ -27,7 +27,7 @@ namespace Automation.TestsCore
         [SetUp]
         public void Setup()
         {
-            Runner = new RunSelenium();
+            Runner = new RunSelenium(Configuration);
             HomePage = new HomePage(Runner);
         }
 

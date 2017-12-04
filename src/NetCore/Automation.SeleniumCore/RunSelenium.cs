@@ -5,6 +5,7 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium.Support.Extensions;
 using Automation.SeleniumCore.Utils;
+using Microsoft.Extensions.Configuration;
 
 namespace Automation.SeleniumCore
 {
@@ -13,17 +14,17 @@ namespace Automation.SeleniumCore
         public WebDriverWait Wait { get; }
         public IWebDriver Driver { get; }
 
-        public RunSelenium()
+        public RunSelenium(IConfigurationRoot configuration)
         {
-            Driver = SetupWebDriver();
+            Driver = SetupWebDriver(configuration);
             Driver.Manage().Window.Maximize();
 
             Wait = new WebDriverWait(Driver, new TimeSpan(0, 0, 30));
         }
 
-        private static IWebDriver SetupWebDriver()
+        private static IWebDriver SetupWebDriver(IConfigurationRoot configuration)
         {
-            var options = TestSettingsReader.TargetBrowser;
+            var options = TestSettingsReader.TargetBrowser(configuration);
 
             options.PlatformName = TestSettingsReader.OperatingSystem.ToString();
 
