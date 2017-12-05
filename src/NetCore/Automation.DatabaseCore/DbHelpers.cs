@@ -6,11 +6,14 @@ namespace Automation.DatabaseCore
 {
     public static class DbHelpers
     {
-        public static void DeactivateAll()
+        public static TestSettingsContext OpenDbConnection(IConfiguration configuration)
         {
-            var connectionString = GetConnectionString();
+            return TestSettingsFactory.Create(configuration.GetConnectionString("DefaultConnection"));
+        }
 
-            var db = TestSettingsFactory.Create(connectionString);
+        public static void DeactivateAll(IConfigurationRoot configuration)
+        {
+            var db = OpenDbConnection(configuration);
             var toUpdate = db.Settings.Where(setting => setting.IsActive == 1).ToList();
 
             toUpdate.ForEach(item => item.IsActive = 0);
@@ -19,33 +22,14 @@ namespace Automation.DatabaseCore
             db.Dispose();
         }
 
-        public static int GetNextId()
+        public static int GetNextId(IConfigurationRoot configuration)
         {
-            var connectionString = GetConnectionString();
-
-            var db = TestSettingsFactory.Create(connectionString);
+            var db = OpenDbConnection(configuration);
             var items = db.Settings.OrderBy(item => item.Id).ToList();
 
             db.Dispose();
 
             return !items.Any() ? 1 : items.Last().Id++;
-        }
-
-        private static string GetConnectionString()
-        {
-            var configuration = GetConfiguration();
-
-            return configuration.GetConnectionString("DefaultConnection");
-        }
-
-        private static IConfigurationRoot GetConfiguration()
-        {
-            // TODO - Remove this once dependency inject is working
-            var builder = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
-
-            return builder.Build();
         }
     }
 }

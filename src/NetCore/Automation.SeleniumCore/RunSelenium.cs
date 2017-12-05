@@ -24,18 +24,18 @@ namespace Automation.SeleniumCore
 
         private static IWebDriver SetupWebDriver(IConfigurationRoot configuration)
         {
-            var options = TestSettingsReader.TargetBrowser(configuration);
+            var options = TestSettingsReader.DesiredBrowser(configuration);
 
-            options.PlatformName = TestSettingsReader.OperatingSystem.ToString();
+            options.PlatformName = TestSettingsReader.DesiredOperatingSystem(configuration);
 
-            var hub = TestSettingsReader.SeleniumHubUri;
+            var hub = TestSettingsReader.SeleniumHubLocation(configuration);
 
             return new RemoteWebDriver(hub, options.ToCapabilities());
         }
 
-        public void TakeAndSaveScreenshot(string testName)
+        public void TakeAndSaveScreenshot(IConfigurationRoot configuration, string testName)
         {
-            var path = MakePath();
+            var path = MakePath(configuration);
 
             MakeDirectory(path);
 
@@ -44,11 +44,11 @@ namespace Automation.SeleniumCore
             SaveScreenShot(image, testName, path);
         }
 
-        private static string MakePath()
+        private static string MakePath(IConfigurationRoot configuration)
         {
             var date = DateTime.Now.ToString("yyyy-MM-dd");
 
-            return TestSettingsReader.ScreenshotFolder + $"{date}\\";
+            return TestSettingsReader.ScreenshotFolderLocation(configuration) + $"{date}\\";
         }
 
         private static void MakeDirectory(string path)

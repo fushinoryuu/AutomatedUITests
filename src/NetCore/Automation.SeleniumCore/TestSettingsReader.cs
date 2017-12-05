@@ -5,6 +5,7 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Firefox;
+using Automation.DatabaseCore;
 using Automation.SeleniumCore.Utils;
 using Automation.DatabaseCore.Models;
 using Microsoft.Extensions.Configuration;
@@ -13,9 +14,9 @@ namespace Automation.SeleniumCore
 {
     internal class TestSettingsReader
     {
-        private static Setting GetDataFromDb(string connectionString)
+        private static Setting GetDataFromDb(IConfiguration configuration)
         {
-            var db = TestSettingsFactory.Create(connectionString);
+            var db = DbHelpers.OpenDbConnection(configuration);
             var setting = db.Settings.FirstOrDefault(item => item.IsActive == 1);
 
             db.Dispose();
@@ -26,9 +27,9 @@ namespace Automation.SeleniumCore
         /// <summary>Tries to figureout what browser to use from the db or config file.</summary>
         /// <param name="configuration">The configuration objected holding all the desired settings.</param>
         /// <returns>The driver options to use in the new instance of a driver.</returns>
-        public static DriverOptions TargetBrowser(IConfigurationRoot configuration)
+        public static DriverOptions DesiredBrowser(IConfigurationRoot configuration)
         {
-            var setting = GetDataFromDb(configuration.GetConnectionString("DefaultConnection"));
+            var setting = GetDataFromDb(configuration);
             BrowserType targetBrowser;
 
             if (setting != null)
@@ -53,53 +54,48 @@ namespace Automation.SeleniumCore
         }
 
         /// <summary>Tries to figureout what OS to use from the config file.</summary>
-        public static Platform OperatingSystem
+        public static string DesiredOperatingSystem(IConfigurationRoot configuration)
         {
-            get
+            var setting = GetDataFromDb(configuration);
+            OperatingSystemType operatingSystem;
+
+            if (setting != null)
+                Enum.TryParse(setting.OperatingSystem, out operatingSystem);
+
+            else
+                Enum.TryParse(configuration["operatingSystem"], out operatingSystem);
+
+            switch (operatingSystem)
             {
-                // TODO - Add db query
-                OperatingSystemType operatingSystem;
-
-                Enum.TryParse("Something", out operatingSystem);
-
-                switch (operatingSystem)
-                {
-                    case OperatingSystemType.Any:
-                        return new Platform(PlatformType.Any);
-                    case OperatingSystemType.Linux:
-                        return new Platform(PlatformType.Linux);
-                    case OperatingSystemType.Mac:
-                        return new Platform(PlatformType.Mac);
-                    case OperatingSystemType.Windows:
-                        return new Platform(PlatformType.Windows);
-                    default:
-                        return new Platform(PlatformType.Windows);
-                }
+                case OperatingSystemType.Any:
+                    return new Platform(PlatformType.Any).ToString();
+                case OperatingSystemType.Linux:
+                    return new Platform(PlatformType.Linux).ToString();
+                case OperatingSystemType.Mac:
+                    return new Platform(PlatformType.Mac).ToString();
+                case OperatingSystemType.Windows:
+                    return new Platform(PlatformType.Windows).ToString();
+                default:
+                    return new Platform(PlatformType.Windows).ToString();
             }
         }
 
         /// <summary>Tries to figureout the url of the Selenium Hub.</summary>
-        public static Uri SeleniumHubUri
+        public static Uri SeleniumHubLocation(IConfigurationRoot configuration)
         {
-            get
-            {
-                // TODO - Update with db query
-                const string hubLocation = " ";
+            var setting = GetDataFromDb(configuration);
+            var location = setting != null ? setting.SeleniumHubUri : configuration["seleniumHubUri"];
 
-                return string.IsNullOrWhiteSpace(hubLocation) ? new Uri("http://localhost:4444/wd/hub") : new Uri(hubLocation);
-            }
+            return string.IsNullOrWhiteSpace(location) ? new Uri("http://localhost:4444/wd/hub") : new Uri(location);
         }
 
         /// <summary>Tries to figereout where the screenshots should be saved to.</summary>
-        public static string ScreenshotFolder
+        public static string ScreenshotFolderLocation(IConfigurationRoot configuration)
         {
-            get
-            {
-                // TODO - Update with db query
-                const string folderLocation = " ";
+            var setting = GetDataFromDb(configuration);
+            var directory = setting != null ? setting.ScreenshotFolder : configuration["screenshotFolder"];
 
-                return string.IsNullOrWhiteSpace(folderLocation) ? "C:\\UI_Test_Screenshots\\" : folderLocation;
-            }
+            return string.IsNullOrWhiteSpace(directory) ? "C:\\UI_Test_Screenshots\\" : directory;
         }
     }
 }

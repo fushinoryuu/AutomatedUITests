@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using Microsoft.Extensions.Configuration;
 
 namespace Automation.SeleniumCore.Utils
 {
@@ -7,7 +8,7 @@ namespace Automation.SeleniumCore.Utils
     {
         WebDriverWait Wait { get; }
         IWebDriver Driver { get; }
-        void TakeAndSaveScreenshot(string testName);
+        void TakeAndSaveScreenshot(IConfigurationRoot configuration, string testName);
         void Cleanup();
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using NUnit.Framework.Interfaces;
 using Automation.SeleniumCore;
@@ -39,10 +40,11 @@ namespace Automation.TestsCore
             // ReSharper disable once SwitchStatementMissingSomeCases
             switch (testStatus)
             {
-                case TestStatus.Failed:
-                case TestStatus.Inconclusive:
-                case TestStatus.Warning:
-                    Runner.TakeAndSaveScreenshot(TestContext.CurrentContext.Test.Name);
+                case TestStatus.Passed:
+                    Console.WriteLine("Good Job!");
+                    break;
+                default:
+                    Runner.TakeAndSaveScreenshot(Configuration, TestContext.CurrentContext.Test.Name);
                     break;
             }
 
