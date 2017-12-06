@@ -81,16 +81,18 @@ namespace Automation.XmlCore
                     continue;
 
                 // Item not in db
-                var newTest = new Testcase();
                 var suite = db.Testsuites.FirstOrDefault(i => i.TestsuiteName == item.TestSuite);
 
                 if (suite == null)
                     throw new Exception("TestSuite not found");
 
-                newTest.TestcaseName = item.TestName;
-                newTest.BelongsToSuite = suite.TestsuiteId;
-                newTest.TestcaseDescription = item.TestCaseDescription;
-                newTest.TestSuite = suite;
+                var newTest = new Testcase
+                {
+                    TestcaseName = item.TestName,
+                    BelongsToSuite = suite.TestsuiteId,
+                    TestcaseDescription = item.TestCaseDescription,
+                    TestSuite = suite
+                };
 
                 db.Testcases.Add(newTest);
                 db.SaveChanges();

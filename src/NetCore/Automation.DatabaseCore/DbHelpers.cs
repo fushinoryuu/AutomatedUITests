@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Automation.DatabaseCore.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Automation.DatabaseCore
@@ -8,7 +8,7 @@ namespace Automation.DatabaseCore
     {
         public static TestSettingsContext OpenDbConnection(IConfiguration configuration)
         {
-            return TestSettingsFactory.Create(configuration.GetConnectionString("DefaultConnection"));
+            return CreateDbContext(configuration.GetConnectionString("DefaultConnection"));
         }
 
         public static void DeactivateAll(IConfigurationRoot configuration)
@@ -16,6 +16,7 @@ namespace Automation.DatabaseCore
             var db = OpenDbConnection(configuration);
             var toUpdate = db.Settings.Where(setting => setting.IsActive == 1).ToList();
 
+            // Set all items 0 for the IsActive column
             toUpdate.ForEach(item => item.IsActive = 0);
 
             db.SaveChanges();
@@ -30,6 +31,20 @@ namespace Automation.DatabaseCore
             db.Dispose();
 
             return !items.Any() ? 1 : items.Last().Id++;
+        }
+
+        public static TestSettingsContext CreateDbContext(string connectionString)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<TestSettingsContext>();
+
+            optionsBuilder.UseMySQL(connectionString);
+
+            //Ensure database creation
+            var context = new TestSettingsContext(optionsBuilder.Options);
+
+            //context.Database.EnsureCreated();
+
+            return context;
         }
     }
 }
