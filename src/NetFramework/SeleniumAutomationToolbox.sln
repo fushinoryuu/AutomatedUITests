@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Gui", "Automation.Gui\Automation.Gui.csproj", "{3555571E-BC0E-4C79-B7D1-28FD45A6F1D9}"
 EndProject
@@ -14,8 +14,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Tests", "Automation.Tests\Automation.Tests.csproj", "{F64CD766-D47F-4DC9-82E9-04B7F7004E21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Database", "Automation.Database\Automation.Database.csproj", "{536868AA-BE34-4BD6-B0FB-368BE72B0672}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NETCoreSandbox", "NETCoreSandbox\NETCoreSandbox.csproj", "{2720FA0D-A6A5-4CFC-8774-BF3666040E74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +45,6 @@ Global
 		{536868AA-BE34-4BD6-B0FB-368BE72B0672}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{536868AA-BE34-4BD6-B0FB-368BE72B0672}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{536868AA-BE34-4BD6-B0FB-368BE72B0672}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2720FA0D-A6A5-4CFC-8774-BF3666040E74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2720FA0D-A6A5-4CFC-8774-BF3666040E74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2720FA0D-A6A5-4CFC-8774-BF3666040E74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2720FA0D-A6A5-4CFC-8774-BF3666040E74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
