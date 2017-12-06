@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.GuiCore", "Automation.GuiCore\Automation.GuiCore.csproj", "{FD7B40BC-7DBE-4C3B-A2B1-B998E10E3B82}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.IoCore", "Automation.IoCore\Automation.IoCore.csproj", "{2A19C065-C5ED-4530-B88D-4EA56F893D0C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.TestsCore", "Automation.TestsCore\Automation.TestsCore.csproj", "{F7759BEB-B8FE-42C0-9341-52053CD20C5A}"
@@ -12,8 +14,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.FrameworkCore", "Automation.FrameworkCore\Automation.FrameworkCore.csproj", "{30C99625-551B-47E4-84DD-FCD8ACF0D44A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.DatabaseCore", "Automation.DatabaseCore\Automation.DatabaseCore.csproj", "{5C168395-F3A1-44BD-8DD6-80402A0E7DE8}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NETCoreSandbox", "NETCoreSandbox\NETCoreSandbox.csproj", "{FD7B40BC-7DBE-4C3B-A2B1-B998E10E3B82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
