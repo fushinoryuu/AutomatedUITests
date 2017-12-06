@@ -9,8 +9,8 @@ namespace Automation.DatabaseCore.Models
         }
 
         public DbSet<Setting> Settings { get; set; }
-        //public DbSet<Testcase> Testcases { get; set; }
+        public DbSet<Testcase> Testcases { get; set; }
         //public DbSet<Testrun> Testruns { get; set; }
-        //public DbSet<Testsuite> Testsuites { get; set; }
+        public DbSet<Testsuite> Testsuites { get; set; }
     }
 }

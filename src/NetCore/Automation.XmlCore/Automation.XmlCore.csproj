@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Automation.DatabaseCore\Automation.DatabaseCore.csproj" />
     <ProjectReference Include="..\Automation.SeleniumCore\Automation.SeleniumCore.csproj" />
   </ItemGroup>
 
