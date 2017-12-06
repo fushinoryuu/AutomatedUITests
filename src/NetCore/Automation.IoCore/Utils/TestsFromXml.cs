@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
+using System.Collections.Generic;
 
-namespace Automation.XmlCore.Utils
+namespace Automation.IoCore.Utils
 {
     [XmlRoot("tests")]
     internal class TestsFromXml

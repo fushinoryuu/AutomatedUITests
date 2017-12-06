@@ -5,12 +5,12 @@ using System.Xml.Serialization;
 using System.Collections.Generic;
 using Automation.DatabaseCore;
 using Automation.DatabaseCore.Models;
-using Automation.XmlCore.Utils;
+using Automation.IoCore.Utils;
 using Microsoft.Extensions.Configuration;
 
-namespace Automation.XmlCore
+namespace Automation.IoCore
 {
-    public class TestCaseImporter
+    public class XmlTestCaseImporter
     {
         private TestsFromXml _testsFromXml;
 
@@ -45,22 +45,19 @@ namespace Automation.XmlCore
 
         private void SaveSuites(IConfiguration configuration)
         {
-            var suiteNameSet = new HashSet<string>();
-
-            foreach (var item in _testsFromXml.ListOfTests)
-                suiteNameSet.Add(item.TestSuite);
-
+            var suiteNames = _testsFromXml.ListOfTests.Select(i => i.TestSuite).ToList();
+            var suiteNameSet = new HashSet<string>(suiteNames);
             var db = DbHelpers.OpenDbConnection(configuration);
 
             foreach (var name in suiteNameSet)
             {
                 var inDb = db.Testsuites.FirstOrDefault(i => i.TestsuiteName == name);
 
-                // Item already in db
+                // Suite already in db
                 if (inDb != null)
                     continue;
 
-                // Item not in db
+                // Suite not in db
                 db.Testsuites.Add(new Testsuite { TestsuiteName = name });
                 db.SaveChanges();
             }

@@ -6,7 +6,7 @@ namespace Automation.DatabaseCore.Models
 {
     public class Testrun : ITestData
     {
-        [MaxLength(36)]
+        [Key, MaxLength(36)]
         public string Guid { get; set; }
 
         public int TestcaseCount { get; set; }

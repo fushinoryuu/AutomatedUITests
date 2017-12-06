@@ -4,7 +4,7 @@ using Automation.DatabaseCore;
 using Automation.DatabaseCore.Models;
 using Microsoft.Extensions.Configuration;
 
-namespace Automation.XmlCore
+namespace Automation.IoCore
 {
     public class NunitDataExtractor
     {
