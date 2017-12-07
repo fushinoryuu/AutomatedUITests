@@ -18,4 +18,4 @@ class Jumbotron extends React.Component {
   }
 }
 
-ReactDOM.render(<Jumbotron />, document.getElementById('content'));
+ReactDOM.render(<Jumbotron />, document.getElementById('jumbotron'));
