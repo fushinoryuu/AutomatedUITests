@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace NETCoreSandbox.Controllers
+namespace Automation.GuiCore.Controllers
 {
     public class HomeController : Controller
     {
