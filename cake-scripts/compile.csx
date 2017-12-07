@@ -36,7 +36,7 @@ private void dropPrepare(string releaseTarget)
 
     foreach (var project in dropOptions.Projects)
     {
-        Information("Gathering release files for project {0}", project.Name);
+        Information("\nGathering release files for project {0}", project.Name);
         var destinationRoot = currentWorkingDirectory
             .Combine("Build")
             .Combine(project.Name)
