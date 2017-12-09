@@ -6,6 +6,7 @@ using Automation.SeleniumCore.Utils;
 using Automation.FrameworkCore.Pages;
 using Automation.FrameworkCore.Interfaces;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Automation.TestsCore
 {
