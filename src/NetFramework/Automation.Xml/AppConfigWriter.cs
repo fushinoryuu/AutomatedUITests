@@ -25,8 +25,8 @@ namespace Automation.Xml
             _hub = settings.seleniumHubUri;
             _screenshots = settings.screenshotFolder;
 
-            _srcPath = @"C:\AutomationToolboox\src\Automation.Tests\App.config";
-            _binPath = @"C:\AutomationToolboox\src\Automation.Tests\bin\Debug\App.config";
+            _srcPath = @"C:\AutomationToolboox\src\NetFramework\Automation.Tests\App.config";
+            _binPath = @"C:\AutomationToolboox\src\NetFramework\Automation.Tests\bin\Debug\App.config";
         }
 
         private static setting GetDataFromDb()

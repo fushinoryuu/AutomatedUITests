@@ -10,7 +10,7 @@ namespace Automation.Tests.Utils
             {
                 WorkingDirectory = @"C:\AutomationToolboox",
                 WindowStyle = showWindow,
-                FileName = @"C:\AutomationToolboox\packages\NUnit.ConsoleRunner\tools\nunit3-console.exe",
+                FileName = @"C:\AutomationToolboox\src\NetFramework\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe",
                 UseShellExecute = false,
                 Arguments = arguments
             };
