@@ -37,4 +37,4 @@ class HomePage extends React.Component {
     }
 }
 
-ReactDOM.render(<HomePage />, document.getElementById('HomeApp'));
+ReactDOM.render(<HomePage />, document.getElementById('HomePage'));

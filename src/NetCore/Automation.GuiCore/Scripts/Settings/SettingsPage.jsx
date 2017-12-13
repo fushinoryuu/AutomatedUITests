@@ -1,18 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Jumbotron from "../Shared/Jumbotron.jsx";
 
-const parentMainText = "Automation Settings";
-const parentSubText = "You can use this page to update the test configurations for your Selenium tests.";
+// Jumbotron variables
+const settingsMainText = "Automation Settings";
+const settingsSubText = "You can use this page to:";
+const strings = ["Add new test configurations.",
+    "Edit existing test configurations.",
+    "Set which configuration to use for unit tests.",
+    "Run unit tests from the UI."];
+const settingsListItems = strings.map((string) =>
+    <li key={strings.indexOf(string)}>
+        {string}
+    </li>
+);
 
-class Jumbotron extends React.Component {
+// Main component to render the whole page
+class SettingsPage extends React.Component {
     render() {
-      return (
-        <div className="jumbotron">
-          <h2>{this.props.mainText}</h2>
-          <p>{this.props.subText}</p>
-        </div>
-      )
+        return <Jumbotron mainText={settingsMainText} subText={settingsSubText} items={settingsListItems} />;
     }
-  }
+}
 
-ReactDOM.render(<Jumbotron mainText={parentMainText} subText={parentSubText} />, document.getElementById('SettingsJumbrotron'));
+ReactDOM.render(<SettingsPage />, document.getElementById('SettingsPage'));
