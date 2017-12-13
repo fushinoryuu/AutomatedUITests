@@ -1,4 +1,3 @@
-﻿// import HomeJumbotron from "./Home/HomeJumbotron.jsx";
-// import SettingsJumbotron from "./Settings/SettingsJumbotron.jsx";
-
-import App from "./Home/HomePage.jsx"
+﻿//import HomeJumbotron from "./Home/HomeJumbotron.jsx";
+//import Jumbotron from "./Settings/SettingsPage.jsx";
+import HomePage from "./Home/HomePage.jsx";
