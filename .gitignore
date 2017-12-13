@@ -275,6 +275,7 @@ __pycache__/
 tools/
 !tools/packages.config
 
-# Other files
+# Other files and directories
 src/CommonAssemblyInfo.cs
 src/NetFramework/Automation.Gui/App_Data/
+.vscode/
