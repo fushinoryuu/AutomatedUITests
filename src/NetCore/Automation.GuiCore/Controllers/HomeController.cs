@@ -6,7 +6,15 @@ namespace Automation.GuiCore.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            try
+            {
+                return View();
+            }
+
+            catch
+            {
+                return Error();
+            }
         }
 
         public IActionResult Error()
