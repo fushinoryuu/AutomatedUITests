@@ -6,11 +6,12 @@ namespace Automation.Tests.Utils
     {
         public static int RunNunitTests(string arguments, ProcessWindowStyle showWindow)
         {
+            // If you move or rename the root directory 'SeleniumAutomationToolbox', please update these paths
             var startInfo = new ProcessStartInfo
             {
-                WorkingDirectory = @"C:\AutomationToolboox",
+                WorkingDirectory = @"C:\SeleniumAutomationToolbox",
                 WindowStyle = showWindow,
-                FileName = @"C:\AutomationToolboox\src\NetFramework\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe",
+                FileName = @"C:\SeleniumAutomationToolbox\src\NetFramework\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe",
                 UseShellExecute = false,
                 Arguments = arguments
             };

@@ -130,10 +130,11 @@ namespace Automation.Gui.Controllers
 
         public ActionResult RunAutomatedTests()
         {
+            // If you move or rename the root directory 'SeleniumAutomationToolbox', please update these paths
             _processId = RunTestsHelper.RunNunitTests(
-                @"C:\AutomationToolboox\src\Automation.Tests\Automation.Tests.csproj " +
+                @"C:\SeleniumAutomationToolbox\src\NetFramework\Automation.Tests\Automation.Tests.csproj " +
                 "--workers=30 " +
-                @"--work=C:\AutomationToolboox\NunitWork " +
+                @"--work=C:\SeleniumAutomationToolbox\NunitWork " +
                 "--trace=Verbose",
                 ProcessWindowStyle.Normal);
 
