@@ -75,7 +75,7 @@ COMMENT = 'This table will save test cases that are imported using the web app.'
 USE testsettings;
 
 INSERT INTO settings(id, targetBrowser, operatingSystem, seleniumHubUri, screenshotFolder, isActive)
-VALUES(1, 'Chrome', 'Any', 'http://localhost:4444/wd/hub', 'C:\SeleniumAutomationToolbox\UiTestScreenshots\', 1);
+VALUES(1, 'Chrome', 'Any', 'http://localhost:4444/wd/hub', 'C:\\UiTestScreenshots\\', 1);
 
 ----------------
 -- Update tables
