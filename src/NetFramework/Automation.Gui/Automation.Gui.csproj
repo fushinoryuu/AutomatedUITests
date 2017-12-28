@@ -210,8 +210,6 @@
     <Content Include="Views\Shared\ConfigTable.cshtml" />
     <Content Include="Views\Settings\RunAutomatedTests.cshtml" />
     <Content Include="Views\Settings\StopAutomatedTests.cshtml" />
-    <Content Include="Views\TestResults\Index.cshtml" />
-    <Content Include="Views\TestResults\Delete.cshtml" />
     <Content Include="Views\TestCases\Index.cshtml" />
     <Content Include="Views\TestCases\ImportTests.cshtml" />
     <Content Include="Views\Shared\SettingsJumbotron.cshtml" />
@@ -220,6 +218,8 @@
     <Content Include="Views\TestCases\SuiteDetails.cshtml" />
     <Content Include="Views\TestCases\DeleteSuite.cshtml" />
     <Content Include="Views\TestCases\DeleteCase.cshtml" />
+    <Content Include="Views\TestResults\Index.cshtml" />
+    <Content Include="Views\TestResults\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

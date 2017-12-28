@@ -279,3 +279,4 @@ tools/
 # Other files
 src/CommonAssemblyInfo.cs
 src/Automation.Gui/App_Data/
+!src/NetFramework/Automation.Gui/Views/*
