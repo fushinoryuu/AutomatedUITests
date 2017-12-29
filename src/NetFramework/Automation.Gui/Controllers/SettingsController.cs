@@ -12,13 +12,15 @@ namespace Automation.Gui.Controllers
 {
     public class SettingsController : Controller
     {
-        private readonly testsettingsEntities _db = new testsettingsEntities();
         private int _processId;
 
         // GET: Settings
         public ActionResult Index()
         {
-            return View(_db.settings.ToList());
+            using (var db = new testsettingsEntities())
+            {
+                return View(db.settings.ToList());
+            }
         }
 
         // GET: Settings/Create
@@ -30,24 +32,26 @@ namespace Automation.Gui.Controllers
         // POST: Settings/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,targetBrowser,operatingSystem,seleniumHubUri,screenshotFolder,isActive")] setting setting)
         {
             setting.id = Database.DbHelpers.GetNextId();
 
-            if (ModelState.IsValid)
+            using (var db = new testsettingsEntities())
             {
-                if (setting.isActive == 1)
-                    Database.DbHelpers.DeactivateAll();
+                if (ModelState.IsValid)
+                {
+                    if (setting.isActive == 1)
+                        Database.DbHelpers.DeactivateAll();
 
-                _db.settings.Add(setting);
-                _db.SaveChanges();
+                    db.settings.Add(setting);
+                    db.SaveChanges();
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+
+                return View(setting);
             }
-
-            return View(setting);
         }
 
         // GET: Settings/Edit/5
@@ -56,31 +60,36 @@ namespace Automation.Gui.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var setting = _db.settings.Find(id);
+            using (var db = new testsettingsEntities())
+            {
+                var setting = db.settings.Find(id);
 
-            if (setting == null)
-                return HttpNotFound();
+                if (setting == null)
+                    return HttpNotFound();
 
-            return View(setting);
+                return View(setting);
+            }
         }
 
         // POST: Settings/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,targetBrowser,operatingSystem,seleniumHubUri,screenshotFolder,isActive")] setting setting)
         {
             if (!ModelState.IsValid)
                 return View(setting);
 
-            if (setting.isActive == 1)
-                Database.DbHelpers.DeactivateAll();
+            using (var db = new testsettingsEntities())
+            {
+                if (setting.isActive == 1)
+                    Database.DbHelpers.DeactivateAll();
 
-            _db.Entry(setting).State = EntityState.Modified;
-            _db.SaveChanges();
+                db.Entry(setting).State = EntityState.Modified;
+                db.SaveChanges();
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
         }
 
         // GET: Settings/Delete/5
@@ -89,62 +98,77 @@ namespace Automation.Gui.Controllers
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var setting = _db.settings.Find(id);
+            using (var db = new testsettingsEntities())
+            {
+                var setting = db.settings.Find(id);
 
-            if (setting == null)
-                return HttpNotFound();
+                if (setting == null)
+                    return HttpNotFound();
 
-            return View(setting);
+                return View(setting);
+            }
         }
 
         // POST: Settings/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var item = _db.settings.Find(id);
+            using (var db = new testsettingsEntities())
+            {
+                var item = db.settings.Find(id);
 
-            if (item == null)
-                throw new NoNullAllowedException("Id field can't be null.");
+                if (item == null)
+                    throw new NoNullAllowedException("Id field can't be null.");
 
-            _db.settings.Remove(item);
-            _db.SaveChanges();
+                db.settings.Remove(item);
+                db.SaveChanges();
 
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-                _db.Dispose();
-
-            base.Dispose(disposing);
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult GenerateXml()
         {
             new AppConfigWriter().OutputXml();
 
-            return View(_db.settings.ToList());
+            using (var db = new testsettingsEntities())
+            {
+                return View(db.settings.ToList());
+            }
         }
 
         public ActionResult RunAutomatedTests()
         {
+            // If you move or rename the root directory 'SeleniumAutomationToolbox', please update these paths
+#if DEBUG
+            const string path = @"C:\SeleniumAutomationToolbox\src\NetFramework\Automation.Tests\bin\Debug\Automation.Tests.dll";
+#endif
+
+#if !DEBUG
+            const string path = @"C:\SeleniumAutomationToolbox\src\NetFramework\Automation.Tests\bin\Release\Automation.Tests.dll";
+#endif
+
             _processId = RunTestsHelper.RunNunitTests(
-                @"C:\AutomationToolboox\src\Automation.Tests\Automation.Tests.csproj " +
+                $"{path} " +
                 "--workers=30 " +
-                @"--work=C:\AutomationToolboox\NunitWork " +
+                @"--work=C:\SeleniumAutomationToolbox\NunitWork " +
                 "--trace=Verbose",
                 ProcessWindowStyle.Normal);
 
-            return View(_db.settings.ToList());
+            using (var db = new testsettingsEntities())
+            {
+                return View(db.settings.ToList());
+            }
         }
 
         public ActionResult StopAutomatedTests()
         {
             RunTestsHelper.StopNunitTests(_processId);
 
-            return View(_db.settings.ToList());
+            using (var db = new testsettingsEntities())
+            {
+                return View(db.settings.ToList());
+            }
         }
     }
 }

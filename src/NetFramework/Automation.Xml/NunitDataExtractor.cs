@@ -26,7 +26,8 @@ namespace Automation.Xml
         {
             try
             {
-                _document.Load(@"C:\AutomationToolboox\NunitWork\TestResult.xml");
+                // If you move or rename the root directory 'SeleniumAutomationToolbox', please update this path
+                _document.Load(@"C:\SeleniumAutomationToolbox\NunitWork\TestResult.xml");
             }
             catch (Exception)
             {

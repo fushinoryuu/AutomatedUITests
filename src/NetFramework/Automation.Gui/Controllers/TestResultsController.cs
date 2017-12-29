@@ -10,7 +10,6 @@ namespace Automation.Gui.Controllers
 {
     public class TestResultsController : Controller
     {
-        private readonly testsettingsEntities _db = new testsettingsEntities();
         public static bool ImportSuccessful;
         public static bool TriedToImport;
 
@@ -23,30 +22,36 @@ namespace Automation.Gui.Controllers
         // GET: Testruns/Delete/5
         public ActionResult Delete(string guid)
         {
-            if (string.IsNullOrWhiteSpace(guid))
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            using (var db = new testsettingsEntities())
+            {
+                if (string.IsNullOrWhiteSpace(guid))
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var testrun = _db.testruns.Find(guid);
+                var testrun = db.testruns.Find(guid);
 
-            if (testrun == null)
-                return HttpNotFound();
+                if (testrun == null)
+                    return HttpNotFound();
 
-            return View(testrun);
+                return View(testrun);
+            }
         }
 
         // POST: Testruns/Delete/5
         [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string guid)
         {
-            var item = _db.testruns.Find(guid);
+            using (var db = new testsettingsEntities())
+            {
+                var item = db.testruns.Find(guid);
 
-            if (item == null)
-                throw new NoNullAllowedException("GUID field can't be null.");
+                if (item == null)
+                    throw new NoNullAllowedException("GUID field can't be null.");
 
-            _db.testruns.Remove(item);
-            _db.SaveChanges();
+                db.testruns.Remove(item);
+                db.SaveChanges();
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult NunitDataExtraction()
@@ -57,9 +62,12 @@ namespace Automation.Gui.Controllers
             return RedirectToAction("Index");
         }
 
-        private IList<testrun> GetOrderedList()
+        private static IList<testrun> GetOrderedList()
         {
-            return _db.testruns.OrderByDescending(testrun => testrun.starttime).ToList();
+            using (var db = new testsettingsEntities())
+            {
+                return db.testruns.OrderByDescending(testrun => testrun.starttime).ToList();
+            }
         }
     }
 }

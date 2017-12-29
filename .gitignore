@@ -276,6 +276,7 @@ tools/
 !tools/packages.config
 
 # Other files and directories
-src/CommonAssemblyInfo.cs
+src/NetFramework/CommonAssemblyInfo.cs
 src/NetFramework/Automation.Gui/App_Data/
+!src/NetFramework/Automation.Gui/Views/*
 .vscode/
