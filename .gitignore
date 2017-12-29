@@ -277,6 +277,6 @@ tools/
 !tools/packages.config
 
 # Other files
-src/CommonAssemblyInfo.cs
-src/Automation.Gui/App_Data/
+src/NetFramework/CommonAssemblyInfo.cs
+src/NetFramework/Automation.Gui/App_Data/
 !src/NetFramework/Automation.Gui/Views/*
