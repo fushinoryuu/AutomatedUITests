@@ -11,14 +11,16 @@ namespace Automation.Gui.Controllers
 {
     public class TestCasesController : Controller
     {
-        private readonly testsettingsEntities _db = new testsettingsEntities();
         public static bool ImportSuccessful;
         public static bool TriedToImport;
 
         // GET: Tests
         public ActionResult Index()
         {
-            return View(_db.testsuites.ToList());
+            using (var db = new testsettingsEntities())
+            {
+                return View(db.testsuites.ToList());
+            }
         }
 
         public ActionResult ImportTests()
@@ -35,6 +37,7 @@ namespace Automation.Gui.Controllers
             {
                 var extension = Path.GetExtension(file.FileName);
 
+                // ReSharper disable once PossibleNullReferenceException
                 if (file.ContentLength <= 0 || !extension.Equals(".xml"))
                 {
                     ImportSuccessful = false;
@@ -42,7 +45,8 @@ namespace Automation.Gui.Controllers
                     return RedirectToAction("Index");
                 }
 
-                var path = Path.Combine(Server.MapPath("~/App_Data"), Path.GetFileName(file.FileName));
+                var path = Path.Combine(Server.MapPath("~/App_Data"), Path.GetFileName(file.FileName) 
+                    ?? throw new InvalidOperationException());
 
                 file.SaveAs(path);
 
@@ -62,12 +66,15 @@ namespace Automation.Gui.Controllers
             if (suiteId == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var items = _db.testcases.Where(i => i.testsuite.testsuiteid == suiteId).ToList();
+            using (var db = new testsettingsEntities())
+            {
+                var items = db.testcases.Where(i => i.testsuite.testsuiteid == suiteId).ToList();
 
-            if (items.Count == 0)
-                return HttpNotFound();
+                if (items.Count == 0)
+                    return HttpNotFound();
 
-            return View(items);
+                return View(items);
+            }
         }
 
         public ActionResult DeleteSuite(int? suiteId)
@@ -75,12 +82,15 @@ namespace Automation.Gui.Controllers
             if (suiteId == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var suite = _db.testsuites.Find(suiteId);
+            using (var db = new testsettingsEntities())
+            {
+                var suite = db.testsuites.Find(suiteId);
 
-            if (suite == null)
-                return HttpNotFound("Test suite not found.");
+                if (suite == null)
+                    return HttpNotFound("Test suite not found.");
 
-            return View(suite);
+                return View(suite);
+            }
         }
 
         [HttpPost, ActionName("DeleteSuite"), ValidateAntiForgeryToken]
@@ -94,26 +104,21 @@ namespace Automation.Gui.Controllers
             if (caseId == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            var caseObj = _db.testcases.Find(caseId);
+            using (var db = new testsettingsEntities())
+            {
+                var caseObj = db.testcases.Find(caseId);
 
-            if (caseObj == null)
-                return HttpNotFound("Test case not found.");
+                if (caseObj == null)
+                    return HttpNotFound("Test case not found.");
 
-            return View(caseObj);
+                return View(caseObj);
+            }
         }
 
         [HttpPost, ActionName("DeleteCase"), ValidateAntiForgeryToken]
         public ActionResult DeleteCaseConfirmed(int id)
         {
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-                _db.Dispose();
-
-            base.Dispose(disposing);
         }
     }
 }
