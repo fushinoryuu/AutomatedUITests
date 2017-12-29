@@ -26,20 +26,22 @@ namespace Automation.Gui.Controllers
             return View();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpPost, ValidateAntiForgeryToken]
         public ActionResult ImportXml(HttpPostedFileBase file)
         {
             TriedToImport = true;
 
-            if (file == null || file.ContentLength <= 0 || !file.FileName.EndsWith("xml"))
-            {
-                ImportSuccessful = false;
-                return RedirectToAction("Index");
-            }
-
             try
             {
+                var extension = Path.GetExtension(file.FileName);
+
+                if (file.ContentLength <= 0 || !extension.Equals(".xml"))
+                {
+                    ImportSuccessful = false;
+
+                    return RedirectToAction("Index");
+                }
+
                 var path = Path.Combine(Server.MapPath("~/App_Data"), Path.GetFileName(file.FileName));
 
                 file.SaveAs(path);

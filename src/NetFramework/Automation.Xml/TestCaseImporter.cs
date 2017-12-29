@@ -47,48 +47,55 @@ namespace Automation.Xml
             foreach (var item in _testsFromXml.ListOfTests)
                 suiteNameSet.Add(item.TestSuite);
 
-            var db = new testsettingsEntities();
-
-            foreach (var name in suiteNameSet)
+            using (var db = new testsettingsEntities())
             {
-                var inDb = db.testsuites.FirstOrDefault(i => i.testsuitename == name);
+                foreach (var name in suiteNameSet)
+                {
+                    var inDb = db.testsuites.FirstOrDefault(i => i.testsuitename == name);
 
-                // Item already in db
-                if (inDb != null)
-                    continue;
+                    // Item already in db
+                    if (inDb != null)
+                        continue;
 
-                // Item not in db
-                db.testsuites.Add(new testsuite { testsuitename = name });
-                db.SaveChanges();
+                    // Item not in db
+                    db.testsuites.Add(new testsuite
+                    {
+                        testsuitename = name
+                    });
+
+                    db.SaveChanges();
+                }
             }
         }
 
         private void SaveTests()
         {
-            var db = new testsettingsEntities();
-
-            foreach (var item in _testsFromXml.ListOfTests)
+            using (var db = new testsettingsEntities())
             {
-                var inDb = db.testcases.FirstOrDefault(i => i.testcasename == item.TestName);
+                foreach (var item in _testsFromXml.ListOfTests)
+                {
+                    var inDb = db.testcases.FirstOrDefault(i => i.testcasename.Equals(item.TestName));
 
-                // Item alrady in db
-                if (inDb != null)
-                    continue;
+                    // Item alrady in db
+                    if (inDb != null)
+                        continue;
 
-                // Item not in db
-                var newTest = new testcase();
-                var suite = db.testsuites.FirstOrDefault(i => i.testsuitename == item.TestSuite);
+                    // Item not in db
+                    var suite = db.testsuites.FirstOrDefault(i => i.testsuitename == item.TestSuite);
 
-                if (suite == null)
-                    throw new Exception("TestSuite not found");
+                    if (suite == null)
+                        throw new Exception("TestSuite not found");
 
-                newTest.testcasename = item.TestName;
-                newTest.belongstosuite = suite.testsuiteid;
-                newTest.testcasedescription = item.TestCaseDescription;
-                newTest.testsuite = suite;
+                    db.testcases.Add(new testcase
+                    {
+                        testcasename = item.TestName,
+                        belongstosuite = suite.testsuiteid,
+                        testcasedescription = item.TestCaseDescription,
+                        testsuite = suite
+                    });
 
-                db.testcases.Add(newTest);
-                db.SaveChanges();
+                    db.SaveChanges();
+                }
             }
         }
     }
