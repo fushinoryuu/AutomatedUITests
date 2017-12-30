@@ -2,7 +2,6 @@
 #load "./cake-scripts/npm.csx"
 #load "./cake-scripts/nuget.csx"
 #load "./cake-scripts/nunit.csx"
-#load "./cake-scripts/paket.csx"
 #load "./cake-scripts/Project.cs"
 #load "./cake-scripts/compile_netframework.csx"
 
