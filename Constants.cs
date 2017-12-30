@@ -1,51 +1,54 @@
+using System.Collections.Generic;
+
 public static class Constants
 {
 	public const int NunitWorkers = 30;
-	public const string PaketExecutible = ".paket/paket.exe";
-	public const string PaketBootstrapperExecutible = "./.paket/paket.bootstrapper.exe";
-	public const string SolutionFile = "./src/SeleniumAutomationToolbox.sln";
+	public const string NetFrameworkSolutionFile = "./src/NetFramework/AutomationToolbox_NetFramework.sln";
 	public const string TestAssembliesGlob = "./src/**/bin/Debug/*.Tests.dll";
 }
 
-public DropOptions dropOptions = new DropOptions
+public IEnumerable<Project> NetFrameworkProjects = new[]
 {
-	Projects = new[]
+	new Project
 	{
-		new Project
-		{
-			Name = "Automation.Database",
-			Folders = new string[0],
-			Files = new string[0]
-		},
-		new Project
-		{
-			Name = "Automation.Framework",
-			Folders = new string[0],
-			Files = new string[0]
-		},
-		new Project
-		{
-			Name = "Automation.Gui",
-			Folders = new string[0],
-			Files = new string[0]
-		},
-		new Project
-		{
-			Name = "Automation.Selenium",
-			Folders = new string[0],
-			Files = new string[0]
-		},
-		new Project
-		{
-			Name = "Automation.Tests",
-			Folders = new string[0],
-			Files = new string[0]
-		},
-		new Project
-		{
-			Name = "Automation.Xml",
-			Folders = new string[0],
-			Files = new string[0]
-		}
+		Name = "Automation.Database",
+		Location = "./src/NetFramework/Automation.Database/Automation.Database.csproj",
+		Folders = new string[0],
+		Files = new string[0]
+	},
+	new Project
+	{
+		Name = "Automation.Framework",
+		Location = "./src/NetFramework/Automation.Framework/Automation.Framework.csproj",
+		Folders = new string[0],
+		Files = new string[0]
+	},
+	new Project
+	{
+		Name = "Automation.Gui",
+		Location = "./src/NetFramework/Automation.Gui/Automation.Gui.csproj",
+		Folders = new string[0],
+		Files = new string[0]
+	},
+	new Project
+	{
+		Name = "Automation.Selenium",
+		Location = "./src/NetFramework/Automation.Selenium/Automation.Selenium.csproj",
+		Folders = new string[0],
+		Files = new string[0]
+	},
+	new Project
+	{
+		Name = "Automation.Tests",
+		Location = "./src/NetFramework/Automation.Tests/Automation.Tests.csproj",
+		Folders = new string[0],
+		Files = new string[0]
+	},
+	new Project
+	{
+		Name = "Automation.Xml",
+		Location = "./src/NetFramework/Automation.Xml/Automation.Xml.csproj",
+		Folders = new string[0],
+		Files = new string[0]
 	}
 };
