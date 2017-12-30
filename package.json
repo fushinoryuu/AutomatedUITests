@@ -9,14 +9,14 @@
     },
     "scripts": {
         "help": "npm-scripts-info",
-        "build": "powershell ./build.ps1 -Target default",
-        "tests": "powershell ./build.ps1 -Target tests",
+        "netframework_build": "powershell ./build.ps1 -Target DefaultNetFramework",
+        "netframework_tests": "powershell ./build.ps1 -Target TestsNetFramework",
         "hub": "start call powershell ./selenium/HUB_SeleniumGrid.bat",
         "node": "start call powershell ./selenium/NODE_SeleniumGrid.bat"
     },
     "scripts-info": {
-        "build": "Installs the dependencies, builds the project, and executes tests.",
-        "tests": "Assumes dependencies are already installed. This will only build the project and execute the tests.",
+        "netframework_build": "Installs the dependencies, builds the project, and executes tests.",
+        "netframework_tests": "Assumes dependencies are already installed. This will only build the project and execute the tests.",
         "hub": "Starts a Selenium Server Hub.",
         "node": "Starts a Selenium Server Node.",
         "test": "echo \"Error: no test specified\" && exit 1"
