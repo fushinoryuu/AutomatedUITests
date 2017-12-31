@@ -3,12 +3,12 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        main: './Scripts/main'
+        homepage: './Scripts/Home/index.js'
     },
     output: {
-       publicPath: "/js/",
-       path: path.join(__dirname, '/wwwroot/js/'),
-       filename: 'main.build.js'
+        publicPath: "/js/",
+        path: path.join(__dirname, '/wwwroot/js/'),
+        filename: '[name].build.js'
     },
     devtool: 'inline-source-map',
     module: {
