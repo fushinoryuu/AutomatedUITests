@@ -6,10 +6,9 @@ import Hello from "../Shared/Hello.jsx";
 // Jumbotron variables
 const testCasesMainText = "Test Cases";
 const testCasesSubText = "You can use this page to:";
-const testCasesBullets = ["Add new test configurations.",
-    "Edit existing test configurations.",
-    "Set which configuration to use for unit tests.",
-    "Run unit tests from the UI."];
+const testCasesBullets = ["See all the test suites that have been imported.",
+    "Drill into each suite and see what test cases are in the suite.",
+    "See a historical test results for each test. (Feature not yet available."];
 const testCasesListItems = testCasesBullets.map((string) =>
     <li key={testCasesBullets.indexOf(string)}>
         {string}

@@ -6,10 +6,9 @@ import Hello from "../Shared/Hello.jsx";
 // Jumbotron variables
 const testResultsMainText = "Test Results";
 const testResultsSubText = "You can use this page to:";
-const testResultsBullets = ["Add new test configurations.",
-    "Edit existing test configurations.",
-    "Set which configuration to use for unit tests.",
-    "Run unit tests from the UI."];
+const testResultsBullets = ["See an overview of past automated test runs.",
+    "Easily identify which runs failed.",
+    "Drill into the test run and see which tests failed and why. (Feature not yet available)"];
 const testResultsListItems = testResultsBullets.map((string) =>
     <li key={testResultsBullets.indexOf(string)}>
         {string}
