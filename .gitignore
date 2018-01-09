@@ -279,4 +279,6 @@ tools/
 src/NetFramework/CommonAssemblyInfo.cs
 src/NetFramework/Automation.Gui/App_Data/
 !src/NetFramework/Automation.Gui/Views/*
+!src/NetCore/Automation.GuiCore/Views/*
+!src/NetCore/Automation.GuiCore/Scripts/*
 .vscode/

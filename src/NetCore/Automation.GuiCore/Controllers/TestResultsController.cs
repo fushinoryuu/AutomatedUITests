@@ -2,14 +2,9 @@
 
 namespace Automation.GuiCore.Controllers
 {
-    public class HomeController : Controller
+    public class TestResultsController : Controller
     {
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Error()
         {
             return View();
         }
