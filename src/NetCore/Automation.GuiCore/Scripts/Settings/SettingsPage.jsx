@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Jumbotron from "../Shared/Jumbotron.jsx";
-import ReactTable from "react-table";
-import "react-table/react-table.css";
 
 // Jumbotron variables
 const settingsMainText = "Automation Settings";
@@ -49,10 +47,7 @@ const columns = [{
 class SettingsPage extends React.Component {
     render() {
         return (
-            <div>
-                <Jumbotron mainText={settingsMainText} subText={settingsSubText} items={settingsListItems} />
-                <ReactTable data={data} columns={columns} />
-            </div>
+            <Jumbotron mainText={settingsMainText} subText={settingsSubText} items={settingsListItems} />
         );
     }
 }
