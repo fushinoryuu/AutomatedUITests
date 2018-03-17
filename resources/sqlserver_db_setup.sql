@@ -1,11 +1,11 @@
--- Create 'SeleniumAutomationToolbox' database
+-- Create 'AutomationDatabase' database
 
-CREATE DATABASE SeleniumAutomationToolbox
+CREATE DATABASE AutomationDatabase
 GO
 
 -- Create 'TestConfiguration' table
 
-USE SeleniumAutomationToolbox
+USE AutomationDatabase
 GO
 
 CREATE TABLE dbo.TestConfiguration
@@ -13,6 +13,7 @@ CREATE TABLE dbo.TestConfiguration
     ConfigId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
     TargetBrowser VARCHAR(50) NOT NULL,
     OperatingSystem VARCHAR(50) NOT NULL,
+    SeleniumHubUri VARCHAR(100) NOT NULL,
     IsActive BIT NOT NULL
 );
 GO
