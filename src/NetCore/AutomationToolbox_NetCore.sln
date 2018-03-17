@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.SeleniumCore", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.FrameworkCore", "Automation.FrameworkCore\Automation.FrameworkCore.csproj", "{30C99625-551B-47E4-84DD-FCD8ACF0D44A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.DatabaseCore", "Automation.DatabaseCore\Automation.DatabaseCore.csproj", "{5C168395-F3A1-44BD-8DD6-80402A0E7DE8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.NewDatabaseCore", "Automation.NewDatabaseCore\Automation.NewDatabaseCore.csproj", "{79133537-6BD6-4C15-A235-16268DE5B832}"
 EndProject
 Global
@@ -43,10 +41,6 @@ Global
 		{30C99625-551B-47E4-84DD-FCD8ACF0D44A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30C99625-551B-47E4-84DD-FCD8ACF0D44A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30C99625-551B-47E4-84DD-FCD8ACF0D44A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5C168395-F3A1-44BD-8DD6-80402A0E7DE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C168395-F3A1-44BD-8DD6-80402A0E7DE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5C168395-F3A1-44BD-8DD6-80402A0E7DE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C168395-F3A1-44BD-8DD6-80402A0E7DE8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79133537-6BD6-4C15-A235-16268DE5B832}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79133537-6BD6-4C15-A235-16268DE5B832}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79133537-6BD6-4C15-A235-16268DE5B832}.Release|Any CPU.ActiveCfg = Release|Any CPU
