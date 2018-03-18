@@ -21,8 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Automation.DatabaseCore\Automation.DatabaseCore.csproj" />
     <ProjectReference Include="..\Automation.IoCore\Automation.IoCore.csproj" />
+    <ProjectReference Include="..\Automation.NewDatabaseCore\Automation.NewDatabaseCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

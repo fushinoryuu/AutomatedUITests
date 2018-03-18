@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Linq;
-using Automation.DatabaseCore;
-using Automation.DatabaseCore.Models;
+using Automation.NewDatabaseCore;
+using Automation.NewDatabaseCore.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
@@ -10,7 +10,7 @@ namespace Automation.GuiCore.Controllers
     public class SettingsController : Controller
     {
         public IConfigurationRoot Configuration { get; }
-        private TestSettingsContext Db { get; }
+        private AutomationDatabaseContext Db { get; }
 
         public SettingsController(IConfigurationRoot configuration)
         {
@@ -21,7 +21,7 @@ namespace Automation.GuiCore.Controllers
         // GET: Settings
         public IActionResult Index()
         {
-            var list = Db.Settings.ToList();
+            var list = Db.Configurations.ToList();
 
             Db.Dispose();
 
@@ -38,7 +38,7 @@ namespace Automation.GuiCore.Controllers
         // POST: Settings/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([FromBody]Setting setting)
+        public IActionResult Create([FromBody]TestConfiguration setting)
         {
             // TODO - Create view
             return Index();
@@ -50,7 +50,7 @@ namespace Automation.GuiCore.Controllers
             if (id == null)
                 return BadRequest();
 
-            var setting = Db.Settings.Find(id);
+            var setting = Db.Configurations.Find(id);
 
             if (setting == null)
                 return NotFound();
@@ -66,12 +66,12 @@ namespace Automation.GuiCore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            var item = Db.Settings.Find(id);
+            var item = Db.Configurations.Find(id);
 
             if (item == null)
                 throw new NoNullAllowedException("ID field can't be null.");
 
-            Db.Settings.Remove(item);
+            Db.Configurations.Remove(item);
             Db.SaveChanges();
 
             return RedirectToAction("Index");

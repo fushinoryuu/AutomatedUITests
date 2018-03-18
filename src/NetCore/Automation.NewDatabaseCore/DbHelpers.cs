@@ -8,8 +8,9 @@ namespace Automation.NewDatabaseCore
         public static AutomationDatabaseContext OpenDbConnection(IConfiguration configuration, string connectionName = "DefaultConnection")
         {
             var builder = new DbContextOptionsBuilder<AutomationDatabaseContext>();
+            var connectionString = configuration.GetConnectionString(connectionName);
 
-            builder.UseSqlServer(connectionName);
+            builder.UseSqlServer(connectionString);
 
             return new AutomationDatabaseContext(builder.Options);
         }

@@ -5,23 +5,27 @@ using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Firefox;
-using Automation.DatabaseCore;
+using Automation.NewDatabaseCore;
 using Automation.SeleniumCore.Utils;
-using Automation.DatabaseCore.Models;
+using Automation.NewDatabaseCore.Model;
 using Microsoft.Extensions.Configuration;
 
 namespace Automation.SeleniumCore
 {
     internal class TestSettingsReader
     {
-        private static Setting GetDataFromDb(IConfiguration configuration)
+        private static TestConfiguration GetDataFromDb(IConfiguration configuration)
         {
-            var db = DbHelpers.OpenDbConnection(configuration);
-            var setting = db.Settings.FirstOrDefault(item => item.IsActive == 1);
+            // TODO: Fix this
 
-            db.Dispose();
+            //var db = DbHelpers.OpenDbConnection(configuration);
+            //var setting = db. //.FirstOrDefault(item => item.IsActive == 1);
 
-            return setting;
+            //db.Dispose();
+
+            //return setting;
+
+            throw new NotImplementedException();
         }
 
         /// <summary>Tries to figureout what browser to use from the db or config file.</summary>
@@ -92,10 +96,14 @@ namespace Automation.SeleniumCore
         /// <summary>Tries to figereout where the screenshots should be saved to.</summary>
         public static string ScreenshotFolderLocation(IConfigurationRoot configuration)
         {
-            var setting = GetDataFromDb(configuration);
-            var directory = setting != null ? setting.ScreenshotFolder : configuration["screenshotFolder"];
+            // TODO: Fix this
 
-            return string.IsNullOrWhiteSpace(directory) ? "C:\\UI_Test_Screenshots\\" : directory;
+            //var setting = GetDataFromDb(configuration);
+            //var directory = setting != null ? setting.ScreenshotFolder : configuration["screenshotFolder"];
+
+            //return string.IsNullOrWhiteSpace(directory) ? "C:\\UI_Test_Screenshots\\" : directory;
+
+            return "C:\\UI_Test_Screenshots\\";
         }
     }
 }

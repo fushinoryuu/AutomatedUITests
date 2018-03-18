@@ -3,8 +3,8 @@ using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using System.Collections.Generic;
-using Automation.DatabaseCore;
-using Automation.DatabaseCore.Models;
+using Automation.NewDatabaseCore;
+using Automation.NewDatabaseCore.Model;
 using Automation.IoCore.Utils;
 using Microsoft.Extensions.Configuration;
 
@@ -49,18 +49,20 @@ namespace Automation.IoCore
             var suiteNameSet = new HashSet<string>(suiteNames);
             var db = DbHelpers.OpenDbConnection(configuration);
 
-            foreach (var name in suiteNameSet)
-            {
-                var inDb = db.Testsuites.FirstOrDefault(i => i.TestsuiteName == name);
+            // TODO: Fix this
 
-                // Suite already in db
-                if (inDb != null)
-                    continue;
+            //foreach (var name in suiteNameSet)
+            //{
+            //    var inDb = db.Testsuites.FirstOrDefault(i => i.TestsuiteName == name);
 
-                // Suite not in db
-                db.Testsuites.Add(new Testsuite { TestsuiteName = name });
-                db.SaveChanges();
-            }
+            //    // Suite already in db
+            //    if (inDb != null)
+            //        continue;
+
+            //    // Suite not in db
+            //    db.Testsuites.Add(new Testsuite { TestsuiteName = name });
+            //    db.SaveChanges();
+            //}
 
             db.Dispose();
         }
@@ -69,31 +71,33 @@ namespace Automation.IoCore
         {
             var db = DbHelpers.OpenDbConnection(configuration);
 
-            foreach (var item in _testsFromXml.ListOfTests)
-            {
-                var inDb = db.Testcases.FirstOrDefault(i => i.TestcaseName == item.TestName);
+            // TODO: Fix this
 
-                // Item already in db
-                if (inDb != null)
-                    continue;
+            //foreach (var item in _testsFromXml.ListOfTests)
+            //{
+            //    var inDb = db.Testcases.FirstOrDefault(i => i.TestcaseName == item.TestName);
 
-                // Item not in db
-                var suite = db.Testsuites.FirstOrDefault(i => i.TestsuiteName == item.TestSuite);
+            //    // Item already in db
+            //    if (inDb != null)
+            //        continue;
 
-                if (suite == null)
-                    throw new Exception("TestSuite not found");
+            //    // Item not in db
+            //    var suite = db.Testsuites.FirstOrDefault(i => i.TestsuiteName == item.TestSuite);
 
-                var newTest = new Testcase
-                {
-                    TestcaseName = item.TestName,
-                    BelongsToSuite = suite.TestsuiteId,
-                    TestcaseDescription = item.TestCaseDescription,
-                    TestSuite = suite
-                };
+            //    if (suite == null)
+            //        throw new Exception("TestSuite not found");
 
-                db.Testcases.Add(newTest);
-                db.SaveChanges();
-            }
+            //    var newTest = new Testcase
+            //    {
+            //        TestcaseName = item.TestName,
+            //        BelongsToSuite = suite.TestsuiteId,
+            //        TestcaseDescription = item.TestCaseDescription,
+            //        TestSuite = suite
+            //    };
+
+            //    db.Testcases.Add(newTest);
+            //    db.SaveChanges();
+            //}
 
             db.Dispose();
         }
