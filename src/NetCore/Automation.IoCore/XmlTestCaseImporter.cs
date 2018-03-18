@@ -3,8 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using System.Collections.Generic;
-using Automation.NewDatabaseCore;
-using Automation.NewDatabaseCore.Model;
+using Automation.DatabaseCore;
 using Automation.IoCore.Utils;
 using Microsoft.Extensions.Configuration;
 

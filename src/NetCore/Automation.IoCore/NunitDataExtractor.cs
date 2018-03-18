@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Xml;
-using Automation.NewDatabaseCore;
-using Automation.NewDatabaseCore.Model;
+using Automation.DatabaseCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Automation.IoCore

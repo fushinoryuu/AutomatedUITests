@@ -1,7 +1,7 @@
-﻿using Automation.NewDatabaseCore.Model;
+﻿using Automation.DatabaseCore.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Automation.NewDatabaseCore
+namespace Automation.DatabaseCore
 {
     public class AutomationDatabaseContext : DbContext
     {

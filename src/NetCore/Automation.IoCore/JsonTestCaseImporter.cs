@@ -2,10 +2,9 @@
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
+using Automation.DatabaseCore;
 using Newtonsoft.Json;
 using Automation.IoCore.Utils;
-using Automation.NewDatabaseCore;
-using Automation.NewDatabaseCore.Model;
 using Microsoft.Extensions.Configuration;
 
 namespace Automation.IoCore

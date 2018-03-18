@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Automation.DatabaseCore.Models;
 using OpenQA.Selenium;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Safari;
 using OpenQA.Selenium.Firefox;
-using Automation.NewDatabaseCore;
 using Automation.SeleniumCore.Utils;
-using Automation.NewDatabaseCore.Model;
 using Microsoft.Extensions.Configuration;
 
 namespace Automation.SeleniumCore

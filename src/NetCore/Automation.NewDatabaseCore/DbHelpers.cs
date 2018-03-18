@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace Automation.NewDatabaseCore
+namespace Automation.DatabaseCore
 {
     public static class DbHelpers
     {

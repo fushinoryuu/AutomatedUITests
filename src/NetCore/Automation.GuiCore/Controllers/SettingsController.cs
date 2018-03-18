@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Linq;
-using Automation.NewDatabaseCore;
-using Automation.NewDatabaseCore.Model;
+using Automation.DatabaseCore;
+using Automation.DatabaseCore.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
