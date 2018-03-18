@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Automation.NewDatabaseCore\Automation.NewDatabaseCore.csproj" />
+    <ProjectReference Include="..\Automation.NewDatabaseCore\Automation.DatabaseCore.csproj" />
   </ItemGroup>
 
 </Project>

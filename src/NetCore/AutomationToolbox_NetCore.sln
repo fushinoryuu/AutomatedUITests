@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.SeleniumCore", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Automation.FrameworkCore", "Automation.FrameworkCore\Automation.FrameworkCore.csproj", "{30C99625-551B-47E4-84DD-FCD8ACF0D44A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.NewDatabaseCore", "Automation.NewDatabaseCore\Automation.NewDatabaseCore.csproj", "{79133537-6BD6-4C15-A235-16268DE5B832}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.DatabaseCore", "Automation.NewDatabaseCore\Automation.DatabaseCore.csproj", "{79133537-6BD6-4C15-A235-16268DE5B832}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

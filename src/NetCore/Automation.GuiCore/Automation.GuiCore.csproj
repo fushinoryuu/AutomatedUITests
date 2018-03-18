@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Automation.IoCore\Automation.IoCore.csproj" />
-    <ProjectReference Include="..\Automation.NewDatabaseCore\Automation.NewDatabaseCore.csproj" />
+    <ProjectReference Include="..\Automation.NewDatabaseCore\Automation.DatabaseCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
