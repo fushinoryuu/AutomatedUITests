@@ -9,6 +9,6 @@ namespace Automation.DatabaseCore
         {
         }
 
-        public DbSet<TestConfiguration> Configurations { get; set; }
+        public DbSet<TestConfiguration> TestConfigurations { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace Automation.GuiCore.Controllers
         // GET: Settings
         public IActionResult Index()
         {
-            var list = Db.Configurations.ToList();
+            var list = Db.TestConfigurations.ToList();
 
             Db.Dispose();
 
@@ -50,7 +50,7 @@ namespace Automation.GuiCore.Controllers
             if (id == null)
                 return BadRequest();
 
-            var setting = Db.Configurations.Find(id);
+            var setting = Db.TestConfigurations.Find(id);
 
             if (setting == null)
                 return NotFound();
@@ -66,12 +66,12 @@ namespace Automation.GuiCore.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            var item = Db.Configurations.Find(id);
+            var item = Db.TestConfigurations.Find(id);
 
             if (item == null)
                 throw new NoNullAllowedException("ID field can't be null.");
 
-            Db.Configurations.Remove(item);
+            Db.TestConfigurations.Remove(item);
             Db.SaveChanges();
 
             return RedirectToAction("Index");

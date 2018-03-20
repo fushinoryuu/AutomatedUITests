@@ -15,6 +15,9 @@ namespace Automation.DatabaseCore.Models
         [MaxLength(100)]
         public string SeleniumHubUri { get; set; }
 
+        [MaxLength(100)]
+        public string ScreenshotFolder { get; set; }
+
         public sbyte IsActive { get; set; }
     }
 }
