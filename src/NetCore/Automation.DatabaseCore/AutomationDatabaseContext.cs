@@ -10,5 +10,8 @@ namespace Automation.DatabaseCore
         }
 
         public DbSet<TestConfiguration> TestConfigurations { get; set; }
+        public DbSet<TestCase> TestCases { get; set; }
+        public DbSet<TestRun> TestRuns { get; set; }
+        public DbSet<TestSuite> TestSuites { get; set; }
     }
 }
