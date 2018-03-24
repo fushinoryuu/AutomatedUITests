@@ -51,7 +51,7 @@ CREATE TABLE dbo.TestCase
 (
     CaseId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
     CaseName VARCHAR(100) NOT NULL,
-    BelongsToSuite INT FOREIGN KEY REFERENCES TestSuite(SuiteId),
+    BelongsToSuite INT FOREIGN KEY REFERENCES TestSuite(SuiteId) NOT NULL,
     CaseDescription VARCHAR(500) NOT NULL
 );
 GO
