@@ -6,7 +6,7 @@ namespace Automation.DatabaseCore.Models
     public class TestRun
     {
         [Key, MaxLength(36)]
-        public string Guid { get; set; }
+        public string RunId { get; set; }
 
         public int TestCaseCount { get; set; }
 
